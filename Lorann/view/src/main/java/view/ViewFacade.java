@@ -1,7 +1,7 @@
 package view;
 
 import java.sql.SQLException;
-import model.Scene;
+
 
 import javax.swing.JOptionPane;
 import model.dao.ElementDAO;
