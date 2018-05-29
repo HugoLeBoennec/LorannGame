@@ -1,6 +1,7 @@
 package view;
 
 import java.sql.SQLException;
+import model.Scene;
 
 import javax.swing.JOptionPane;
 import model.dao.ElementDAO;
@@ -12,8 +13,7 @@ import model.dao.ElementDAO;
  * @version 1.0
  */
 public class ViewFacade implements IView {
-	//tableau des element
-	private Object[][] Objects;
+	
     /**
      * Instantiates a new view facade.
      */
@@ -29,8 +29,5 @@ public class ViewFacade implements IView {
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
-    //remplire le tableau des element
-    public final void setObjects(final Object object, final int x, final int y) {
-        this.Objects[x][y] = object;
-    }
+    
 }
