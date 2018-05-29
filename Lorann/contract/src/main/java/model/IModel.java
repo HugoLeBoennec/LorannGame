@@ -31,7 +31,7 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    Element getElementByPos(int x, int y) throws SQLException;
+    Element getElementByPos(final int level, final int x, final int y) throws SQLException;
 
     /**
      * Gets the all Elements.
@@ -40,5 +40,5 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    List<Element> getAllElements() throws SQLException;
+    List<Element> getAllElements(final int level) throws SQLException;
 }

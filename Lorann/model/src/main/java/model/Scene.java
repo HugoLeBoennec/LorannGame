@@ -3,6 +3,9 @@ package model;
 import java.sql.SQLException;
 
 import model.dao.ElementDAO;
+import model.elements.Object;
+import model.graphics.Sprite;
+import model.elements.*;
 
 /**
  * <h1>The Class Scene represents the game scene with its elements.</h1>
@@ -40,9 +43,30 @@ public class Scene {
      * @throws SQLException
      */
 	private void loadLevel(final int level) throws SQLException {
+		Object obj = null;
+		Element el;
+		
 		for (int y = 0; y < 12; y++) {
 			for (int x = 0; x < 20; x++) {
-				setObjectXY(ElementDAO.getElementByPos(level, x, y), x, y);
+				
+				el = ElementDAO.getElementByPos(level, x, y);
+				
+				// On insère l'objet en fonction du type :
+				switch (el.getType())
+				{
+					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE); break;
+					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE); break;
+					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR); break;
+					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH); break;
+					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV); break;
+					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN); break;
+					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW); break;
+					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE); break;
+					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS); break;
+					case 'O' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE); break;
+				}
+				
+				setObjectXY(obj, x, y);
 			}
 		}
 	}
@@ -94,7 +118,7 @@ public class Scene {
      *            the Y position
      * @return the element at the position
      */
-    public final Object getObjectXY(int x, int y) {
+    public Object getObjectXY(int x, int y) {
         return this.object[x][y];
     }
 
@@ -108,7 +132,20 @@ public class Scene {
      * @param y
      *            the Y position
      */
-    public final void setObjectXY(final Object object, int x, int y) {
+    public void setObjectXY(final Object object, int x, int y) {
         this.object[x][y] = object;
+    }
+
+    /**
+     * Test if an object is solid.
+     *
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @return the solidity at the position
+     */
+    public boolean isPenetrable (int x, int y) {
+    	return this.object[x][y].getSolidity();
     }
 }

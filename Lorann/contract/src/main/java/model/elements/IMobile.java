@@ -27,4 +27,9 @@ public interface IMobile {
      * Moves the mobile down by handling collision
      */
 	public void moveDown();
+	
+	/**
+     * Called when the main loop updates
+     */
+	public void tick();
 }

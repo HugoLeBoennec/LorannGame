@@ -12,4 +12,9 @@ public interface ICharacter extends IMobile {
      * Test if the character is alive
      */
 	public boolean isAlive();
+	
+	/**
+     * Casts a spell
+     */
+	public void attaque();
 }

@@ -42,9 +42,9 @@ public class ControllerFacade implements IController {
      *             the SQL exception
      */
     public void start() throws SQLException {
-        this.getView().displayMessage(this.getModel().getElementByPos(1, 1).toString());
+        this.getView().displayMessage(this.getModel().getElementByPos(1, 1, 1).toString());
 
-        final List<Element> Elements = this.getModel().getAllElements();
+        final List<Element> Elements = this.getModel().getAllElements(1);
         final StringBuilder message = new StringBuilder();
         for (final Element Element : Elements) {
             message.append(Element);
@@ -73,6 +73,9 @@ public class ControllerFacade implements IController {
         			break;
         		case 40:
         			character.moveDown();
+        			break;
+        		case 32:
+        			character.attaque();
         			break;
         		}
         	}

@@ -43,7 +43,7 @@ public interface IObject {
      *
      * @return the solidity
      */
-	public boolean getSolid();
+	public boolean getSolidity();
 	
 	/**
      * Sets the solidity.
@@ -51,5 +51,5 @@ public interface IObject {
      * @param solid
      *            the solidity
      */
-	public void setSolid(boolean solid);
+	public void setSolidity(boolean solid);
 }

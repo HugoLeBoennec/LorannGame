@@ -78,7 +78,7 @@ public abstract class Object implements IObject {
      *
      * @return the solidity
      */
-	public boolean getSolid() {
+	public boolean getSolidity() {
 		return this.solid;
 	}
 	
@@ -88,7 +88,7 @@ public abstract class Object implements IObject {
      * @param solid
      *            the solidity
      */
-	public void setSolid(boolean solid) {
+	public void setSolidity(boolean solid) {
 		this.solid = solid;
 	}
 }
