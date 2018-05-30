@@ -16,6 +16,7 @@ public class DemonSud extends Object implements IMobile {
 	public DemonSud(int x, int y, final Sprite sprite) {
 		super(x, y, false, sprite);
 	}
+	
 	@Override
 	public void moveRight() {
 		this.setX(getX()+1);
