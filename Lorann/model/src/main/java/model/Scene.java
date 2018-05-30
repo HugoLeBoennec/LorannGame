@@ -16,10 +16,10 @@ import model.elements.*;
 public class Scene {
 	
 	 /** The width. */
-    private int         width;
+    static private int	WIDTH = 20;
 
     /** The height. */
-    private int         height;
+    static private int	HEIGHT = 12;
 
     /** The array of objects */
     private Object[][]	object;
