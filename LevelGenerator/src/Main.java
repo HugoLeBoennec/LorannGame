@@ -14,7 +14,7 @@ public abstract class Main
 	static String USER		= "root";
 	static String PASSWORD	= "";
 	
-	static String FICHIER	= "map.txt";
+	static String FICHIER	= "map_1.txt";
 	
 	static int LEVEL		= 1;
 	

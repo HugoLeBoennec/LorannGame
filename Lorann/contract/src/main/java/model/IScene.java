@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import model.elements.*;
 
 /**
@@ -27,4 +29,9 @@ public interface IScene {
      * @return the main character
      */
     public ICharacter getCharacter();
+    
+    /**
+     * Set up the sprites.
+     */
+    public void setupSprites();
 }

@@ -29,9 +29,6 @@ public final class ModelFacade implements IModel {
      */
     public ModelFacade(final IScene scene) throws IOException, SQLException {
         super();
-        
-        // Chargement des sprites :
-    	Sprite.LoadSprite();
     	
         this.scene = scene;
     }

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import model.dao.ElementDAO;
@@ -116,4 +117,13 @@ public class Scene implements IScene {
     public ICharacter getCharacter() {
         return (ICharacter)this.character;
     }
+
+	@Override
+	public void setupSprites() {
+		try {
+			Sprite.LoadSprite();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
