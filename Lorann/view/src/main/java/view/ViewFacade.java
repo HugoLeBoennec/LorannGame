@@ -46,7 +46,8 @@ public class ViewFacade implements Runnable{
     	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	
+    
+    /** Add object on window **/
     for( int y = 0; y < HEIGHT; y++) {
     	
     	for( int x = 0; x < WIDTH; x++) {
