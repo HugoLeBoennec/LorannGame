@@ -75,8 +75,14 @@ public class ViewFacade extends Observable implements Runnable, IView {
         }
     }*/
     
+    @Override
+	public void update() {
+		setChanged();
+		notifyObservers();
+	}
+    
+    @Override
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
-    
 }

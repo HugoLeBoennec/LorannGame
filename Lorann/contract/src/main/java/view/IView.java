@@ -12,6 +12,12 @@ import showboard.BoardFrame;
  */
 public interface IView {
     
+	/**
+     * Update all the frame.
+     *
+     */
+    void update();
+    
     /**
      * Display message.
      *
