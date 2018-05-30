@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import controller.KeyManager;
 import showboard.*;
 
 /**
