@@ -62,9 +62,9 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	window.setFocusable(true);
     	window.setFocusTraversalKeysEnabled(false);
     	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	window.addKeyListener(keyManager);
     	window.setBackground(Color.BLACK);
     	window.setVisible(true);
+    	window.addKeyListener(keyManager);
     	
     	// Chargement des sprites :
     	this.scene.setupSprites();

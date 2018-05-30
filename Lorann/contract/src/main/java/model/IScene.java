@@ -1,7 +1,5 @@
 package model;
 
-import java.io.IOException;
-
 import model.elements.*;
 
 /**
