@@ -17,14 +17,13 @@ public class DemonNord extends Object implements IMobile {
 	public DemonNord(int x, int y, final Sprite sprite, Scene scene) {
 		super(x, y, true, sprite,scene);
 	}
-	
+
 	@Override
 	public void moveRight() {
 		final Scene scene = this.getScene();
 		if (scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
-		else this.setX(getX()-1);
 	}
 
 	@Override
@@ -33,7 +32,6 @@ public class DemonNord extends Object implements IMobile {
 		if (scene.getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
-		else this.setX(getX()+1);
 	}
 
 	@Override
@@ -42,6 +40,7 @@ public class DemonNord extends Object implements IMobile {
 		if (scene.getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
+		else this.setY(getY()-1);
 	}
 
 	@Override
@@ -50,41 +49,42 @@ public class DemonNord extends Object implements IMobile {
 		if (scene.getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
+		else this.setY(getY()+1);
 	}
 	
 	@Override
 	public void tick() {
-		if (this.getScene().getCharacter().getY() == this.getY()) {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveLeft();
+		if (this.getScene().getCharacter().getX() == this.getX()) {
+			if (this.getScene().getCharacter().getY() < this.getY()) {
+				this.moveDown();
 			}
 			else {
-				if (this.getScene().getCharacter().getX() < this.getX()) {
-					this.moveRight();
+				if (this.getScene().getCharacter().getY() < this.getY()) {
+					this.moveUp();
 					}
 				else {
-					this.moveLeft();
+					this.moveDown();
 				}
 			}
 		}
-		else if (this.getScene().getCharacter().getY() < this.getY()) {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveLeft();
+		else if (this.getScene().getCharacter().getX() < this.getX()) {
+			if (this.getScene().getCharacter().getY() < this.getY()) {
 				this.moveDown();
+				this.moveLeft();
 			}
 			else {
-				this.moveLeft();
-				this.moveUp();
+				this.moveDown();
+				this.moveRight();
 			}
 		}
 		else {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveRight();
-				this.moveDown();
+			if (this.getScene().getCharacter().getY() < this.getY()) {
+				this.moveUp();
+				this.moveLeft();
 			}
 			else {
-				this.moveRight();
 				this.moveUp();
+				this.moveRight();
 			}
 		}
 	}
