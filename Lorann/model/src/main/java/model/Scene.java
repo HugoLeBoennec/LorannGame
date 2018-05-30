@@ -25,7 +25,7 @@ public class Scene {
     private Object[][]	object;
     
     /** The main character */
-    private ICharacter character;
+    private Lorann character;
     
     /**
      * Instantiates a new Scene.
@@ -81,7 +81,7 @@ public class Scene {
      *
      * @return the main character
      */
-    public ICharacter getCharacter() {
+    public Lorann getCharacter() {
         return this.character;
     }
     
@@ -91,7 +91,7 @@ public class Scene {
      * @param character
      *            the main character
      */
-    public void setCharacter(ICharacter character) {
+    public void setCharacter(Lorann character) {
     	this.character = character;
     }
     

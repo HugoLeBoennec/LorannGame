@@ -45,7 +45,8 @@ public final class ModelFacade implements IModel {
 	
 	@Override
 	public ICharacter getCharacter() {
-		return this.scene.getCharacter();
+		// Cast to convert "Lorann" into "ICharacter" :
+		return (ICharacter)this.scene.getCharacter();
 	}
 
     /*
