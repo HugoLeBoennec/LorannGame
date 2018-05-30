@@ -61,30 +61,14 @@ public class ViewFacade implements Runnable, IView {
     	//getObserver().addObserver(frame.getObserver());
     }
     
-    /**
-	 * Sets the key event listener
-	 * 
-	 * @param listener
-     *            the key listener
-	 */
     public void setKeyListener(final KeyListener listener) {
     	this.window.addKeyListener(listener);
     }
     
-    /**
-	 * Gets the window
-	 * 
-	 * @return the window
-	 */
     public BoardFrame getWindow() {
     	return this.window;
     }
     
-    /**
-	 * Sets the window
-	 * 
-	 * @return the window
-	 */
     public void setWindow(final BoardFrame window) {
     	this.window = window;
     }
@@ -101,10 +85,6 @@ public class ViewFacade implements Runnable, IView {
         }
     }*/
     
-    /**
-     * For testing purposes
-     * 
-     */
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }

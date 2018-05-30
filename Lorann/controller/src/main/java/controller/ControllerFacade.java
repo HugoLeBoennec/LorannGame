@@ -14,10 +14,13 @@ import view.IView;
 public class ControllerFacade implements IController {
 
     /** The view. */
-    private final IView  view;
+    private IView  view;
 
     /** The model. */
-    private final IModel model;
+    private IModel model;
+    
+    /** The key listener. */
+    private KeyCode keyCode;
 
     /**
      * Instantiates a new controller facade.
@@ -28,9 +31,9 @@ public class ControllerFacade implements IController {
      *            the model
      */
     public ControllerFacade(final IView view, final IModel model) {
-        super();
         this.view = view;
         this.model = model;
+        this.keyCode = new KeyCode();
     }
 
     /**
@@ -40,13 +43,16 @@ public class ControllerFacade implements IController {
      *             the SQL exception
      */
     public void start() throws SQLException {
+    	// Configuration of the view :
+    	this.view.setKeyListener(this.keyCode);
+    	
+    	// Get the main character :
         ICharacter character = this.model.getCharacter();
         
-        // La boucle principale, continuant tant que le personnage est en vie :
-        /*while (character.isAlive()) {
+        // The main loop, keep running until the character is dead :
+        while (character.isAlive()) {
         	
         	// Gestion des entrées utilisateur :
-        	KeyCode.key=0;
         	if (KeyCode.key != 0) {
         		switch (KeyCode.key) {
         		case 39:
@@ -66,7 +72,8 @@ public class ControllerFacade implements IController {
         			break;
         		}
         	}
-        }*/
+        	KeyCode.key=0;
+        }
     }
 
     /**

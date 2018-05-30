@@ -1,5 +1,9 @@
 package view;
 
+import java.awt.event.KeyListener;
+
+import showboard.BoardFrame;
+
 /**
  * <h1>The Interface IView.</h1>
  *
@@ -8,6 +12,28 @@ package view;
  */
 public interface IView {
 
+	/**
+	 * Sets the key event listener
+	 * 
+	 * @param listener
+     *            the key listener
+	 */
+    public void setKeyListener(final KeyListener listener);
+    
+    /**
+	 * Gets the window
+	 * 
+	 * @return the window
+	 */
+    public BoardFrame getWindow();
+    
+    /**
+	 * Sets the window
+	 * 
+	 * @return the window
+	 */
+    public void setWindow(final BoardFrame window);
+    
     /**
      * Display message.
      *
