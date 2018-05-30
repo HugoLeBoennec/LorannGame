@@ -28,7 +28,6 @@ public class BDDTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
 	}
 
 	@After

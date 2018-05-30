@@ -17,13 +17,13 @@ public abstract class Lorann extends Object implements ICharacter {
 	/**
      * Instantiates a new Lorann.
      */
-	public Lorann(int x, int y, final Sprite sprite, String scene) {
-		super(x, y, true, sprite,scene);
+	public Lorann(int x, int y, final Sprite sprite, int level) {
+		super(x, y, true, sprite,level);
 	}
 	
 	@Override
 	public void moveRight() {
-		if (Scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == false) {
+		if (Scene.getObjectXY(this.getX()+1,this.getY(),level).getSolidity() == false) {
 			this.setX(getX()+1);
 		}
 	}
