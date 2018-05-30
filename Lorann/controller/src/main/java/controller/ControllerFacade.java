@@ -1,6 +1,8 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.Observable;
+
 import model.IModel;
 import model.elements.ICharacter;
 import view.IView;
@@ -11,7 +13,7 @@ import view.IView;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ControllerFacade implements IController {
+public class ControllerFacade extends Observable implements IController {
 
     /** The view. */
     private IView  view;
@@ -20,7 +22,7 @@ public class ControllerFacade implements IController {
     private IModel model;
     
     /** The key listener. */
-    private KeyCode keyCode;
+    private KeyManager keyCode;
 
     /**
      * Instantiates a new controller facade.
@@ -33,7 +35,7 @@ public class ControllerFacade implements IController {
     public ControllerFacade(final IView view, final IModel model) {
         this.view = view;
         this.model = model;
-        this.keyCode = new KeyCode();
+        this.keyCode = new KeyManager();
     }
 
     /**
@@ -46,6 +48,8 @@ public class ControllerFacade implements IController {
     	// Configuration of the view :
     	this.view.setKeyListener(this.keyCode);
     	
+    	addObserver(this.view.getWindow().getObserver());
+    	
     	// Get the main character :
         ICharacter character = this.model.getCharacter();
         
@@ -53,8 +57,8 @@ public class ControllerFacade implements IController {
         while (character.isAlive()) {
         	
         	// Gestion des entrées utilisateur :
-        	if (KeyCode.key != 0) {
-        		switch (KeyCode.key) {
+        	if (KeyManager.key != 0) {
+        		switch (KeyManager.key) {
         		case 39:
         			character.moveRight();
         			break;
@@ -72,7 +76,10 @@ public class ControllerFacade implements IController {
         			break;
         		}
         	}
-        	KeyCode.key=0;
+        	KeyManager.key=0;
+        	
+        	this.setChanged();
+        	this.notifyObservers();
         }
     }
 
