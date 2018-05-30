@@ -2,12 +2,10 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import model.dao.ElementDAO;
 import showboard.*;
 
 /**
@@ -18,53 +16,54 @@ import showboard.*;
  */
 public class ViewFacade implements Runnable , IView{
 	
-    /**
-     * 
-     * Instantiates a new view facade.
-     */
 	/** The width. */
 	static private int WIDTH = 20;
+	
 	/** The height. */
 	static private int HEIGHT = 12;
 	
-	
+	/**
+     * 
+     * Instantiates a new view facade.
+     */
     public ViewFacade() {
-		super();
-		
-		/** call separate tread **/
-    	SwingUtilities.invokeLater(this);
     	
+		// call separate tread :
+    	SwingUtilities.invokeLater(this);
     }
     
+    /**
+     * 
+     * Creates the new window.
+     */
     public void run() {
-    	/** Create variable **/
-    	final BoardFrame window;
+    	final BoardFrame window;	// The window
     	
-    	/** Create a window named Larann Game **/
+    	// Create a window named Lorann Game :
     	window = new BoardFrame("Lorann Game");
-    	/** Set the window size **/
+    	
+    	// Set the window parameters :
     	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
-    
-    /** Add object on window **/
-    for( int y = 0; y < HEIGHT; y++) {
     	
-    	for( int x = 0; x < WIDTH; x++) {
-    		
-    		//window.addSquare(lel, x, y);
-    		
-    	}
-    	
-    }
+    	displayMessage("Hello World !");
     }
     
+    /*public void displayScene(final Scene scene) {
+        for( int y = 0; y < HEIGHT; y++) {
+        	
+        	for( int x = 0; x < WIDTH; x++) {
+        		
+        		//window.addSquare(lel, x, y);
+        		
+        	}
+        	
+        }
+    }*/
     
-    
-    
-    
-    /*
-     *
+    /**
+     * For testing purposes
      * 
      */
     public final void displayMessage(final String message) {

@@ -53,10 +53,10 @@ public class ControllerFacade implements IController {
         
         ICharacter character = this.model.getCharacter();
         
+        this.getView().displayMessage(message.toString());
+        
         // La boucle principale, continuant tant que le personnage est en vie :
-        while (character.isAlive()) {
-        	
-        	this.getView().displayMessage(message.toString());
+        /*while (character.isAlive()) {
         	
         	// Gestion des entrées utilisateur :
         	KeyCode.key=0;
@@ -79,8 +79,7 @@ public class ControllerFacade implements IController {
         			break;
         		}
         	}
-        }
-        
+        }*/
     }
 
     /**
