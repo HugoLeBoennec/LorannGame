@@ -13,8 +13,8 @@ public class Sortilege extends Object implements IMobile {
 	/**
      * Instantiates a new Sortilege.
      */
-	public Sortilege(int x, int y, final Sprite sprite, String scene) {
-		super(x, y, true, sprite,scene);
+	public Sortilege(int x, int y, final Sprite sprite, int level) {
+		super(x, y, true, sprite,level);
 	}
 
 	@Override

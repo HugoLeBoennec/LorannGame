@@ -13,8 +13,8 @@ public class DemonEst extends Object implements IMobile {
 	/**
      * Instantiates a new DemonEst.
      */
-	public DemonEst(int x, int y, final Sprite sprite, String scene) {
-		super(x, y, true, sprite,scene);
+	public DemonEst(int x, int y, final Sprite sprite, int level) {
+		super(x, y, true, sprite,level);
 	}
 	
 	@Override

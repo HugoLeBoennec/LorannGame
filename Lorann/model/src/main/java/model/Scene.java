@@ -54,16 +54,17 @@ public class Scene {
 				// On insère l'objet en fonction du type :
 				switch (el.getType())
 				{
-					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, scene); break;
-					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, scene); break;
-					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR); break;
-					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH); break;
-					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV); break;
-					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN); break;
-					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW); break;
-					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE); break;
-					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS); break;
-					case 'O' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE); break;
+					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, level); break;
+					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, level); break;
+					//case 'd' : obj = new Lorann(x, y, Sprite.SPRITE_PORTE, level); break;
+					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR, level); break;
+					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH, level); break;
+					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV, level); break;
+					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, level); break;
+					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, level); break;
+					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, level); break;
+					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, level); break;
+					case 'O' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, level); break;
 				}
 				
 				setObjectXY(obj, x, y);
