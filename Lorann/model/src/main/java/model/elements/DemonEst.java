@@ -18,42 +18,34 @@ public class DemonEst extends Object implements IMobile {
 		super(x, y, true, sprite,scene);
 	}
 	
-	/**
-     * Define moveRight().
-     */
 	@Override
 	public void moveRight() {
-		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX()+1,this.getY(), scene).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
 	}
 
-	/**
-     * Define moveLeft().
-     */
 	@Override
 	public void moveLeft() {
-		if (this.scene.getObjectXY(this.getX()-1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX()-1,this.getY(), scene).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
 	}
 
-	/**
-     * Define moveUp().
-     */
 	@Override
 	public void moveUp() {
-		if (this.scene.getObjectXY(this.getX(),this.getY()+1,scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX(),this.getY()-1, scene).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
 	}
 
-	/**
-     * Define moveDown().
-     */
 	@Override
 	public void moveDown() {
-		if (this.scene.getObjectXY(this.getX(),this.getY()-1,scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX(),this.getY()+1, scene).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
 	}
