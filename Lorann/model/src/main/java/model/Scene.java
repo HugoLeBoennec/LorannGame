@@ -36,7 +36,7 @@ public class Scene {
         super();
         
         this.object = new Object[20][12];
-        this.character = new Lorann(Sprite.SPRITE_LORANN);
+        this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
         
         //this.loadLevel(1);
     }
