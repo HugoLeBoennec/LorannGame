@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -13,8 +14,8 @@ public class DemonSud extends Object implements IMobile {
 	/**
      * Instantiates a new DemonSud.
      */
-	public DemonSud(int x, int y, final Sprite sprite, int level) {
-		super(x, y, true, sprite,level);
+	public DemonSud(int x, int y, final Sprite sprite, Scene scene) {
+		super(x, y, true, sprite,scene);
 	}
 	
 	@Override

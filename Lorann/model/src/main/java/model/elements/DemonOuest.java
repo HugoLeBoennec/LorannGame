@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -13,8 +14,8 @@ public class DemonOuest extends Object implements IMobile {
 	/**
      * Instantiates a new DemonOuest.
      */
-	public DemonOuest(int x, int y, final Sprite sprite, int level) {
-		super(x, y, true, sprite,level);
+	public DemonOuest(int x, int y, final Sprite sprite, Scene scene) {
+		super(x, y, true, sprite,scene);
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -23,7 +24,7 @@ public abstract class Object implements IObject {
 	public Sprite sprite;
 	
 	/** The Scene. */
-	public int level;
+	public Scene scene;
 	
 	/**
      * Instantiates a new object.
@@ -31,12 +32,12 @@ public abstract class Object implements IObject {
      * @param sprite
      *            the sprite
      */
-    public Object(int x, int y, boolean solid, final Sprite sprite, int level) {
+    public Object(int x, int y, boolean solid, final Sprite sprite, Scene scene) {
     	this.x = x;
     	this.x = y;
     	this.solid = solid;
         this.sprite = sprite;
-        this.level = level;
+        this.scene = scene;
     }
 	
 	/**

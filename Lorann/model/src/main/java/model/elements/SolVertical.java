@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -13,7 +14,7 @@ public class SolVertical extends Object {
 	/**
      * Instantiates a new SolVertical.
      */
-	public SolVertical(int x, int y, final Sprite sprite, int level) {
-		super(x, y, true, sprite,level);
+	public SolVertical(int x, int y, final Sprite sprite, Scene scene) {
+		super(x, y, true, sprite,scene);
 	}
 }

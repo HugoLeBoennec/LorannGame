@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -13,7 +14,7 @@ public class SolHorizontal extends Object {
 	/**
      * Instantiates a new SolHorizontal.
      */
-	public SolHorizontal(int x, int y, final Sprite sprite, int level) {
-		super(x, y, true, sprite,level);
+	public SolHorizontal(int x, int y, final Sprite sprite, Scene scene) {
+		super(x, y, true, sprite,scene);
 	}
 }
