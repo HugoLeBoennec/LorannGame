@@ -17,10 +17,10 @@ import model.Element;
 public abstract class ElementDAO extends AbstractDAO {
 
     /** The sql Element by id. */
-    private static String sqlElementByPos  = "{call findElementByPos(?, ?)}";
+    private static String sqlElementByPos  = "{call findElementByPos(?, ?, ?)}";
 
     /** The sql all Elements. */
-    private static String sqlAllElements   = "{call findAllElements()}";
+    private static String sqlAllElements   = "{call findAllElements(?)}";
 
     /** The X position column index. */
     private static int    xColumnIndex     = 1;
