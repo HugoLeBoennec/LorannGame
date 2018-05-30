@@ -74,16 +74,18 @@ public class Sprite {
      *            the image
      */
 	public void appendImage(final Image image) {
-		this.image.add(image);
+		this.image.add((Image)image);
 	}
 	
 	/**
-	 * Gets the image list
+	 * Gets an image from the list
 	 * 
-	 * @return the image list
+	 * @param number
+     *            the image number
+	 * @return the image
 	 */
-	public java.util.ArrayList<Image> getImage() {
-		return image;
+	public Image getImage(int number) {
+		return this.image.get(number);
 	}
 
 	/**
@@ -92,7 +94,7 @@ public class Sprite {
 	 * @return the animation speed
 	 */
 	public int getAnimVitesse() {
-		return animVitesse;
+		return this.animVitesse;
 	}
 
 	/**
