@@ -13,46 +13,44 @@ import model.graphics.Sprite;
  */
 public class DemonEst extends Object implements IMobile {
 	
-	boolean temporaire_mur = false;
+	/** The daemon direction. */
+	private boolean direction;
+	
 	/**
      * Instantiates a new DemonEst.
      */
 	public DemonEst(int x, int y, final Sprite sprite, Scene scene) {
-		super(x, y, true, sprite,scene);
+		super(x, y, true, sprite, scene);
+		
+		this.direction = true;
 	}
 	
 	@Override
 	public void moveRight() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
+		if (!this.getScene().getObjectXY(this.getX()+1, this.getY()).getSolidity())
 			this.setX(getX()+1);
-		}
-		else this.setX(getX()-1);
+		else
+			this.direction = !this.direction;
 	}
 
 	@Override
 	public void moveLeft() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
+		if (!this.getScene().getObjectXY(this.getX()-1, this.getY()).getSolidity())
 			this.setX(getX()-1);
-		}
-		else this.setX(getX()+1);
+		else
+			this.direction = !this.direction;
 	}
 
 	@Override
 	public void moveUp() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
-			this.setY(getY()+1);
-		}
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
+			this.setY(getY()-1);
 	}
 
 	@Override
 	public void moveDown() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
-			this.setY(getY()-1);
-		}
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
+			this.setY(getY()+1);
 	}
 	
 	@Override
