@@ -1,12 +1,14 @@
 package model.elements;
 
+import showboard.IPawn;
+
 /**
  * <h1>The Interface IMobile implements movable methods.</h1>
  *
  * @author Matthieu CARTERON matthieu.carteron@viacesi.fr
  * @version 1.0
  */
-public interface IMobile {
+public interface IMobile extends IPawn {
 	
 	/**
      * Moves the mobile right by handling collision

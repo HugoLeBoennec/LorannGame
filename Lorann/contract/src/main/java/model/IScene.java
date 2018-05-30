@@ -12,12 +12,16 @@ import model.elements.*;
  */
 public interface IScene {
 	
-    /**
-     * Load a level from database
-     * 
-     * @throws SQLException
+	/**
+     * Gets an object at position.
+     *
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @return the element at the position
      */
-	public void loadLevel(final int level) throws SQLException;
+    public IObject getObjectXY(int x, int y);
 	
 	/**
      * Gets the main character.

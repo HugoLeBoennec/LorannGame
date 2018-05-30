@@ -1,12 +1,14 @@
 package model.elements;
 
+import showboard.ISquare;
+
 /**
  * <h1>The Interface IObject implements placeable object.</h1>
  *
  * @author Matthieu CARTERON matthieu.carteron@viacesi.fr
  * @version 1.0
  */
-public interface IObject {
+public interface IObject extends ISquare {
 		
 	/**
      * Gets the X position.

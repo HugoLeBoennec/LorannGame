@@ -39,6 +39,11 @@ public class Scene implements IScene {
         this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
     }
 
+    /**
+     * Load a level from database
+     * 
+     * @throws SQLException
+     */
 	public void loadLevel(final int level) throws SQLException {
 		Object obj = null;
 		Element el;
@@ -68,18 +73,9 @@ public class Scene implements IScene {
 			}
 		}
 	}
-    
-    /**
-     * Gets an object at position.
-     *
-     * @param x
-     *            the X position
-     * @param y
-     *            the Y position
-     * @return the element at the position
-     */
-    public Object getObjectXY(int x, int y) {
-        return this.object[x][y];
+	
+	public IObject getObjectXY(int x, int y) {
+        return (IObject) this.object[x][y];
     }
 
     /**
