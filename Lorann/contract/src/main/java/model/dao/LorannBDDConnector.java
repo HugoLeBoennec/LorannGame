@@ -68,13 +68,17 @@ final class LorannBDDConnector {
      */
     private boolean open() {
         try {
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+        	
             this.connection = DriverManager.getConnection(LorannBDDConnector.url, LorannBDDConnector.user,
                     LorannBDDConnector.password);
             this.statement = this.connection.createStatement();
             return true;
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
+        } catch (final SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
         return false;
     }
     
