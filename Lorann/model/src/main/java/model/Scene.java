@@ -13,7 +13,7 @@ import model.elements.*;
  * @author Julien LIGUORI julien.liguori@viacesi.fr
  * @version 1.0
  */
-public class Scene {
+public class Scene implements IScene {
 	
 	 /** The width. */
     static private int	WIDTH = 20;
@@ -41,12 +41,7 @@ public class Scene {
         //this.loadLevel(1);
     }
 
-    /**
-     * Load a level from database
-     * 
-     * @throws SQLException
-     */
-	private void loadLevel(final int level) throws SQLException {
+	public void loadLevel(final int level) throws SQLException {
 		Object obj = null;
 		Element el;
 		
