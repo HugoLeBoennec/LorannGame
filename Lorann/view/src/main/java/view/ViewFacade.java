@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.sql.SQLException;
 import java.util.Observable;
 
 import javax.swing.JOptionPane;
@@ -66,7 +67,14 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	window.setBackground(Color.BLACK);
     	window.setVisible(true);
     	
-    	//window.addSquare(new Mur(0, 0, Sprite.SPRITE_MUR, this), 0, 0);
+    	try
+    	{
+			this.scene.loadLevel(1);
+		}
+    	catch (SQLException e)
+    	{
+			e.printStackTrace();
+		}
     	
     	// Add to observer :
     	addObserver(window.getObserver());

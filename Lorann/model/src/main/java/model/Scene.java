@@ -37,8 +37,6 @@ public class Scene implements IScene {
         
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
-        
-        //this.loadLevel(1);
     }
 
 	public void loadLevel(final int level) throws SQLException {
