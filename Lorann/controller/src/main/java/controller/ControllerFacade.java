@@ -13,7 +13,7 @@ import view.IView;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ControllerFacade extends Observable implements IController {
+public class ControllerFacade implements IController {
 
     /** The view. */
     private IView  view;
@@ -73,8 +73,8 @@ public class ControllerFacade extends Observable implements IController {
         	}
         	KeyManager.key=0;
         	
-        	this.setChanged();
-        	this.notifyObservers();
+        	this.view.setChanged();
+        	this.view.notifyObservers();
         }
     }
 

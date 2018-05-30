@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyListener;
+import java.util.Observable;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -17,16 +18,13 @@ import showboard.*;
  * @author Hugo Le Boënnec hugo.leboennec@cesi.fr
  * @version 1.1
  */
-public class ViewFacade implements Runnable, IView {
+public class ViewFacade extends Observable implements Runnable, IView {
 	
 	/** The width. */
 	static private int WIDTH = 20;
 	
 	/** The height. */
 	static private int HEIGHT = 12;
-	
-	/** The window. */
-	private BoardFrame window;
 	
 	/** The key listener. */
     private KeyManager keyManager;
@@ -48,31 +46,21 @@ public class ViewFacade implements Runnable, IView {
      */
     public void run() {
     	// Create a window named Lorann Game :
-    	this.window = new BoardFrame("Lorann Game");
+    	BoardFrame window = new BoardFrame("Lorann Game");
     	
     	// Set the window parameters :
-    	this.window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
-    	this.window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
-    	this.window.setSize(WIDTH * 32, HEIGHT * 32);
-    	this.window.setFocusable(true);
-    	this.window.setFocusTraversalKeysEnabled(false);
-    	this.window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	this.window.addKeyListener(keyManager);
-    	this.window.setBackground(Color.BLACK);
-    	this.window.setVisible(true);
-    	
-    	//
+    	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
+    	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
+    	window.setSize(WIDTH * 32, HEIGHT * 32);
+    	window.setFocusable(true);
+    	window.setFocusTraversalKeysEnabled(false);
+    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	window.addKeyListener(keyManager);
+    	window.setBackground(Color.BLACK);
+    	window.setVisible(true);
     	
     	// Add to observer :
-    	//getObserver().addObserver(frame.getObserver());
-    }
-    
-    public BoardFrame getWindow() {
-    	return this.window;
-    }
-    
-    public void setWindow(final BoardFrame window) {
-    	this.window = window;
+    	addObserver(window.getObserver());
     }
     
     /*public void displayScene(final Scene scene) {

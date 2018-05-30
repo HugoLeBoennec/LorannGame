@@ -11,20 +11,6 @@ import showboard.BoardFrame;
  * @version 1.0
  */
 public interface IView {
-
-    /**
-	 * Gets the window
-	 * 
-	 * @return the window
-	 */
-    public BoardFrame getWindow();
-    
-    /**
-	 * Sets the window
-	 * 
-	 * @return the window
-	 */
-    public void setWindow(final BoardFrame window);
     
     /**
      * Display message.
