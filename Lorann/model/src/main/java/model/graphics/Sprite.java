@@ -52,10 +52,10 @@ public class Sprite {
 	
 	
 	/** The multiple images. */
-	java.util.ArrayList<Image> image;
+	private java.util.ArrayList<Image> image;
 	
 	/** The animation speed. Set it to 0 if no animation. */
-	int animVitesse;
+	private int animVitesse;
 	
 	/**
      * Instantiates a new Sprite.
