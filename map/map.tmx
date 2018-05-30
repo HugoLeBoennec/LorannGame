@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" source="sprite/gate_open.tsx"/>
+ <tileset firstgid="2" source="sprite/bone.tsx"/>
+ <tileset firstgid="3" source="sprite/gate_closed.tsx"/>
+ <tileset firstgid="4" source="sprite/vertical_bone.tsx"/>
+ <tileset firstgid="5" source="sprite/horizontal_bone.tsx"/>
+ <tileset firstgid="6" source="sprite/lorann_l.tsx"/>
+ <tileset firstgid="7" source="sprite/crystal_ball.tsx"/>
+ <tileset firstgid="8" source="sprite/monster_1.tsx"/>
+ <tileset firstgid="9" source="sprite/monster_3.tsx"/>
+ <tileset firstgid="10" source="sprite/purse.tsx"/>
+ <tileset firstgid="11" source="sprite/monster_2.tsx"/>
+ <tileset firstgid="12" source="sprite/monster_4.tsx"/>
+ <layer name="Calque de Tile 1" width="20" height="12">
+  <data encoding="csv">
+2,5,5,5,5,5,2,5,5,5,5,2,5,5,5,5,5,5,5,2,
+3,0,0,0,0,0,4,0,0,0,0,4,0,0,0,0,10,0,10,4,
+4,0,0,0,0,0,0,0,0,12,10,4,0,0,0,8,0,7,0,4,
+4,0,0,2,0,0,4,0,0,0,0,4,0,0,2,0,0,0,10,4,
+4,0,0,4,0,0,2,5,2,5,5,2,0,0,0,2,0,9,0,4,
+4,0,0,4,0,0,0,0,4,0,0,0,0,0,0,0,2,0,0,4,
+4,0,0,4,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,4,
+2,0,0,2,5,2,0,0,0,0,0,2,5,5,5,2,5,5,5,2,
+4,0,0,10,10,4,0,0,0,0,0,0,0,0,0,4,0,0,0,4,
+4,0,0,0,10,2,5,5,5,5,5,2,0,0,0,0,0,6,0,4,
+4,11,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,4,
+2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,5,5,5,2
+</data>
+ </layer>
+</map>
