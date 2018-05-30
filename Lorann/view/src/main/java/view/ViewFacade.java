@@ -21,10 +21,16 @@ public class ViewFacade implements Runnable{
      * 
      * Instantiates a new view facade.
      */
+	int y = 0;
+	int x = 0;
+	static private int	WIDTH = 20;
+	static private int	HEIGHT = 12;
+	
     public ViewFacade() {
-    	m_cam = new Rectangle(0, 0, (640), (384));
+		super();
+		m_cam = new Rectangle(0, 0, (640), (384));
     	SwingUtilities.invokeLater(this);
-    	super();
+    	
     }
     
     public void run() {
@@ -36,6 +42,15 @@ public class ViewFacade implements Runnable{
     	window.setDisplayFrame(m_cam);
     	window.setSize(640, 384);
     	
+    for( y = 0; y < HEIGHT; y++) {
+    	
+    	for( x = 0; x < WIDTH; x++) {
+    		
+    		window.addSquare(square, x, y);
+    		
+    	}
+    	
+    }
     }
     
     
