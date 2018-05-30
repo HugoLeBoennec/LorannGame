@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Point;
+
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -88,5 +90,10 @@ public class DemonEst extends Object implements IMobile {
 				this.moveUp();
 			}
 		}
+	}
+
+	@Override
+	public Point getPosition() {
+		return new Point(this.getX(), this.getY());
 	}
 }

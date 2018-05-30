@@ -57,6 +57,9 @@ public class Sprite {
 	/** The animation speed. Set it to 0 if no animation. */
 	private int animVitesse;
 	
+	/** The animation current frame. */
+	private int animFrame;
+	
 	/**
      * Instantiates a new Sprite.
      *
@@ -65,6 +68,7 @@ public class Sprite {
      */
 	public Sprite(int animVitesse) {
 		this.animVitesse = animVitesse;
+		this.animFrame = 0;
 		this.image = new java.util.ArrayList<Image>();
 	}
 	
@@ -117,6 +121,24 @@ public class Sprite {
 	 */
 	public void setAnimVitesse(int animVitesse) {
 		this.animVitesse = animVitesse;
+	}
+	
+	/**
+	 * Gets the animation frame
+	 * 
+	 * @return the animation frame
+	 */
+	public int getAnimFrame() {
+		return this.animFrame;
+	}
+
+	/**
+	 * Sets the animation frame
+	 * 
+	 * @param animFrame the animation frame
+	 */
+	public void setAnimFrame(int animFrame) {
+		this.animFrame = animFrame;
 	}
 
 	/**

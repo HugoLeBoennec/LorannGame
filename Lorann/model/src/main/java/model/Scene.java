@@ -37,6 +37,8 @@ public class Scene implements IScene {
         
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
+        
+        loadLevel(1);
     }
 
     /**
@@ -66,7 +68,7 @@ public class Scene implements IScene {
 					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this); break;
 					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this); break;
 					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this); break;
-					case 'O' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this); break;
+					case 'o' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this); break;
 				}
 				
 				setObjectXY(obj, x, y);

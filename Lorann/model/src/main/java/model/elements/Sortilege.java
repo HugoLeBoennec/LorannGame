@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Point;
+
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -40,5 +42,10 @@ public class Sortilege extends Object implements IMobile {
 
 	@Override
 	public void tick() {
+	}
+	
+	@Override
+	public Point getPosition() {
+		return new Point(this.getX(), this.getY());
 	}
 }

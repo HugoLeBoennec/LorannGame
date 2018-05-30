@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Point;
+
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -66,5 +68,10 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public boolean isAlive() {
 		return this.alive;
+	}
+	
+	@Override
+	public Point getPosition() {
+		return new Point(this.getX(), this.getY());
 	}
 }

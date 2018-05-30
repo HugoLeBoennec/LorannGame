@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.sql.SQLException;
 import java.util.Observable;
 
 import javax.swing.JOptionPane;

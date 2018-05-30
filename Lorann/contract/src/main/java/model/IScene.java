@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.SQLException;
-
 import model.elements.*;
 
 /**

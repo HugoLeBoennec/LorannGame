@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Image;
+
 import model.Scene;
 import model.graphics.Sprite;
 

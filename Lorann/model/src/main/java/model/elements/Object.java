@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Image;
+
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -98,5 +100,10 @@ public abstract class Object implements IObject {
 	
 	public void setSolidity(boolean solid) {
 		this.solid = solid;
+	}
+	
+	@Override
+	public Image getImage() {
+		return this.sprite.getImage(this.sprite.getAnimFrame());
 	}
 }

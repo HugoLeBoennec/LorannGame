@@ -1,5 +1,7 @@
 package model.elements;
 
+import java.awt.Point;
+
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -87,5 +89,10 @@ public class DemonNord extends Object implements IMobile {
 				this.moveRight();
 			}
 		}
+	}
+	
+	@Override
+	public Point getPosition() {
+		return new Point(this.getX(), this.getY());
 	}
 }
