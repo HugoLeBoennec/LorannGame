@@ -38,7 +38,7 @@ public class Scene {
         this.object = new Object[20][12];
         this.character = null;
         
-        //this.loadLevel(1);
+        this.loadLevel(1);
     }
 
     /**
