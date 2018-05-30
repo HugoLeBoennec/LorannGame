@@ -17,14 +17,17 @@ import model.graphics.Sprite;
 public final class ModelFacade implements IModel {
 
     /** The main scene. */
-    private final Scene scene;
+    private IScene scene;
     
     /**
      * Instantiates a new model facade.
+     * 
+     * @param scene
+     *            the scene
      * @throws IOException 
      * @throws SQLException 
      */
-    public ModelFacade(final Scene scene) throws IOException, SQLException {
+    public ModelFacade(final IScene scene) throws IOException, SQLException {
         super();
         
         // Chargement des sprites :
@@ -38,8 +41,18 @@ public final class ModelFacade implements IModel {
      *
      * @return the main scene
      */
-	public Scene getScene() {
+	public IScene getScene() {
 		return this.scene;
+	}
+	
+	/**
+     * Sets the main scene.
+     *
+     * @param scene
+     *            the scene
+     */
+	public void setScene(final IScene scene) {
+		this.scene = scene;
 	}
 	
 	@Override

@@ -18,5 +18,12 @@ public interface IScene {
      * 
      * @throws SQLException
      */
-	public void loadLevel(final int level);
+	public void loadLevel(final int level) throws SQLException;
+	
+	/**
+     * Gets the main character.
+     *
+     * @return the main character
+     */
+    public ICharacter getCharacter();
 }

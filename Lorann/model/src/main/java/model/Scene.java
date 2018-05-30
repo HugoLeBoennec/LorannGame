@@ -70,25 +70,6 @@ public class Scene implements IScene {
 			}
 		}
 	}
-	
-	/**
-     * Gets the main character.
-     *
-     * @return the main character
-     */
-    public Lorann getCharacter() {
-        return this.character;
-    }
-    
-    /**
-     * Sets the main character.
-     *
-     * @param character
-     *            the main character
-     */
-    public void setCharacter(Lorann character) {
-    	this.character = character;
-    }
     
     /**
      * Gets an object at position.
@@ -128,5 +109,15 @@ public class Scene implements IScene {
      */
     public boolean isPenetrable(int x, int y) {
     	return this.object[x][y].getSolidity();
+    }
+    
+    /**
+     * Gets the main character.
+     *
+     * @return the main character
+     */
+	@Override
+    public ICharacter getCharacter() {
+        return (ICharacter)this.character;
     }
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import controller.ControllerFacade;
 import model.ModelFacade;
+import model.Scene;
 import view.ViewFacade;
 
 /**
@@ -24,10 +25,13 @@ public abstract class Main {
     public static void main(final String[] args) {
     	
         final ControllerFacade controller;
+        final Scene scene;
 
         try
         {
-        	controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
+        	scene = new Scene();
+        	
+        	controller = new ControllerFacade(new ViewFacade(scene), new ModelFacade(scene));
             controller.start();
         }
         catch (final SQLException e)

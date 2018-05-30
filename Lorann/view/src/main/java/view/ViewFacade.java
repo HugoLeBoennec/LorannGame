@@ -9,9 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import controller.KeyManager;
-import model.Scene;
-import model.elements.Mur;
-import model.graphics.Sprite;
+import model.IScene;
 import showboard.*;
 
 /**
@@ -32,13 +30,16 @@ public class ViewFacade extends Observable implements Runnable, IView {
     private KeyManager keyManager;
     
     /** The main scene. */
-    private Scene scene;
+    private IScene scene;
 	
 	/**
      * 
      * Instantiates a new view facade.
+     * 
+     * @param scene
+     *            the scene
      */
-    public ViewFacade(final Scene scene) {
+    public ViewFacade(final IScene scene) {
     	this.keyManager = new KeyManager();
     	this.scene = scene;
     	
@@ -65,7 +66,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	window.setBackground(Color.BLACK);
     	window.setVisible(true);
     	
-    	window.addSquare(new Mur(0, 0, Sprite.SPRITE_MUR, this), 0, 0);
+    	//window.addSquare(new Mur(0, 0, Sprite.SPRITE_MUR, this), 0, 0);
     	
     	// Add to observer :
     	addObserver(window.getObserver());
@@ -82,6 +83,25 @@ public class ViewFacade extends Observable implements Runnable, IView {
         	
         }
     }*/
+    
+    /**
+     * Gets the main scene.
+     *
+     * @return the main scene
+     */
+	public IScene getScene() {
+		return this.scene;
+	}
+	
+	/**
+     * Sets the main scene.
+     *
+     * @param scene
+     *            the scene
+     */
+	public void setScene(final IScene scene) {
+		this.scene = scene;
+	}
     
     @Override
 	public void update() {
