@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -16,13 +17,15 @@ public abstract class Lorann extends Object implements ICharacter {
 	/**
      * Instantiates a new Lorann.
      */
-	public Lorann(int x, int y, final Sprite sprite) {
-		super(x, y, false, sprite);
+	public Lorann(int x, int y, final Sprite sprite, String scene) {
+		super(x, y, true, sprite,scene);
 	}
 	
 	@Override
 	public void moveRight() {
-		this.setX(getX()+1);
+		if (Scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == false) {
+			this.setX(getX()+1);
+		}
 	}
 
 	@Override

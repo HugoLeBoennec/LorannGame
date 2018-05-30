@@ -54,7 +54,7 @@ public class Scene {
 				// On insère l'objet en fonction du type :
 				switch (el.getType())
 				{
-					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE); break;
+					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, scene); break;
 					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE); break;
 					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR); break;
 					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH); break;

@@ -22,13 +22,16 @@ public abstract class Object implements IObject {
 	/** The sprite. */
 	public Sprite sprite;
 	
+	/** The Scene. */
+	public String scene;
+	
 	/**
      * Instantiates a new object.
      *
      * @param sprite
      *            the sprite
      */
-    public Object(int x, int y, boolean solid, final Sprite sprite) {
+    public Object(int x, int y, boolean solid, final Sprite sprite, String scene) {
     	this.x = x;
     	this.x = y;
     	this.solid = solid;

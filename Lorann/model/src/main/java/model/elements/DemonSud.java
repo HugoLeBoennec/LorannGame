@@ -13,8 +13,8 @@ public class DemonSud extends Object implements IMobile {
 	/**
      * Instantiates a new DemonSud.
      */
-	public DemonSud(int x, int y, final Sprite sprite) {
-		super(x, y, false, sprite);
+	public DemonSud(int x, int y, final Sprite sprite, String scene) {
+		super(x, y, true, sprite,scene);
 	}
 	
 	@Override
