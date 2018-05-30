@@ -49,7 +49,7 @@ public class ViewFacade implements Runnable{
     	
     	for( int x = 0; x < WIDTH; x++) {
     		
-    		window.addSquare(, x, y);
+    		window.addSquare(lel, x, y);
     		
     	}
     	
