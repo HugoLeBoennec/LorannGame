@@ -23,7 +23,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
 	/** The width. */
 	static private int WIDTH = 20;
 	
-	/** The height. */
+	/** The height. **/
 	static private int HEIGHT = 12;
 	
 	/** The key listener. */
