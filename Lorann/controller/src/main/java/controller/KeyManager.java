@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
  * @author Julien LIGUORI julien.liguori@viacesi.fr
  * @version 1.0
  */
-public class KeyManager extends KeyAdapter implements KeyListener {
+public class KeyManager implements KeyListener {
 	
 	/** The code of the last key pressed. */
 	static int key = 0;
@@ -18,7 +18,24 @@ public class KeyManager extends KeyAdapter implements KeyListener {
 	/**
      * Called when a key is pressed
      */
+	@Override
 	public void keyPressed(KeyEvent event) {
 		key = event.getKeyCode();
+	}
+
+	/**
+     * Called when the keyboard is typing
+     */
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	/**
+     * Called when a key is released
+     */
+	@Override
+	public void keyReleased(KeyEvent e) {
+
 	}
 }
