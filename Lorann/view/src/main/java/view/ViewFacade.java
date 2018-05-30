@@ -20,7 +20,7 @@ import showboard.*;
  */
 public class ViewFacade extends Observable implements Runnable, IView {
 	
-	/** The width. */
+	/** The width. **/
 	static private int WIDTH = 20;
 	
 	/** The height. **/
