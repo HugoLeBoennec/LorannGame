@@ -18,24 +18,44 @@ public class DemonNord extends Object implements IMobile {
 		super(x, y, true, sprite,scene);
 	}
 	
+	/**
+     * Define moveRight().
+     */
 	@Override
 	public void moveRight() {
-		this.setX(getX()+1);
+		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+			this.setX(getX()+1);
+		}
 	}
 
+	/**
+     * Define moveLeft().
+     */
 	@Override
 	public void moveLeft() {
-		this.setX(getX()-1);
+		if (this.scene.getObjectXY(this.getX()-1,this.getY(),scene).getSolidity() == true) {
+			this.setX(getX()-1);
+		}
 	}
 
+	/**
+     * Define moveUp().
+     */
 	@Override
 	public void moveUp() {
-		this.setY(getY()+1);
+		if (this.scene.getObjectXY(this.getX(),this.getY()+1,scene).getSolidity() == true) {
+			this.setY(getY()+1);
+		}
 	}
 
+	/**
+     * Define moveDown().
+     */
 	@Override
 	public void moveDown() {
-		this.setY(getY()-1);
+		if (this.scene.getObjectXY(this.getX(),this.getY()-1,scene).getSolidity() == true) {
+			this.setY(getY()-1);
+		}
 	}
 	
 	@Override
