@@ -34,11 +34,22 @@ public abstract class Object implements IObject {
     	this.solid = solid;
         this.sprite = sprite;
     }
-    
+	
+	/**
+     * Gets the sprite.
+     *
+     * @return the sprite
+     */
 	public Sprite getSprite() {
 		return this.sprite;
 	}
 	
+	/**
+     * Sets the sprite.
+     *
+     * @param sprite
+     *            the sprite
+     */
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
 	}

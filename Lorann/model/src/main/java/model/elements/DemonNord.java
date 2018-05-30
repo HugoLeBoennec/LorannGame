@@ -35,4 +35,8 @@ public class DemonNord extends Object implements IMobile {
 	public void moveDown() {
 		this.setY(getY()-1);
 	}
+	
+	@Override
+	public void tick() {
+	}
 }

@@ -1,7 +1,5 @@
 package model.elements;
 
-import model.graphics.Sprite;
-
 /**
  * <h1>The Interface IObject implements placeable object.</h1>
  *
@@ -9,22 +7,7 @@ import model.graphics.Sprite;
  * @version 1.0
  */
 public interface IObject {
-	
-	/**
-     * Gets the sprite.
-     *
-     * @return the sprite
-     */
-	public Sprite getSprite();
-	
-	/**
-     * Sets the sprite.
-     *
-     * @param sprite
-     *            the sprite
-     */
-	public void setSprite(Sprite sprite);
-	
+		
 	/**
      * Gets the X position.
      *
