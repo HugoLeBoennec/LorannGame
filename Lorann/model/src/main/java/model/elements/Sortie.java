@@ -13,7 +13,7 @@ public class Sortie extends Object {
 	/**
      * Instantiates a new Sortie.
      */
-	public Sortie(int x, int y, final Sprite sprite) {
-		super(x, y, false, sprite);
+	public Sortie(int x, int y, final Sprite sprite, String scene) {
+		super(x, y, true, sprite,scene);
 	}
 }

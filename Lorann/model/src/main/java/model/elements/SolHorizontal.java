@@ -13,7 +13,7 @@ public class SolHorizontal extends Object {
 	/**
      * Instantiates a new SolHorizontal.
      */
-	public SolHorizontal(int x, int y, final Sprite sprite) {
-		super(x, y, true, sprite);
+	public SolHorizontal(int x, int y, final Sprite sprite, String scene) {
+		super(x, y, true, sprite,scene);
 	}
 }

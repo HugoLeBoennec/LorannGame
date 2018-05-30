@@ -13,8 +13,8 @@ public class DemonOuest extends Object implements IMobile {
 	/**
      * Instantiates a new DemonOuest.
      */
-	public DemonOuest(int x, int y, final Sprite sprite) {
-		super(x, y, false, sprite);
+	public DemonOuest(int x, int y, final Sprite sprite, String scene) {
+		super(x, y, true, sprite,scene);
 	}
 	
 	@Override
