@@ -36,13 +36,6 @@ final class LorannBDDConnector {
      * Instantiates a new boulder dash BDD connector.
      */
     private LorannBDDConnector() {
-    	try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
         this.open();
     }
 
