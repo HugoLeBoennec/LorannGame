@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -23,13 +24,16 @@ public class ViewFacade implements Runnable, IView {
 	/** The height. */
 	static private int HEIGHT = 12;
 	
+	/** The window. */
+	private BoardFrame window;
+	
 	/**
      * 
      * Instantiates a new view facade.
      */
     public ViewFacade() {
     	
-		// call separate tread :
+		// Call separate tread :
     	SwingUtilities.invokeLater(this);
     }
     
@@ -38,25 +42,51 @@ public class ViewFacade implements Runnable, IView {
      * Creates the new window.
      */
     public void run() {
-    	final BoardFrame window;	// The window
-    	
     	// Create a window named Lorann Game :
-    	window = new BoardFrame("Lorann Game");
+    	this.window = new BoardFrame("Lorann Game");
     	
     	// Set the window parameters :
-    	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
-    	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
-    	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	window.setFocusable(true);
-    	window.setFocusTraversalKeysEnabled(false);
-    	window.setVisible(true);
+    	this.window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
+    	this.window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
+    	this.window.setSize(WIDTH * 32, HEIGHT * 32);
+    	this.window.setFocusable(true);
+    	this.window.setFocusTraversalKeysEnabled(false);
+    	this.window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	this.window.setBackground(Color.BLACK);
+    	this.window.setVisible(true);
     	
-    	window.setBackground(Color.BLACK);
-    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	//window.addKeyListener(this);
+    	//
     	
     	// Add to observer :
     	//getObserver().addObserver(frame.getObserver());
+    }
+    
+    /**
+	 * Sets the key event listener
+	 * 
+	 * @param listener
+     *            the key listener
+	 */
+    public void setKeyListener(final KeyListener listener) {
+    	this.window.addKeyListener(listener);
+    }
+    
+    /**
+	 * Gets the window
+	 * 
+	 * @return the window
+	 */
+    public BoardFrame getWindow() {
+    	return this.window;
+    }
+    
+    /**
+	 * Sets the window
+	 * 
+	 * @return the window
+	 */
+    public void setWindow(final BoardFrame window) {
+    	this.window = window;
     }
     
     /*public void displayScene(final Scene scene) {
