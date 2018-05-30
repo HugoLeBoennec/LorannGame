@@ -12,27 +12,35 @@ import model.graphics.Sprite;
 public abstract class Object implements IObject {
 	
 	/** The X position. */
-	public int x;
+	private int x;
 	
 	/** The Y position. */
-	public int y;
+	private int y;
 	
 	/** The solidity. */
-	public boolean solid;
+	private boolean solid;
 	
 	/** The sprite. */
-	public Sprite sprite;
+	private Sprite sprite;
 	
-	/** The Scene. */
-	public Scene scene;
+	/** The scene. */
+	private final Scene scene;
 	
 	/**
      * Instantiates a new object.
      *
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param solid
+     *            the solidity
      * @param sprite
      *            the sprite
+     * @param scene
+     *            the current scene
      */
-    public Object(int x, int y, boolean solid, final Sprite sprite, Scene scene) {
+    public Object(int x, int y, boolean solid, final Sprite sprite, final Scene scene) {
     	this.x = x;
     	this.x = y;
     	this.solid = solid;
@@ -57,6 +65,15 @@ public abstract class Object implements IObject {
      */
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
+	}
+	
+	/**
+     * Gets the scene.
+     *
+     * @return the scene
+     */
+	public Scene getScene() {
+		return this.scene;
 	}
 	
 	public int getX() {

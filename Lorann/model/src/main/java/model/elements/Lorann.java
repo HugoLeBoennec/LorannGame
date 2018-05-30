@@ -23,30 +23,39 @@ public abstract class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveRight() {
-		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX()+1,this.getY(), scene).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
 	}
 
 	@Override
 	public void moveLeft() {
-		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX()-1,this.getY(), scene).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
 	}
 
 	@Override
 	public void moveUp() {
-		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX(),this.getY()-1, scene).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
 	}
 
 	@Override
 	public void moveDown() {
-		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+		final Scene scene = this.getScene();
+		if (scene.getObjectXY(this.getX(),this.getY()+1, scene).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
+	}
+	
+	@Override
+	public void tick() {
+		
 	}
 	
 	@Override
