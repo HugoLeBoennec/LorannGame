@@ -13,7 +13,7 @@ import showboard.*;
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
  *
- * @author Hugo Le Boënnec jhugo.leboennec@cesi.fr
+ * @author Hugo Le Boënnec hugo.leboennec@cesi.fr
  * @version 1.1
  */
 public class ViewFacade implements Runnable{
