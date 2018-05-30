@@ -55,7 +55,7 @@ public class Scene {
 				switch (el.getType())
 				{
 					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, scene); break;
-					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE); break;
+					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, scene); break;
 					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR); break;
 					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH); break;
 					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV); break;
