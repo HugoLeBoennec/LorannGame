@@ -16,7 +16,7 @@ import showboard.*;
  * @author Hugo Le Boënnec hugo.leboennec@cesi.fr
  * @version 1.1
  */
-public class ViewFacade implements Runnable{
+public class ViewFacade implements Runnable , IView{
 	
     /**
      * 
@@ -58,6 +58,7 @@ public class ViewFacade implements Runnable{
     	
     }
     }
+    
     
     
     
