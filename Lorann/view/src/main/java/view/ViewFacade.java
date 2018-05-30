@@ -27,11 +27,15 @@ public class ViewFacade implements Runnable, IView {
 	/** The window. */
 	private BoardFrame window;
 	
+	/** The key listener. */
+    private KeyManager keyManager;
+	
 	/**
      * 
      * Instantiates a new view facade.
      */
     public ViewFacade() {
+    	this.keyManager = new KeyManager();
     	
 		// Call separate tread :
     	SwingUtilities.invokeLater(this);
@@ -52,6 +56,7 @@ public class ViewFacade implements Runnable, IView {
     	this.window.setFocusable(true);
     	this.window.setFocusTraversalKeysEnabled(false);
     	this.window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	this.window.addKeyListener(keyManager);
     	this.window.setBackground(Color.BLACK);
     	this.window.setVisible(true);
     	
@@ -59,10 +64,6 @@ public class ViewFacade implements Runnable, IView {
     	
     	// Add to observer :
     	//getObserver().addObserver(frame.getObserver());
-    }
-    
-    public void setKeyListener(final KeyListener listener) {
-    	this.window.addKeyListener(listener);
     }
     
     public BoardFrame getWindow() {

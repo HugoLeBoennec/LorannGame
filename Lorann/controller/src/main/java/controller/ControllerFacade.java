@@ -20,9 +20,6 @@ public class ControllerFacade extends Observable implements IController {
 
     /** The model. */
     private IModel model;
-    
-    /** The key listener. */
-    private KeyManager keyCode;
 
     /**
      * Instantiates a new controller facade.
@@ -35,7 +32,6 @@ public class ControllerFacade extends Observable implements IController {
     public ControllerFacade(final IView view, final IModel model) {
         this.view = view;
         this.model = model;
-        this.keyCode = new KeyManager();
     }
 
     /**
@@ -46,9 +42,8 @@ public class ControllerFacade extends Observable implements IController {
      */
     public void start() throws SQLException {
     	// Configuration of the view :
-    	this.view.setKeyListener(this.keyCode);
-    	
-    	addObserver(this.view.getWindow().getObserver());
+    	//this.view.setKeyListener(this.keyCode);
+    	//addObserver(this.view.getWindow().getObserver());
     	
     	// Get the main character :
         ICharacter character = this.model.getCharacter();

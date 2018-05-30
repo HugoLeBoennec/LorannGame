@@ -12,14 +12,6 @@ import showboard.BoardFrame;
  */
 public interface IView {
 
-	/**
-	 * Sets the key event listener
-	 * 
-	 * @param listener
-     *            the key listener
-	 */
-    public void setKeyListener(final KeyListener listener);
-    
     /**
 	 * Gets the window
 	 * 
