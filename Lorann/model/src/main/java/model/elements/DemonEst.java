@@ -20,7 +20,9 @@ public class DemonEst extends Object implements IMobile {
 	
 	@Override
 	public void moveRight() {
-		this.setX(getX()+1);
+		if (this.scene.getObjectXY(this.getX()+1,this.getY(),scene).getSolidity() == true) {
+			this.setX(getX()+1);
+		}
 	}
 
 	@Override
