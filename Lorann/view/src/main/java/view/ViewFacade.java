@@ -3,13 +3,15 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.event.KeyListener;
 import java.util.Observable;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import controller.KeyManager;
+import model.Scene;
+import model.elements.Mur;
+import model.graphics.Sprite;
 import showboard.*;
 
 /**
@@ -28,13 +30,17 @@ public class ViewFacade extends Observable implements Runnable, IView {
 	
 	/** The key listener. */
     private KeyManager keyManager;
+    
+    /** The main scene. */
+    private Scene scene;
 	
 	/**
      * 
      * Instantiates a new view facade.
      */
-    public ViewFacade() {
+    public ViewFacade(final Scene scene) {
     	this.keyManager = new KeyManager();
+    	this.scene = scene;
     	
 		// Call separate tread :
     	SwingUtilities.invokeLater(this);
@@ -58,6 +64,8 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	window.addKeyListener(keyManager);
     	window.setBackground(Color.BLACK);
     	window.setVisible(true);
+    	
+    	window.addSquare(new Mur(0, 0, Sprite.SPRITE_MUR, this), 0, 0);
     	
     	// Add to observer :
     	addObserver(window.getObserver());

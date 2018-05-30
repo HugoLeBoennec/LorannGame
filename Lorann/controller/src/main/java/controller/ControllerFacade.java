@@ -1,7 +1,6 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.Observable;
 
 import model.IModel;
 import model.elements.ICharacter;

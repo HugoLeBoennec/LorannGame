@@ -1,9 +1,5 @@
 package view;
 
-import java.awt.event.KeyListener;
-
-import showboard.BoardFrame;
-
 /**
  * <h1>The Interface IView.</h1>
  *

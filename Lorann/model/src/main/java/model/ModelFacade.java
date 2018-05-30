@@ -24,13 +24,13 @@ public final class ModelFacade implements IModel {
      * @throws IOException 
      * @throws SQLException 
      */
-    public ModelFacade() throws IOException, SQLException {
+    public ModelFacade(final Scene scene) throws IOException, SQLException {
         super();
         
         // Chargement des sprites :
     	Sprite.LoadSprite();
     	
-        this.scene = new Scene();
+        this.scene = scene;
     }
     
     /**
