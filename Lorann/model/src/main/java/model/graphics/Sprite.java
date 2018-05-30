@@ -74,7 +74,7 @@ public class Sprite {
      *            the image
      */
 	public void appendImage(Image image) {
-		this.image.add(image);
+		//this.image.add(image);
 	}
 	
 	/**
