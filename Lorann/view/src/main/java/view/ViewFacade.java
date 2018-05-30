@@ -26,7 +26,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
 	/** The height. **/
 	static private int HEIGHT = 12;
 	
-	/** The key listener. */
+	/** The key listener. **/
     private KeyManager keyManager;
     
     /** The main scene. */
