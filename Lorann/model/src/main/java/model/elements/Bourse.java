@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
@@ -13,7 +14,7 @@ public class Bourse extends Object {
 	/**
      * Instantiates a new Bourse.
      */
-	public Bourse(int x, int y, final Sprite sprite, int level) {
-		super(x, y, true, sprite,level);
+	public Bourse(int x, int y, final Sprite sprite, Scene scene) {
+		super(x, y, true, sprite,scene);
 	}
 }
