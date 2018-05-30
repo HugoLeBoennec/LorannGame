@@ -65,6 +65,7 @@ public class Sprite {
      */
 	public Sprite(int animVitesse) {
 		this.animVitesse = animVitesse;
+		this.image = new java.util.ArrayList<Image>();
 	}
 	
 	/**
@@ -74,7 +75,7 @@ public class Sprite {
      *            the image
      */
 	public void appendImage(final Image image) {
-		this.image.add((Image)image);
+		this.image.add(image);
 	}
 	
 	/**
@@ -86,6 +87,18 @@ public class Sprite {
 	 */
 	public Image getImage(int number) {
 		return this.image.get(number);
+	}
+	
+	/**
+	 * Sets an image of the list
+	 * 
+	 * @param number
+     *            the image number
+     * @param image
+     *            the image
+	 */
+	public Image setImage(int number, final Image image) {
+		return this.image.set(number, image);
 	}
 
 	/**
