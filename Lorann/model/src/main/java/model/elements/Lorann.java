@@ -21,6 +21,26 @@ public abstract class Lorann extends Object implements ICharacter {
 	}
 	
 	@Override
+	public void moveRight() {
+		this.setX(getX()+1);
+	}
+
+	@Override
+	public void moveLeft() {
+		this.setX(getX()-1);
+	}
+
+	@Override
+	public void moveUp() {
+		this.setY(getY()+1);
+	}
+
+	@Override
+	public void moveDown() {
+		this.setY(getY()-1);
+	}
+	
+	@Override
 	public void attaque() {
 		
 	}
