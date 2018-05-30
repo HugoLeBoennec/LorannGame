@@ -9,7 +9,7 @@ import model.graphics.Sprite;
  * @author Matthieu CARTERON matthieu.carteron@viacesi.fr
  * @version 1.0
  */
-public abstract class Lorann extends Object implements ICharacter {
+public class Lorann extends Object implements ICharacter {
 	
 	/** The life state. */
 	private boolean alive;

@@ -30,7 +30,6 @@ public final class ModelFacade implements IModel {
         // Chargement des sprites :
     	Sprite.LoadSprite();
     	
-        ///this.character = new Lorann();
         this.scene = new Scene();
     }
     
