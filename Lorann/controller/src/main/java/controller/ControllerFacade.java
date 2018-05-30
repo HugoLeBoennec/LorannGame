@@ -1,8 +1,6 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.List;
-import model.Element;
 import model.IModel;
 import model.elements.ICharacter;
 import view.IView;
@@ -43,9 +41,6 @@ public class ControllerFacade implements IController {
      */
     public void start() throws SQLException {
         ICharacter character = this.model.getCharacter();
-        
-        System.out.println("Here");
-        this.getView().displayMessage("Hello World !");
         
         // La boucle principale, continuant tant que le personnage est en vie :
         /*while (character.isAlive()) {

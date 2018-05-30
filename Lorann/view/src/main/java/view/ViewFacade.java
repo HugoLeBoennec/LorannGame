@@ -15,7 +15,7 @@ import showboard.*;
  * @author Hugo Le Boënnec hugo.leboennec@cesi.fr
  * @version 1.1
  */
-public class ViewFacade implements Runnable , IView{
+public class ViewFacade implements Runnable, IView {
 	
 	/** The width. */
 	static private int WIDTH = 20;
@@ -47,7 +47,16 @@ public class ViewFacade implements Runnable , IView{
     	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
+    	window.setFocusable(true);
+    	window.setFocusTraversalKeysEnabled(false);
+    	window.setVisible(true);
+    	
     	window.setBackground(Color.BLACK);
+    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	//window.addKeyListener(this);
+    	
+    	// Add to observer :
+    	//getObserver().addObserver(frame.getObserver());
     }
     
     /*public void displayScene(final Scene scene) {
