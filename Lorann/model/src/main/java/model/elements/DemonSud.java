@@ -4,7 +4,7 @@ import model.Scene;
 import model.graphics.Sprite;
 
 /**
- * <h1>The Class DemonSud represents a collectable item.</h1>
+ * <h1>The Class DemonSud represents a collectable item</h1>
  *
  * @author Matthieu CARTERON matthieu.carteron@viacesi.fr
  * @version 1.0
