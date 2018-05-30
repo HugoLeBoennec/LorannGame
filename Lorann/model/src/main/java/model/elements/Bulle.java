@@ -13,7 +13,7 @@ public class Bulle extends Object {
 	/**
      * Instantiates a new Bulle.
      */
-	public Bulle(int x, int y, final Sprite sprite) {
-		super(x, y, false, sprite);
+	public Bulle(int x, int y, final Sprite sprite, int level) {
+		super(x, y, true, sprite,level);
 	}
 }
