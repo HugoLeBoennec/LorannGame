@@ -36,58 +36,44 @@ public abstract class Object implements IObject {
     }
 	
 	/**
-     * Gets the X position.
+     * Gets the sprite.
      *
-     * @return the X position
+     * @return the sprite
      */
+	public Sprite getSprite() {
+		return this.sprite;
+	}
+	
+	/**
+     * Sets the sprite.
+     *
+     * @param sprite
+     *            the sprite
+     */
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
+	
 	public int getX() {
 		return this.x;
 	}
 	
-	/**
-     * Sets the X position.
-     *
-     * @param x
-     *            the X position
-     */
 	public void setX(int x) {
 		this.x = x;
 	}
 	
-	/**
-     * Gets the Y position.
-     *
-     * @return the Y position
-     */
 	public int getY() {
 		return this.y;
 	}
 	
-	/**
-     * Sets the Y position.
-     *
-     * @param y
-     *            the Y position
-     */
 	public void setY(int y) {
 		this.y = y;
 	}
 	
-	/**
-     * Gets the solidity.
-     *
-     * @return the solidity
-     */
 	public boolean getSolidity() {
 		return this.solid;
 	}
 	
-	/**
-     * Sets the solidity.
-     *
-     * @param solid
-     *            the solidity
-     */
 	public void setSolidity(boolean solid) {
 		this.solid = solid;
 	}

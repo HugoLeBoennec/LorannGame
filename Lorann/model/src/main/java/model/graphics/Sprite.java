@@ -55,7 +55,7 @@ public class Sprite {
 	java.util.ArrayList<Image> image;
 	
 	/** The animation speed. Set it to 0 if no animation. */
-	int animSpeed;
+	int animVitesse;
 	
 	/**
      * Instantiates a new Sprite.
@@ -63,8 +63,8 @@ public class Sprite {
      * @param animSpeed
      *            the animation speed
      */
-	public Sprite(int animSpeed) {
-		this.animSpeed = animSpeed;
+	public Sprite(int animVitesse) {
+		this.animVitesse = animVitesse;
 	}
 	
 	/**
@@ -77,6 +77,33 @@ public class Sprite {
 		this.image.add(image);
 	}
 	
+	/**
+	 * Gets the image list
+	 * 
+	 * @return the image list
+	 */
+	public java.util.ArrayList<Image> getImage() {
+		return image;
+	}
+
+	/**
+	 * Gets the animation speed
+	 * 
+	 * @return the animation speed
+	 */
+	public int getAnimVitesse() {
+		return animVitesse;
+	}
+
+	/**
+	 * Sets the animation speed
+	 * 
+	 * @param animVitesse the animation speed to set
+	 */
+	public void setAnimVitesse(int animVitesse) {
+		this.animVitesse = animVitesse;
+	}
+
 	/**
      * Load all the sprites
 	 * @throws IOException

@@ -16,6 +16,7 @@ public class DemonEst extends Object implements IMobile {
 	public DemonEst(int x, int y, final Sprite sprite) {
 		super(x, y, false, sprite);
 	}
+	
 	@Override
 	public void moveRight() {
 		this.setX(getX()+1);
@@ -34,5 +35,9 @@ public class DemonEst extends Object implements IMobile {
 	@Override
 	public void moveDown() {
 		this.setY(getY()-1);
+	}
+	
+	@Override
+	public void tick() {
 	}
 }

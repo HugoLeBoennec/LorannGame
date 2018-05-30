@@ -7,7 +7,7 @@ package model.elements;
  * @version 1.0
  */
 public interface IObject {
-	
+		
 	/**
      * Gets the X position.
      *

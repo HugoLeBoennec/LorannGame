@@ -16,10 +16,10 @@ import model.elements.*;
 public class Scene {
 	
 	 /** The width. */
-    private int         width;
+    static private int	WIDTH = 20;
 
     /** The height. */
-    private int         height;
+    static private int	HEIGHT = 12;
 
     /** The array of objects */
     private Object[][]	object;
@@ -46,8 +46,8 @@ public class Scene {
 		Object obj = null;
 		Element el;
 		
-		for (int y = 0; y < 12; y++) {
-			for (int x = 0; x < 20; x++) {
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
 				
 				el = ElementDAO.getElementByPos(level, x, y);
 				
@@ -70,44 +70,6 @@ public class Scene {
 			}
 		}
 	}
-    
-    /**
-     * Gets the width.
-     *
-     * @return the width
-     */
-    public final int getWidth() {
-        return this.width;
-    }
-
-    /**
-     * Sets the width.
-     *
-     * @param width
-     *            the new width
-     */
-    private void setWidth(int width) {
-        this.width = width;
-    }
-
-    /**
-     * Gets the height.
-     *
-     * @return the height
-     */
-    public final int getHeight() {
-        return this.height;
-    }
-
-    /**
-     * Sets the height.
-     *
-     * @param height
-     *            the new height
-     */
-    private void setHeight(int height) {
-        this.height = height;
-    }
     
     /**
      * Gets an object at position.
@@ -145,7 +107,7 @@ public class Scene {
      *            the Y position
      * @return the solidity at the position
      */
-    public boolean isPenetrable (int x, int y) {
+    public boolean isPenetrable(int x, int y) {
     	return this.object[x][y].getSolidity();
     }
 }
