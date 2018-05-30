@@ -71,7 +71,7 @@ public class Scene {
 					case 'O' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this); break;
 				}
 				
-				setObjectXY(obj, x, y,this);
+				setObjectXY(obj, x, y);
 			}
 		}
 	}
@@ -104,7 +104,7 @@ public class Scene {
      *            the Y position
      * @return the element at the position
      */
-    public Object getObjectXY(int x, int y, Scene level) {
+    public Object getObjectXY(int x, int y) {
         return this.object[x][y];
     }
 
@@ -118,7 +118,7 @@ public class Scene {
      * @param y
      *            the Y position
      */
-    public void setObjectXY(final Object object, int x, int y, Scene level) {
+    public void setObjectXY(final Object object, int x, int y) {
         this.object[x][y] = object;
     }
 
