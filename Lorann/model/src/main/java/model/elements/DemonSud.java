@@ -55,39 +55,19 @@ public class DemonSud extends Object implements IMobile {
 	
 	@Override
 	public void tick() {
-		if (this.getScene().getCharacter().getX() == this.getX()) {
-			if (this.getScene().getCharacter().getY() < this.getY()) {
-				this.moveDown();
-			}
-			else {
-				if (this.getScene().getCharacter().getY() < this.getY()) {
-					this.moveUp();
-					}
-				else {
-					this.moveDown();
-				}
-			}
-		}
-		else if (this.getScene().getCharacter().getX() < this.getX()) {
-			if (this.getScene().getCharacter().getY() < this.getY()) {
-				this.moveDown();
-				this.moveLeft();
-			}
-			else {
-				this.moveDown();
-				this.moveRight();
-			}
-		}
-		else {
-			if (this.getScene().getCharacter().getY() < this.getY()) {
-				this.moveUp();
-				this.moveLeft();
-			}
-			else {
-				this.moveUp();
-				this.moveRight();
-			}
-		}
+		ICharacter character = this.getScene().getCharacter();
+		
+		// Vertical moves, bounce on walls :
+		if (this.direction)
+			this.moveDown();
+		else
+			this.moveUp();
+		
+		// Horizontal moves, follow player :
+		if (character.getX() < this.getX())
+			this.moveLeft();
+		else if (character.getX() > this.getX())
+			this.moveRight();
 	}
 	
 	@Override

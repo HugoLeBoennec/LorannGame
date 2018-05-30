@@ -55,39 +55,19 @@ public class DemonEst extends Object implements IMobile {
 	
 	@Override
 	public void tick() {
-		if (this.getScene().getCharacter().getY() == this.getY()) {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveLeft();
-			}
-			else {
-				if (this.getScene().getCharacter().getX() < this.getX()) {
-					this.moveRight();
-					}
-				else {
-					this.moveLeft();
-				}
-			}
-		}
-		else if (this.getScene().getCharacter().getY() < this.getY()) {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveLeft();
-				this.moveDown();
-			}
-			else {
-				this.moveLeft();
-				this.moveUp();
-			}
-		}
-		else {
-			if (this.getScene().getCharacter().getX() < this.getX()) {
-				this.moveRight();
-				this.moveDown();
-			}
-			else {
-				this.moveRight();
-				this.moveUp();
-			}
-		}
+		ICharacter character = this.getScene().getCharacter();
+		
+		// Vertical moves, follow player :
+		if (character.getY() < this.getY())
+			this.moveUp();
+		else if (character.getY() > this.getY())
+			this.moveDown();
+		
+		// Horizontal moves, bounce on walls :
+		if (this.direction)
+			this.moveRight();
+		else
+			this.moveLeft();
 	}
 
 	@Override
