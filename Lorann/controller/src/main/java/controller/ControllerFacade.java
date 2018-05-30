@@ -42,18 +42,10 @@ public class ControllerFacade implements IController {
      *             the SQL exception
      */
     public void start() throws SQLException {
-        this.getView().displayMessage(this.getModel().getElementByPos(1, 1, 1).toString());
-
-        final List<Element> Elements = this.getModel().getAllElements(1);
-        final StringBuilder message = new StringBuilder();
-        for (final Element Element : Elements) {
-            message.append(Element);
-            message.append('\n');
-        }
-        
         ICharacter character = this.model.getCharacter();
         
-        this.getView().displayMessage(message.toString());
+        System.out.println("Here");
+        this.getView().displayMessage("Hello World !");
         
         // La boucle principale, continuant tant que le personnage est en vie :
         /*while (character.isAlive()) {

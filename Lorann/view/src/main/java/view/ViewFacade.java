@@ -46,8 +46,6 @@ public class ViewFacade implements Runnable , IView{
     	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	
-    	displayMessage("Hello World !");
     }
     
     /*public void displayScene(final Scene scene) {
