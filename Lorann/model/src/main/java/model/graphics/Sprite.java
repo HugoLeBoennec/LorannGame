@@ -73,8 +73,8 @@ public class Sprite {
      * @param image
      *            the image
      */
-	public void appendImage(Image image) {
-		//this.image.add(image);
+	public void appendImage(final Image image) {
+		this.image.add(image);
 	}
 	
 	/**
