@@ -37,10 +37,12 @@ public class ViewFacade implements Runnable{
     }
     
     public void run() {
-    	/** Create **/
+    	/** Create variable **/
     	final BoardFrame window;
     	
+    	/** Create a window named Larann Game **/
     	window = new BoardFrame("Lorann Game");
+    	/** Set the window size **/
     	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
@@ -49,7 +51,7 @@ public class ViewFacade implements Runnable{
     	
     	for( int x = 0; x < WIDTH; x++) {
     		
-    		window.addSquare(lel, x, y);
+    		//window.addSquare(lel, x, y);
     		
     	}
     	
@@ -60,10 +62,9 @@ public class ViewFacade implements Runnable{
     
     
     /*
-     * (non-Javadoc)
-     * @see view.IView#displayMessage(java.lang.String)
+     *
+     * 
      */
-    @Override
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }
