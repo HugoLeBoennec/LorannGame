@@ -16,32 +16,43 @@ import model.graphics.Sprite;
  */
 public final class ModelFacade implements IModel {
 
-    /** The main character. */
-    private final ICharacter character;
+    /** The main scene. */
+    private final Scene scene;
     
     /**
      * Instantiates a new model facade.
      * @throws IOException 
+     * @throws SQLException 
      */
-    public ModelFacade() throws IOException {
+    public ModelFacade() throws IOException, SQLException {
         super();
         
         // Chargement des sprites :
     	Sprite.LoadSprite();
     	
         ///this.character = new Lorann();
-        this.character = null;
+        this.scene = new Scene();
     }
     
-    @Override
+    /**
+     * Gets the main scene.
+     *
+     * @return the main scene
+     */
+	public Scene getScene() {
+		return this.scene;
+	}
+	
+	@Override
 	public ICharacter getCharacter() {
-		return this.character;
+		return this.scene.getCharacter();
 	}
 
     /*
      * (non-Javadoc)
      * @see model.IModel#getElementById(int)
      */
+	@Override
     public Element getElementByPos(final int level, final int x, final int y) throws SQLException {
         return ElementDAO.getElementByPos(level, x, y);
     }
@@ -50,6 +61,7 @@ public final class ModelFacade implements IModel {
      * (non-Javadoc)
      * @see model.IModel#getAllElements()
      */
+	@Override
     public List<Element> getAllElements(int level) throws SQLException {
         return ElementDAO.getAllElements(level);
     }

@@ -24,6 +24,9 @@ public class Scene {
     /** The array of objects */
     private Object[][]	object;
     
+    /** The main character */
+    private ICharacter character;
+    
     /**
      * Instantiates a new Scene.
      * 
@@ -33,6 +36,7 @@ public class Scene {
         super();
         
         this.object = new Object[20][12];
+        this.character = null;
         
         this.loadLevel(1);
     }
@@ -71,6 +75,25 @@ public class Scene {
 			}
 		}
 	}
+	
+	/**
+     * Gets the main character.
+     *
+     * @return the main character
+     */
+    public ICharacter getCharacter() {
+        return this.character;
+    }
+    
+    /**
+     * Sets the main character.
+     *
+     * @param character
+     *            the main character
+     */
+    public void setCharacter(ICharacter character) {
+    	this.character = character;
+    }
     
     /**
      * Gets an object at position.

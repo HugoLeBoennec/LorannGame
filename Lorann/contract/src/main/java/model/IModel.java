@@ -12,13 +12,13 @@ import model.elements.ICharacter;
  * @version 1.0
  */
 public interface IModel {
-
-    /**
+	
+	/**
      * Gets the main character.
      *
      * @return the main character
      */
-	ICharacter getCharacter();
+	public ICharacter getCharacter();
 	
 	/**
      * Gets the Element by position.
@@ -31,7 +31,7 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    Element getElementByPos(final int level, final int x, final int y) throws SQLException;
+    public Element getElementByPos(final int level, final int x, final int y) throws SQLException;
 
     /**
      * Gets the all Elements.
@@ -40,5 +40,5 @@ public interface IModel {
      * @throws SQLException
      *             the SQL exception
      */
-    List<Element> getAllElements(final int level) throws SQLException;
+    public List<Element> getAllElements(final int level) throws SQLException;
 }
