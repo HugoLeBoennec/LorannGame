@@ -54,11 +54,6 @@ public class DemonEst extends Object implements IMobile {
 	}
 	
 	@Override
-	public int getDirection() {
-		return this.direction;
-	}
-	
-	@Override
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		

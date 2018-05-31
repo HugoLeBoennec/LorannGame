@@ -74,16 +74,7 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void attaque() {
-<<<<<<< HEAD
-		sortilege = new Sortilege(this.getX(), this.getY(), this.getScene());
-	}
-	
-	@Override
-	public int getDirection() {
-		return this.direction;
-=======
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
->>>>>>> branch 'Save-Branch' of https://github.com/HugoLeBoennec/LorannGame
+		this.sortilege = new Sortilege(this.getX(), this.getY(), this.direction, this.getScene());
 	}
 
 	@Override
@@ -94,9 +85,5 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public Point getPosition() {
 		return new Point(this.getX(), this.getY());
-	}
-	
-	public int getDirection() {
-		return direction;
 	}
 }

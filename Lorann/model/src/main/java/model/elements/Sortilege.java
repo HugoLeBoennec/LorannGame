@@ -13,21 +13,16 @@ import model.graphics.Sprite;
  */
 public class Sortilege extends Object implements IMobile {
 	
-	private int direction; 
+	/** The current direction. */
+	private int direction;
+	
 	/**
      * Instantiates a new Sortilege.
      */
-<<<<<<< HEAD
-	public Sortilege(int x, int y, final Scene scene) {
+	public Sortilege(int x, int y, int direction, final Scene scene) {
 		super(x, y, true, Sprite.SPRITE_SORTILEGE, scene);
-=======
-	public Sortilege(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
-		this.direction = this.getScene().getCharacter().getDirection();
->>>>>>> branch 'Save-Branch' of https://github.com/HugoLeBoennec/LorannGame
+		this.direction = direction;
 	}
-	
-	
 
 	@Override
 	public void moveRight() {
@@ -47,11 +42,6 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveDown() {
 		this.setY(getY()-1);
-	}
-	
-	@Override
-	public int getDirection() {
-		return this.direction;
 	}
 
 	@Override
