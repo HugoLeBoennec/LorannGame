@@ -195,4 +195,13 @@ public class Sprite {
 		SPRITE_BOURSE = new Sprite(0);
 		SPRITE_BOURSE.appendImage(ImageIO.read(new File("sprites/purse.png")));
 	}
+	
+	public void AnimSortilege() {
+		
+		Sprite.prite(4)
+		
+		
+	}
+	
+	
 }
