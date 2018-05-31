@@ -205,9 +205,8 @@ public class Sprite {
 	
 	/** Set the visible Frame **/
 	
-	public void AnimSortilege() {
+	public void AnimSortilege(int frame) {
 		
-		int frame = 0;
 		frame = getAnimFrame();
 		
 		if(frame <= 3) {
