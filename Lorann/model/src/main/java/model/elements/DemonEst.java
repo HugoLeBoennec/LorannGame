@@ -54,6 +54,46 @@ public class DemonEst extends Object implements IMobile {
 	}
 	
 	@Override
+	public void moveDownLeft() {
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
+			this.setY(getY()-1);
+			this.setX(getX()-1);
+		}
+		else
+			this.direction = !this.direction;
+	}
+	
+	@Override
+	public void moveDownRight() {
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
+			this.setY(getY()-1);
+			this.setX(getX()+1);
+		}
+		else
+			this.direction = !this.direction;
+	}
+	
+	@Override
+	public void moveUpLeft() {
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
+			this.setY(getY()+1);
+			this.setX(getX()-1);
+		}
+		else
+			this.direction = !this.direction;
+	}
+	
+	@Override
+	public void moveUpRight() {
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
+			this.setY(getY()+1);
+			this.setX(getX()+1);
+		}
+		else
+			this.direction = !this.direction;
+	}
+	
+	@Override
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
