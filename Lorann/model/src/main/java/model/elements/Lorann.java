@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import model.Scene;
 import model.graphics.Sprite;
+import showboard.BoardFrame;
 
 /**
  * <h1>The Class Lorann represents the controllable character.</h1>
@@ -17,18 +18,37 @@ public class Lorann extends Object implements ICharacter {
 	private boolean alive;
 	
 	/** The current direction. */
-	private int direction;
+	private Direction direction;
 	
-	/** The spell. */
+	/** The cast spell. */
 	private Sortilege sortilege;
 	
 	/**
      * Instantiates a new Lorann.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public Lorann(int x, int y, final Scene scene) {
-		super(x, y, true, Sprite.SPRITE_LORANN, scene);
-		this.direction = 0;
+	public Lorann(final int x, final int y, final Scene scene) {
+		super(x, y, false, Sprite.SPRITE_LORANN, scene);
+		
 		this.alive = true;
+		this.direction = Direction.DIR_RIGHT;
+		this.sortilege = new Sortilege(x, y, scene);
+	}
+	
+	/**
+     * Initiate the spell.
+     * 
+     * @param frame
+     *            the drawing frame
+     */
+	public void initiate(final BoardFrame frame) {
+		frame.addPawn(this.sortilege);
 	}
 	
 	@Override
@@ -36,7 +56,7 @@ public class Lorann extends Object implements ICharacter {
 		if (!this.getScene().isPenetrable(getX()+1, getY())) {
 			this.setX(getX()+1);
 		}
-		this.direction = 0;
+		this.direction = Direction.DIR_RIGHT;
 	}
 
 	@Override
@@ -44,7 +64,7 @@ public class Lorann extends Object implements ICharacter {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY())) {
 			this.setX(getX()-1);
 		}
-		this.direction = 1;
+		this.direction = Direction.DIR_LEFT;
 	}
 
 	@Override
@@ -52,7 +72,7 @@ public class Lorann extends Object implements ICharacter {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1)) {
 			this.setY(getY()-1);
 		}
-		this.direction = 2;
+		this.direction = Direction.DIR_UP;
 	}
 
 	@Override
@@ -60,7 +80,7 @@ public class Lorann extends Object implements ICharacter {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1)) {
 			this.setY(getY()+1);
 		}
-		this.direction = 3;
+		this.direction = Direction.DIR_DOWN;
 	}
 	
 	@Override
@@ -70,7 +90,7 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()+1);
 		}
 		else
-			this.direction = 7;
+			this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
 	@Override
@@ -80,7 +100,7 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()+1);
 		}
 		else
-			this.direction = 6;
+			this.direction = Direction.DIR_DOWNRIGHT;
 	}
 	
 	@Override
@@ -90,7 +110,7 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()-1);
 		}
 		else
-			this.direction = 5;
+			this.direction = Direction.DIR_UPLEFT;
 	}
 	
 	@Override
@@ -100,22 +120,30 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()-1);
 		}
 		else
-			this.direction = 4;
+			this.direction = Direction.DIR_UPRIGHT;
 	}
 	
 	@Override
 	public void tick() {
 		this.getSprite().animate();
+		
+		if (this.sortilege.isCast())
+			this.sortilege.tick();
 	}
 	
 	@Override
-	public void attaque() {
-		this.sortilege = new Sortilege(this.getX(), this.getY(), this.direction, this.getScene());
-	}
-
-	@Override
 	public boolean isAlive() {
 		return this.alive;
+	}
+	
+	@Override
+	public void attaque(final BoardFrame frame) {
+		this.sortilege.cast(this.getX(), this.getY(), this.direction);
+	}
+	
+	@Override
+	public IObject getSortilege() {
+		return this.sortilege;
 	}
 	
 	@Override

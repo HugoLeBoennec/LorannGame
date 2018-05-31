@@ -13,8 +13,15 @@ public class Bourse extends Object {
 
 	/**
      * Instantiates a new Bourse.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public Bourse(int x, int y, final Scene scene) {
+	public Bourse(final int x, final int y, final Scene scene) {
 		super(x, y, true, Sprite.SPRITE_BOURSE, scene);
 	}
 }

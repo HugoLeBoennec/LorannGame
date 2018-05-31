@@ -13,106 +13,153 @@ import model.graphics.Sprite;
  */
 public class Sortilege extends Object implements IMobile {
 	
-	/** The current direction. */
-	private int direction;
+	/** The current direction */
+	private Direction direction;
+	
+	/** If the spell is cast */
+	private boolean cast;
 	
 	/**
      * Instantiates a new Sortilege.
      */
-	public Sortilege(int x, int y, int direction, final Scene scene) {
-		super(x, y, true, Sprite.SPRITE_SORTILEGE, scene);
+	public Sortilege(final int x, final int y, final Scene scene) {
+		super(x, y, false, Sprite.SPRITE_SORTILEGE, scene);		
+		this.cast = false;
+	}
+	
+	/**
+     * Gets if the spell is cast.
+     *
+     * @return the cast state
+     */
+	public boolean isCast() {
+		return this.cast;
+	}
+	
+	/**
+     * Cast the spell.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
+     */
+	public void cast(final int x, final int y, final Direction direction) {
+		this.cast = true;
 		this.direction = direction;
+		
+		this.setX(x);
+		this.setY(y);
 	}
 
 	@Override
 	public void moveRight() {
-		if (!this.getScene().getObjectXY(this.getX()+1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		else
-			this.direction = 1;
+			this.direction = Direction.DIR_LEFT;
 	}
 
 	@Override
 	public void moveLeft() {
-		if (!this.getScene().getObjectXY(this.getX()-1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		else
-			this.direction = 0;
+			this.direction = Direction.DIR_RIGHT;
 	}
 
 	@Override
 	public void moveUp() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		else
-			this.direction = 3;
+			this.direction = Direction.DIR_DOWN;
 	}
 
 	@Override
 	public void moveDown() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		else
-			this.direction = 2;
+			this.direction = Direction.DIR_UP;
 	}
 	
 	@Override
 	public void moveDownLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
-		}
 		else
-			this.direction = 7;
+			this.direction = Direction.DIR_RIGHT;
+		
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
+			this.setY(getY()+1);
+		else
+			this.direction = Direction.DIR_UP;
 	}
 	
 	@Override
 	public void moveDownRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
-		}
 		else
-			this.direction = 6;
+			this.direction = Direction.DIR_LEFT;
+		
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
+			this.setY(getY()+1);
+		else
+			this.direction = Direction.DIR_UP;
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
-		}
 		else
-			this.direction = 5;
+			this.direction = Direction.DIR_RIGHT;
+		
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
+			this.setY(getY()-1);
+		else
+			this.direction = Direction.DIR_DOWN;
 	}
 	
 	@Override
 	public void moveUpRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
-		}
 		else
-			this.direction = 4;
+			this.direction = Direction.DIR_LEFT;
+		
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
+			this.setY(getY()-1);
+		else
+			this.direction = Direction.DIR_DOWN;
 	}
 
 	@Override
 	public void tick() {
-		
 		this.getSprite().animate();
 		
-		if (this.direction == 0)
-			this.moveRight();
-		else if (this.direction == 1)
-			this.moveLeft();
-		else if (this.direction == 2)
-			this.moveUp();
-		else
-			this.moveDown();
+		switch (this.direction) {
+			case DIR_LEFT 		: this.moveLeft(); break;
+			case DIR_UPLEFT		: this.moveUpLeft(); break;
+			case DIR_UP			: this.moveUp(); break;
+			case DIR_UPRIGHT	: this.moveUpRight(); break;
+			case DIR_RIGHT		: this.moveRight(); break;
+			case DIR_DOWNRIGHT	: this.moveDownRight(); break;
+			case DIR_DOWN		: this.moveDown(); break;
+			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
+		}
 	}
 	
 	@Override
 	public Point getPosition() {
-		return new Point(this.getX(), this.getY());
+		// If the spell isn't cast, return the pos outside :
+		if (this.cast)
+			return new Point(this.getX(), this.getY());
+		else
+			return new Point(-1, -1);
 	}
 }

@@ -1,5 +1,7 @@
 package model.elements;
 
+import showboard.BoardFrame;
+
 /**
  * <h1>The Interface ICharacters implements life states.</h1>
  *
@@ -18,5 +20,11 @@ public interface ICharacter extends IMobile {
 	/**
      * Casts a spell
      */
-	public void attaque();
+	public void attaque(final BoardFrame frame);
+	
+	/**
+     * Gets the cast spell
+     * @return the spell if cast
+     */
+	public IObject getSortilege();
 }

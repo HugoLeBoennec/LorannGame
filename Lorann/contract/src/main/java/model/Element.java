@@ -37,7 +37,7 @@ public class Element {
      * @param type
      *            the type
      */
-	public void setType(char type) {
+	public void setType(final char type) {
 		this.type = type;
 	}
 

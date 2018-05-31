@@ -34,31 +34,29 @@ public class Scene implements IScene {
      */
     public Scene() {
         super();
-        
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, this);
     }
 	
     @Override
-	public IObject getObjectXY(int x, int y) {
+	public IObject getObjectXY(final int x, final int y) {
         return (IObject) this.object[x][y];
     }
 
     @Override
-    public void setObjectXY(final IObject object, int x, int y) {
+    public void setObjectXY(final IObject object, final int x, final int y) {
         this.object[x][y] = (Object) object;
     }
 
     @Override
-    public boolean isPenetrable(int x, int y) {
+    public boolean isPenetrable(final int x, final int y) {
     	final Object obj = this.object[x][y];
     	
+    	// If the tile is empty, return false :
     	if (obj == null)
     		return false;
-    	else {
-    		System.out.println(obj.getSolidity());
+    	else
     		return obj.getSolidity();
-    	}
     }
     
     /**
@@ -73,12 +71,15 @@ public class Scene implements IScene {
 	
 	@Override
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException {
-		Object obj = null;
+		Object obj;
 		Element el;
+		
+		this.character.initiate(frame);
 		
 		for (int y = 0; y < HEIGHT; y++) {
 			for (int x = 0; x < WIDTH; x++) {
 				
+				obj = null;
 				el = ElementDAO.getElementByPos(level, x, y);
 				
 				// Object insertion :

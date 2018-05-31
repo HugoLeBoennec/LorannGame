@@ -27,7 +27,6 @@ public class KeyManager implements KeyListener {
      */
 	@Override
 	public void keyTyped(KeyEvent e) {
-
 	}
 
 	/**
@@ -35,6 +34,6 @@ public class KeyManager implements KeyListener {
      */
 	@Override
 	public void keyReleased(KeyEvent e) {
-
+		key = 0;
 	}
 }

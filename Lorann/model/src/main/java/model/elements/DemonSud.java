@@ -13,16 +13,23 @@ import model.graphics.Sprite;
  */
 public class DemonSud extends Object implements IMobile {
 
-	/** The daemon direction. */
-	private boolean direction;
+	/** If the daemon moves down. */
+	private boolean isDown;
 	
 	/**
      * Instantiates a new DemonSud.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public DemonSud(int x, int y, final Scene scene) {
-		super(x, y, true, Sprite.SPRITE_DEMONS, scene);
+	public DemonSud(final int x, final int y, final Scene scene) {
+		super(x, y, false, Sprite.SPRITE_DEMONS, scene);
 		
-		this.direction = true;
+		this.isDown = true;
 	}
 	
 	@Override
@@ -42,7 +49,7 @@ public class DemonSud extends Object implements IMobile {
 		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
 			this.setY(getY()-1);
 		else
-			this.direction = !this.direction;
+			this.isDown = true;
 	}
 
 	@Override
@@ -50,47 +57,31 @@ public class DemonSud extends Object implements IMobile {
 		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
 			this.setY(getY()+1);
 		else
-			this.direction = !this.direction;
+			this.isDown = false;
 	}
 	
 	@Override
 	public void moveDownLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
-			this.setX(getX()-1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveLeft();
+		this.moveDown();
 	}
 	
 	@Override
 	public void moveDownRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
-			this.setX(getX()+1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveRight();
+		this.moveDown();
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
-			this.setX(getX()-1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveLeft();
+		this.moveUp();
 	}
 	
 	@Override
 	public void moveUpRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
-			this.setX(getX()+1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveRight();
+		this.moveUp();
 	}
 	
 	@Override
@@ -98,7 +89,7 @@ public class DemonSud extends Object implements IMobile {
 		ICharacter character = this.getScene().getCharacter();
 		
 		// Vertical moves, bounce on walls :
-		if (this.direction)
+		if (this.isDown)
 			this.moveDown();
 		else
 			this.moveUp();

@@ -13,8 +13,15 @@ public class Mur extends Object {
 
 	/**
      * Instantiates a new Mur.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public Mur(int x, int y, final Scene scene) {
+	public Mur(final int x, final int y, final Scene scene) {
 		super(x, y, true, Sprite.SPRITE_MUR, scene);
 	}
 }

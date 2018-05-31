@@ -1,10 +1,12 @@
 package controller;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
+import view.IView;
 import model.IModel;
 import model.elements.ICharacter;
-import view.IView;
+
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller component.</h1>
@@ -48,45 +50,43 @@ public class ControllerFacade implements IController {
         // The main loop, keep running until the character is dead :
         while (character.isAlive()) {
         	
-        	// Gestion des entrées utilisateur :
+        	// Management of user inputs :
         	if (KeyManager.key != 0) {
         		switch (KeyManager.key) {
-        		case 39:
-        			character.moveRight();
-        			break;
-        		case 37:
-        			character.moveLeft();
-        			break;
-        		case 38:
-        			character.moveUp();
-        			break;
-        		case 40:
-        			character.moveDown();
-        			break;
-        		case 87:
-        			character.moveDownLeft();
-        			break;
-        		case 67:
-        			character.moveDownRight();
-        			break;
-        		case 65:
-        			character.moveUpLeft();
-        			break;
-        		case 69:
-        			character.moveUpRight();
-        			break;
-        		case 32:
-        			character.attaque();
-        			break;
+        			// Basic arrows :
+        			case KeyEvent.VK_LEFT		: character.moveLeft(); break;
+	        		case KeyEvent.VK_RIGHT		: character.moveRight(); break;
+	        		case KeyEvent.VK_UP			: character.moveUp(); break;
+	        		case KeyEvent.VK_DOWN		: character.moveDown(); break;
+	        		
+	        		// Numpad :
+	        		case KeyEvent.VK_NUMPAD4	: character.moveLeft(); break;
+	        		case KeyEvent.VK_NUMPAD6	: character.moveRight(); break;
+	        		case KeyEvent.VK_NUMPAD8	: character.moveUp(); break;
+	        		case KeyEvent.VK_NUMPAD2	: character.moveDown(); break;
+	        		case KeyEvent.VK_NUMPAD1	: character.moveDownLeft(); break;
+	        		case KeyEvent.VK_NUMPAD3	: character.moveDownRight(); break;
+	        		case KeyEvent.VK_NUMPAD7	: character.moveUpLeft(); break;
+	        		case KeyEvent.VK_NUMPAD9	: character.moveUpRight(); break;
+	        		
+	        		// Diagonal standard moves :
+	        		case KeyEvent.VK_C			: character.moveDownLeft(); break;
+	        		case KeyEvent.VK_W			: character.moveDownRight(); break;
+	        		case KeyEvent.VK_A			: character.moveUpLeft(); break;
+	        		case KeyEvent.VK_E			: character.moveUpRight(); break;
+	        		
+	        		// Attack button :
+	        		case KeyEvent.VK_SPACE		: character.attaque(this.view.getWindow()); break;
+	        		
+	        		default : break;
         		}
         	}
-        	KeyManager.key=0;
         	
         	character.tick();
         	
         	this.view.windowUpdate();
         	
-        	Thread.sleep(100);
+        	Thread.sleep(60);
         }
     }
 

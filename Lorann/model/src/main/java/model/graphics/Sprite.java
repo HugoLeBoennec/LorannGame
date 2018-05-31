@@ -72,7 +72,7 @@ public class Sprite {
      * @param animSpeed
      *            the animation speed
      */
-	public Sprite(int animVitesse) {
+	public Sprite(final int animVitesse) {
 		this.animVitesse = animVitesse;
 		this.animFrame = 0;
 		this.animTimer = 0;
@@ -96,7 +96,7 @@ public class Sprite {
      *            the image number
 	 * @return the image
 	 */
-	public Image getImage(int number) {
+	public Image getImage(final int number) {
 		return this.image.get(number);
 	}
 	
@@ -108,7 +108,7 @@ public class Sprite {
      * @param image
      *            the image
 	 */
-	public Image setImage(int number, final Image image) {
+	public Image setImage(final int number, final Image image) {
 		return this.image.set(number, image);
 	}
 
@@ -126,7 +126,7 @@ public class Sprite {
 	 * 
 	 * @param animVitesse the animation speed to set
 	 */
-	public void setAnimVitesse(int animVitesse) {
+	public void setAnimVitesse(final int animVitesse) {
 		this.animVitesse = animVitesse;
 	}
 	
@@ -144,11 +144,11 @@ public class Sprite {
 	 * 
 	 * @param animFrame the animation frame
 	 */
-	public void setAnimFrame(int animFrame) {
+	public void setAnimFrame(final int animFrame) {
 		this.animFrame = animFrame;
 	}
 	
-	/** Procede to the animation **/
+	/** Process the animation **/
 	public void animate() {
 		if (this.animTimer < this.animVitesse)
 			this.animTimer++;
@@ -168,7 +168,7 @@ public class Sprite {
      *
      */
 	static public void LoadSprite() throws IOException {
-		SPRITE_LORANN = new Sprite(0);
+		SPRITE_LORANN = new Sprite(2);
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_r.png")));
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_br.png")));
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_b.png")));
@@ -178,7 +178,7 @@ public class Sprite {
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_u.png")));
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_ur.png")));
 		
-		SPRITE_SORTILEGE = new Sprite(4);
+		SPRITE_SORTILEGE = new Sprite(1);
 		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_1.png")));
 		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_2.png")));
 		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_3.png")));

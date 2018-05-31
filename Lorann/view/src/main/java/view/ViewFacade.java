@@ -26,6 +26,9 @@ public class ViewFacade extends Observable implements IView {
 	/** The height. **/
 	static private int HEIGHT = 12;
 	
+	/** The main window. **/
+	private BoardFrame window;
+	
 	/** The key listener. **/
     private KeyManager keyManager;
     
@@ -52,31 +55,31 @@ public class ViewFacade extends Observable implements IView {
     @Override
     public void run() {
     	// Create a window named Lorann Game :
-    	final BoardFrame window = new BoardFrame("Lorann Game");
+    	this.window = new BoardFrame("Lorann Game");
     	
     	// Set the window parameters :
-    	window.setDimension(new Dimension(WIDTH, HEIGHT));
-    	window.setDisplayFrame(new Rectangle(0, 0, WIDTH, HEIGHT));
-    	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	window.setFocusable(true);
-    	window.setFocusTraversalKeysEnabled(false);
-    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	window.addKeyListener(keyManager);
+    	this.window.setDimension(new Dimension(WIDTH, HEIGHT));
+    	this.window.setDisplayFrame(new Rectangle(0, 0, WIDTH, HEIGHT + 2));
+    	this.window.setSize(WIDTH * 32, HEIGHT * 32 + 64);
+    	this.window.setFocusable(true);
+    	this.window.setFocusTraversalKeysEnabled(false);
+    	this.window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	this.window.addKeyListener(keyManager);
     	
+		this.displayScene();
+    }
+    
+    public void displayScene() {
+    	// Load the first level here :
     	try {
-			this.displayScene(window);
+    		this.scene.loadLevel(1, this.window);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    }
-    
-    public void displayScene(final BoardFrame frame) throws SQLException {
-    	this.scene.loadLevel(1, frame);
     	
-    	// Add to observer :
-    	this.addObserver(frame.getObserver());
+    	this.addObserver(this.window.getObserver());
     	
-    	frame.setVisible(true);
+    	this.window.setVisible(true);
     }
     
     /**
@@ -102,6 +105,11 @@ public class ViewFacade extends Observable implements IView {
 	public void windowUpdate() {
 		this.setChanged();
 		this.notifyObservers();
+	}
+    
+    @Override
+	public BoardFrame getWindow() {
+		return this.window;
 	}
     
     @Override

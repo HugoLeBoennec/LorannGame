@@ -13,8 +13,15 @@ public class Vide extends Object {
 
 	/**
      * Instantiates a new Vide.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public Vide(int x, int y, final Scene scene) {
+	public Vide(final int x, final int y, final Scene scene) {
 		super(x, y, false, Sprite.SPRITE_VIDE, scene);
 	}
 }

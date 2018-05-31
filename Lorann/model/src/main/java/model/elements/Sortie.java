@@ -13,8 +13,15 @@ public class Sortie extends Object {
 
 	/**
      * Instantiates a new Sortie.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public Sortie(int x, int y, final Scene scene) {
+	public Sortie(final int x, final int y, final Scene scene) {
 		super(x, y, true, Sprite.SPRITE_PORTE, scene);
 	}
 }

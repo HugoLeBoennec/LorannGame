@@ -13,84 +13,75 @@ import model.graphics.Sprite;
  */
 public class DemonOuest extends Object implements IMobile {
 
-	/** The daemon direction. */
-	private boolean direction;
+	/** If the daemon moves right. */
+	private boolean isRight;
 	
 	/**
      * Instantiates a new DemonOuest.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public DemonOuest(int x, int y, final Scene scene) {
-		super(x, y, true, Sprite.SPRITE_DEMONW, scene);
+	public DemonOuest(final int x, final int y, final Scene scene) {
+		super(x, y, false, Sprite.SPRITE_DEMONW, scene);
 		
-		this.direction = true;
+		this.isRight = true;
 	}
 	
 	@Override
 	public void moveRight() {
-		if (!this.getScene().getObjectXY(this.getX()+1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		else
-			this.direction = !this.direction;
+			this.isRight = false;
 	}
 
 	@Override
 	public void moveLeft() {
-		if (!this.getScene().getObjectXY(this.getX()-1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		else
-			this.direction = !this.direction;
+			this.isRight = true;
 	}
 
 	@Override
 	public void moveUp() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 	}
 
 	@Override
 	public void moveDown() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 	}
 	
 	@Override
 	public void moveDownLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
-			this.setX(getX()-1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveLeft();
+		this.moveDown();
 	}
 	
 	@Override
 	public void moveDownRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
-			this.setX(getX()+1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveRight();
+		this.moveDown();
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
-			this.setX(getX()-1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveLeft();
+		this.moveUp();
 	}
 	
 	@Override
 	public void moveUpRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
-			this.setX(getX()+1);
-		}
-		else
-			this.direction = !this.direction;
+		this.moveRight();
+		this.moveUp();
 	}
 	
 	@Override
@@ -104,7 +95,7 @@ public class DemonOuest extends Object implements IMobile {
 			this.moveDown();
 		
 		// Horizontal moves, bounce on walls :
-		if (this.direction)
+		if (this.isRight)
 			this.moveRight();
 		else
 			this.moveLeft();

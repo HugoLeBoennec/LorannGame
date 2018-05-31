@@ -42,7 +42,7 @@ public abstract class Object implements IObject {
      * @param scene
      *            the current scene
      */
-    public Object(int x, int y, boolean solid, final Sprite sprite, final Scene scene) {
+    public Object(final int x, final int y, final boolean solid, final Sprite sprite, final Scene scene) {
     	this.x = x;
     	this.x = y;
     	this.solid = solid;
@@ -65,7 +65,7 @@ public abstract class Object implements IObject {
      * @param sprite
      *            the sprite
      */
-	public void setSprite(Sprite sprite) {
+	public void setSprite(final Sprite sprite) {
 		this.sprite = sprite;
 	}
 	
@@ -82,7 +82,7 @@ public abstract class Object implements IObject {
 		return this.x;
 	}
 	
-	public void setX(int x) {
+	public void setX(final int x) {
 		this.x = x;
 	}
 	
@@ -90,7 +90,7 @@ public abstract class Object implements IObject {
 		return this.y;
 	}
 	
-	public void setY(int y) {
+	public void setY(final int y) {
 		this.y = y;
 	}
 	
@@ -98,7 +98,7 @@ public abstract class Object implements IObject {
 		return this.solid;
 	}
 	
-	public void setSolidity(boolean solid) {
+	public void setSolidity(final boolean solid) {
 		this.solid = solid;
 	}
 	

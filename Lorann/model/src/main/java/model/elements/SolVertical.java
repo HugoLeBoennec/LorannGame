@@ -13,8 +13,15 @@ public class SolVertical extends Object {
 
 	/**
      * Instantiates a new SolVertical.
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
      */
-	public SolVertical(int x, int y, final Scene scene) {
+	public SolVertical(final int x, final int y, final Scene scene) {
 		super(x, y, true, Sprite.SPRITE_SOLV, scene);
 	}
 }

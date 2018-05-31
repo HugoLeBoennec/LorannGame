@@ -23,7 +23,7 @@ public interface IObject extends ISquare {
      * @param x
      *            the X position
      */
-	public void setX(int x);
+	public void setX(final int x);
 	
 	/**
      * Gets the Y position.
@@ -38,7 +38,7 @@ public interface IObject extends ISquare {
      * @param y
      *            the Y position
      */
-	public void setY(int y);
+	public void setY(final int y);
 	
 	/**
      * Gets the solidity.

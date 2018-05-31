@@ -22,7 +22,7 @@ public interface IScene {
      *            the Y position
      * @return the element at the position
      */
-    public IObject getObjectXY(int x, int y);
+    public IObject getObjectXY(final int x, final int y);
     
     /**
      * Sets an object at position.
@@ -34,7 +34,7 @@ public interface IScene {
      * @param y
      *            the Y position
      */
-    public void setObjectXY(final IObject object, int x, int y);
+    public void setObjectXY(final IObject object, final int x, final int y);
     
     /**
      * Test if an object is solid.
@@ -45,7 +45,7 @@ public interface IScene {
      *            the Y position
      * @return the solidity at the position
      */
-    public boolean isPenetrable(int x, int y);
+    public boolean isPenetrable(final int x, final int y);
 	
 	/**
      * Gets the main character.

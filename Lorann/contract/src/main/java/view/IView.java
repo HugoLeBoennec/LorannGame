@@ -1,5 +1,7 @@
 package view;
 
+import showboard.BoardFrame;
+
 /**
  * <h1>The Interface IView.</h1>
  *
@@ -18,7 +20,14 @@ public interface IView extends Runnable {
      * Update all the frame.
      *
      */
-    void windowUpdate();
+    public void windowUpdate();
+    
+    /**
+     * Gets the main window.
+     * 
+     * @return the main window
+     */
+    public BoardFrame getWindow();
     
     /**
      * Display message.
@@ -26,5 +35,5 @@ public interface IView extends Runnable {
      * @param message
      *            the message
      */
-    void displayMessage(String message);
+    void displayMessage(final String message);
 }
