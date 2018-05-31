@@ -130,6 +130,13 @@ public class Scene implements IScene {
 	
 	@Override
 	public void drawMur(int x, int y, BoardFrame frame, IScene scene) {
-		frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, (Scene) scene), 0, 0);
+		Tile tile = new Tile("bone.png");
+		try {
+			tile.loadImage();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		frame.addSquare(tile, x, y);
 	}
 }

@@ -59,11 +59,11 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	window.setDimension(new Dimension(WIDTH, HEIGHT));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	window.setFocusable(true);
-    	window.setFocusTraversalKeysEnabled(false);
-    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	//window.setFocusable(true);
+    	//window.setFocusTraversalKeysEnabled(false);
+    	//window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
     	window.setBackground(Color.BLACK);
-    	window.addKeyListener(keyManager);
+    	//window.addKeyListener(keyManager);
     	
     	// Chargement des sprites :
     	this.scene.setupSprites();
@@ -75,7 +75,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	}
     	
     	// Add to observer :
-    	addObserver(window.getObserver());
+    	this.addObserver(window.getObserver());
     	
     	window.setVisible(true);
     	
@@ -115,8 +115,8 @@ public class ViewFacade extends Observable implements Runnable, IView {
     
     @Override
 	public void windowUpdate() {
-		setChanged();
-		notifyObservers();
+		this.setChanged();
+		this.notifyObservers();
 	}
     //cool
     @Override
