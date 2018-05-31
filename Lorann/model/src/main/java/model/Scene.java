@@ -67,7 +67,7 @@ public class Scene implements IScene {
      * @return the solidity at the position
      */
     public boolean isPenetrable(int x, int y) {
-    	Object obj = this.object[x][y];
+    	final Object obj = this.object[x][y];
     	
     	if (obj == null)
     		return false;
