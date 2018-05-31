@@ -97,15 +97,16 @@ public class Scene implements IScene {
 				{
 					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, this);		frame.addSquare(obj, x, y); break;
 					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, this);		frame.addSquare(obj, x, y); break;
-					case 'd' : /*obj = new Lorann(x, y, Sprite.SPRITE_PORTE, level);*/	frame.addSquare(obj, x, y); break;
+					case 'd' : /*obj = new Lorann(x, y, Sprite.SPRITE_PORTE, level);*/	frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, this), x, y); break;
 					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR, this);			frame.addSquare(obj, x, y); break;
 					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH, this);	frame.addSquare(obj, x, y); break;
 					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV, this);	frame.addSquare(obj, x, y); break;
-					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, this);	/*frame.addPawn((IMobile)obj);*/ break;
-					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this);	/*frame.addPawn((IMobile)obj);*/ break;
-					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this);	/*frame.addPawn((IMobile)obj);*/ break;
-					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this);	/*frame.addPawn((IMobile)obj);*/ break;
+					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, this);	frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, this), x, y); break;
+					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this);	frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, this), x, y); break;
+					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this);	frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, this), x, y); break;
+					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this);	frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, this), x, y); break;
 					case 'o' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this);		frame.addSquare(obj, x, y); break;
+					default : frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
 				}
 				
 				setObjectXY(obj, x, y);

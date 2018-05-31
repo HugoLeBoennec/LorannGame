@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.sql.SQLException;
@@ -65,7 +64,6 @@ public class ViewFacade extends Observable implements IView {
     	window.setFocusable(true);
     	window.setFocusTraversalKeysEnabled(false);
     	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	window.setBackground(Color.BLACK);
     	window.addKeyListener(keyManager);
     	
     	try {
