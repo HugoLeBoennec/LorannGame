@@ -47,33 +47,16 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void tick() {
 		
-		this.getSprite().AnimSortilege(0);
+		this.getSprite().animate();
 		
-		if (direction == 0) {
-			if (this.getScene().getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
-				direction = 1;
-				this.setX(getX()+1);
-			}
-			else this.setX(getX()-1);
-		}else if (direction == 1) {
-			if (this.getScene().getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
-				direction = 0;
-				this.setX(getX()-1);
-			}
-			else this.setX(getX()+1);
-		}else if (direction == 2) {
-			if (this.getScene().getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
-				direction = 3;
-				this.setY(getY()+1);
-			}
-			else this.setY(getY()-1);
-		}else if (direction == 3) {
-			if (this.getScene().getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
-				direction = 2;
-				this.setY(getY()-1);
-			}
-			else this.setY(getY()+1);
-		}
+		if (this.direction == 0)
+			this.moveRight();
+		else if (this.direction == 1)
+			this.moveLeft();
+		else if (this.direction == 2)
+			this.moveUp();
+		else
+			this.moveDown();
 	}
 	
 	@Override

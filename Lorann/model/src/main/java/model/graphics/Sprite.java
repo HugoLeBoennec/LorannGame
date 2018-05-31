@@ -63,6 +63,9 @@ public class Sprite {
 	/** The animation current frame. */
 	private int animFrame;
 	
+	/** The animation timer. */
+	private int animTimer;
+	
 	/**
      * Instantiates a new Sprite.
      *
@@ -72,6 +75,7 @@ public class Sprite {
 	public Sprite(int animVitesse) {
 		this.animVitesse = animVitesse;
 		this.animFrame = 0;
+		this.animTimer = 0;
 		this.image = new java.util.ArrayList<Image>();
 	}
 	
@@ -143,6 +147,18 @@ public class Sprite {
 	public void setAnimFrame(int animFrame) {
 		this.animFrame = animFrame;
 	}
+	
+	/** Procede to the animation **/
+	public void animate() {
+		if (this.animTimer < this.animVitesse)
+			this.animTimer++;
+		else {
+			if (this.animFrame <= this.image.size())
+				this.animFrame++;
+			else
+				this.animFrame = 0;
+		}
+	}
 
 	/**
      * Load all the sprites
@@ -201,22 +217,4 @@ public class Sprite {
 		SPRITE_VIDE = new Sprite(0);
 		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
 	}
-	
-	
-	/** Set the visible Frame **/
-	
-	public void AnimSortilege(int frame) {
-		
-		frame = getAnimFrame();
-		
-		if(frame <= 3) {
-		this.setAnimFrame(frame+1);
-		}
-		else
-		{
-		this.setAnimFrame(0);
-		}	
-		
-	}
-	
 }
