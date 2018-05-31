@@ -33,8 +33,7 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveRight() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
+		if (this.getScene().getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
 		this.direction = 0;
@@ -42,8 +41,7 @@ public class Lorann extends Object implements ICharacter {
 
 	@Override
 	public void moveLeft() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
+		if (this.getScene().getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
 		this.direction = 1;
@@ -51,8 +49,7 @@ public class Lorann extends Object implements ICharacter {
 
 	@Override
 	public void moveUp() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
+		if (this.getScene().getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
 		this.direction = 2;
@@ -60,8 +57,7 @@ public class Lorann extends Object implements ICharacter {
 
 	@Override
 	public void moveDown() {
-		final Scene scene = this.getScene();
-		if (scene.getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
+		if (this.getScene().getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
 		this.direction = 3;
