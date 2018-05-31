@@ -201,4 +201,13 @@ public class Sprite {
 		SPRITE_VIDE = new Sprite(0);
 		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
 	}
+	
+	public void AnimSortilege() {
+		
+		Sprite.prite(4)
+		
+		
+	}
+	
+	
 }

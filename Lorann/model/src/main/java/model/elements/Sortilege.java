@@ -42,6 +42,10 @@ public class Sortilege extends Object implements IMobile {
 
 	@Override
 	public void tick() {
+		
+	
+		
+		
 	}
 	
 	@Override
