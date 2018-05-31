@@ -39,38 +39,24 @@ public class Scene implements IScene {
         this.character = new Lorann(0, 0, this);
     }
 	
+    @Override
 	public IObject getObjectXY(int x, int y) {
         return (IObject) this.object[x][y];
     }
 
-    /**
-     * Sets an object at position.
-     *
-     * @param object
-     *            the object
-     * @param x
-     *            the X position
-     * @param y
-     *            the Y position
-     */
-    public void setObjectXY(final Object object, int x, int y) {
-        this.object[x][y] = object;
+    @Override
+    public void setObjectXY(final IObject object, int x, int y) {
+        this.object[x][y] = (Object) object;
     }
 
-    /**
-     * Test if an object is solid.
-     *
-     * @param x
-     *            the X position
-     * @param y
-     *            the Y position
-     * @return the solidity at the position
-     */
+    @Override
     public boolean isPenetrable(int x, int y) {
     	final Object obj = this.object[x][y];
-    	
-    	if (obj == null)
+    	    	
+    	if (obj == null) {
+    		System.out.println("Exctre");
     		return false;
+    	}
     	else
     		return obj.getSolidity();
     }

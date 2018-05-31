@@ -23,6 +23,29 @@ public interface IScene {
      * @return the element at the position
      */
     public IObject getObjectXY(int x, int y);
+    
+    /**
+     * Sets an object at position.
+     *
+     * @param object
+     *            the object
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     */
+    public void setObjectXY(final IObject object, int x, int y);
+    
+    /**
+     * Test if an object is solid.
+     *
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @return the solidity at the position
+     */
+    public boolean isPenetrable(int x, int y);
 	
 	/**
      * Gets the main character.
