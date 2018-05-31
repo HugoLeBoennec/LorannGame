@@ -1,6 +1,10 @@
 package model.elements;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import model.Scene;
 import model.graphics.Sprite;
@@ -24,6 +28,7 @@ public abstract class Object implements IObject {
 	
 	/** The sprite. */
 	private Sprite sprite;
+	private Image img;
 	
 	/** The scene. */
 	private Scene scene;
@@ -48,6 +53,13 @@ public abstract class Object implements IObject {
     	this.solid = solid;
         this.sprite = sprite;
         this.scene = scene;
+        
+        try {
+			this.img = ImageIO.read(new File("sprites/bone.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
 	/**
@@ -104,6 +116,6 @@ public abstract class Object implements IObject {
 	
 	@Override
 	public Image getImage() {
-		return this.sprite.getImage(this.sprite.getAnimFrame());
+		return this.img;
 	}
 }

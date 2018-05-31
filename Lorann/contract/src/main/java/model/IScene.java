@@ -37,5 +37,5 @@ public interface IScene {
     /**
      * Draw mur
      */
-    public void drawMur(int x, int y, final BoardFrame frame, final IScene scene);
+    public void drawMur(int x, int y, BoardFrame frame, final IScene scene);
 }

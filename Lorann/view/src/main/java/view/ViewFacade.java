@@ -56,14 +56,13 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	BoardFrame window = new BoardFrame("Lorann Game");
     	
     	// Set the window parameters :
-    	window.setDimension(new Dimension(WIDTH * 32, HEIGHT * 32));
+    	window.setDimension(new Dimension(WIDTH, HEIGHT));
     	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
     	window.setFocusable(true);
     	window.setFocusTraversalKeysEnabled(false);
     	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
     	window.setBackground(Color.BLACK);
-    	window.setVisible(true);
     	window.addKeyListener(keyManager);
     	
     	// Chargement des sprites :
@@ -78,7 +77,9 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	// Add to observer :
     	addObserver(window.getObserver());
     	
-    	this.update();
+    	window.setVisible(true);
+    	
+    	//this.windowUpdate();
     }
     
     /*public void displayScene(final Scene scene) {
@@ -113,7 +114,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
 	}
     
     @Override
-	public void update() {
+	public void windowUpdate() {
 		setChanged();
 		notifyObservers();
 	}

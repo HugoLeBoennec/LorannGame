@@ -72,7 +72,7 @@ public class ControllerFacade implements IController {
         	}
         	KeyManager.key=0;
         	
-        	this.view.update();
+        	//this.view.windowUpdate();
         }
     }
 

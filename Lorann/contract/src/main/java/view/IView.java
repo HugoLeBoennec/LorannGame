@@ -12,7 +12,7 @@ public interface IView {
      * Update all the frame.
      *
      */
-    void update();
+    void windowUpdate();
     
     /**
      * Display message.
