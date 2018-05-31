@@ -19,8 +19,8 @@ public class Lorann extends Object implements ICharacter {
 	/**
      * Instantiates a new Lorann.
      */
-	public Lorann(int x, int y, final Sprite sprite, Scene scene) {
-		super(x, y, true, sprite,scene);
+	public Lorann(int x, int y, final Sprite sprite, final Scene scene) {
+		super(x, y, true, sprite, scene);
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package model;
 
 import model.elements.*;
+import showboard.BoardFrame;
 
 /**
  * <h1>The Interface Scene implements the game scene.</h1>
@@ -32,4 +33,9 @@ public interface IScene {
      * Set up the sprites.
      */
     public void setupSprites();
+    
+    /**
+     * Draw mur
+     */
+    public void drawMur(int x, int y, final BoardFrame frame, final IScene scene);
 }

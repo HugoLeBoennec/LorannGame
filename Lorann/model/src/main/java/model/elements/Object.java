@@ -26,7 +26,7 @@ public abstract class Object implements IObject {
 	private Sprite sprite;
 	
 	/** The scene. */
-	private final Scene scene;
+	private Scene scene;
 	
 	/**
      * Instantiates a new object.

@@ -19,7 +19,7 @@ public class DemonSud extends Object implements IMobile {
 	/**
      * Instantiates a new DemonSud.
      */
-	public DemonSud(int x, int y, final Sprite sprite, Scene scene) {
+	public DemonSud(int x, int y, final Sprite sprite, final Scene scene) {
 		super(x, y, true, sprite, scene);
 		
 		this.direction = true;

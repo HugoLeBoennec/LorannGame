@@ -14,7 +14,7 @@ public class SolVertical extends Object {
 	/**
      * Instantiates a new SolVertical.
      */
-	public SolVertical(int x, int y, final Sprite sprite, Scene scene) {
-		super(x, y, true, sprite,scene);
+	public SolVertical(int x, int y, final Sprite sprite, final Scene scene) {
+		super(x, y, true, sprite, scene);
 	}
 }

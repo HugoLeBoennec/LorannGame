@@ -71,12 +71,14 @@ public class ViewFacade extends Observable implements Runnable, IView {
     	
     	for (int y = 0; y < HEIGHT; y++) {
 			for (int x = 0; x < WIDTH; x++) {
-				window.addSquare(this.scene.getObjectXY(x, y), x, y);
+				this.scene.drawMur(x, y, window, this.scene);
 			}
     	}
     	
     	// Add to observer :
     	addObserver(window.getObserver());
+    	
+    	this.update();
     }
     
     /*public void displayScene(final Scene scene) {

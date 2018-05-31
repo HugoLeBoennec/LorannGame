@@ -19,7 +19,7 @@ public class DemonNord extends Object implements IMobile {
 	/**
      * Instantiates a new DemonNord.
      */
-	public DemonNord(int x, int y, final Sprite sprite, Scene scene) {
+	public DemonNord(int x, int y, final Sprite sprite, final Scene scene) {
 		super(x, y, true, sprite, scene);
 		
 		this.direction = true;

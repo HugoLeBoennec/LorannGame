@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import model.dao.ElementDAO;
 import model.elements.Object;
 import model.graphics.Sprite;
+import showboard.BoardFrame;
 import model.elements.*;
 
 /**
@@ -125,5 +126,10 @@ public class Scene implements IScene {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void drawMur(int x, int y, final BoardFrame frame, final IScene scene) {
+		frame.addSquare(new Mur(x, y, Sprite.SPRITE_MUR, (Scene) scene), 0, 0);
 	}
 }

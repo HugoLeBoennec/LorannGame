@@ -1,7 +1,5 @@
 package model.elements;
 
-import java.awt.Image;
-
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -16,7 +14,7 @@ public class Bourse extends Object {
 	/**
      * Instantiates a new Bourse.
      */
-	public Bourse(int x, int y, final Sprite sprite, Scene scene) {
-		super(x, y, true, sprite,scene);
+	public Bourse(int x, int y, final Sprite sprite, final Scene scene) {
+		super(x, y, true, sprite, scene);
 	}
 }
