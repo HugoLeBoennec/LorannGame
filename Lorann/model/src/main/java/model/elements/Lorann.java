@@ -16,6 +16,10 @@ public class Lorann extends Object implements ICharacter {
 	/** The life state. */
 	private boolean alive;
 	
+	Sortilege sortilege;
+	
+	int direction = 0;
+	
 	/**
      * Instantiates a new Lorann.
      */
@@ -30,6 +34,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
+		direction = 0;
 	}
 
 	@Override
@@ -38,6 +43,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
+		direction = 1;
 	}
 
 	@Override
@@ -46,6 +52,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
+		direction = 2;
 	}
 
 	@Override
@@ -54,6 +61,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
+		direction = 3;
 	}
 	
 	@Override
@@ -62,8 +70,20 @@ public class Lorann extends Object implements ICharacter {
 	}
 	
 	@Override
-	public void attaque() {
-		
+	public void attaqueUp() {
+		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
+	}
+	@Override
+	public void attaqueDown() {
+		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
+	}
+	@Override
+	public void attaqueLeft() {
+		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
+	}
+	@Override
+	public void attaqueRight() {
+		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
 	}
 
 	@Override

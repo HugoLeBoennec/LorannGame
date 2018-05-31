@@ -48,9 +48,8 @@ public class ControllerFacade implements IController {
         // The main loop, keep running until the character is dead :
         while (character.isAlive()) {
         	
-        	System.out.println("Idiot");
         	// Gestion des entrées utilisateur :
-        	/*if (KeyManager.key != 0) {
+        	if (KeyManager.key != 0) {
         		switch (KeyManager.key) {
         		case 39:
         			character.moveRight();
@@ -69,7 +68,7 @@ public class ControllerFacade implements IController {
         			break;
         		}
         	}
-        	KeyManager.key=0;*/
+        	KeyManager.key=0;
         	
         	this.view.windowUpdate();
         	

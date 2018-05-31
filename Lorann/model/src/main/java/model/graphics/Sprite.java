@@ -50,6 +50,9 @@ public class Sprite {
 	/** The sprite of the collectable purse. */
 	static public Sprite SPRITE_BOURSE;
 	
+	/** The sprite of the empty tile. */
+	static public Sprite SPRITE_VIDE;
+	
 	
 	/** The multiple images. */
 	private java.util.ArrayList<Image> image;
@@ -194,6 +197,9 @@ public class Sprite {
 		
 		SPRITE_BOURSE = new Sprite(0);
 		SPRITE_BOURSE.appendImage(ImageIO.read(new File("sprites/purse.png")));
+		
+		SPRITE_VIDE = new Sprite(0);
+		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
 	}
 	
 	public void AnimSortilege() {

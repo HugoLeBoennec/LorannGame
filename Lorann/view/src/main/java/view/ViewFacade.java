@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.sql.SQLException;
@@ -10,8 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import controller.KeyManager;
-import showboard.BoardFrame;
 import model.IScene;
+import showboard.BoardFrame;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -65,7 +64,6 @@ public class ViewFacade extends Observable implements IView {
     	window.setFocusable(true);
     	window.setFocusTraversalKeysEnabled(false);
     	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
-    	window.setBackground(Color.BLACK);
     	window.addKeyListener(keyManager);
     	
     	try {
