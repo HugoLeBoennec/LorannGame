@@ -63,6 +63,18 @@ public class ControllerFacade implements IController {
         		case 40:
         			character.moveDown();
         			break;
+        		case 87:
+        			character.moveDownLeft();
+        			break;
+        		case 67:
+        			character.moveDownRight();
+        			break;
+        		case 65:
+        			character.moveUpLeft();
+        			break;
+        		case 69:
+        			character.moveUpRight();
+        			break;
         		case 32:
         			character.attaque();
         			break;

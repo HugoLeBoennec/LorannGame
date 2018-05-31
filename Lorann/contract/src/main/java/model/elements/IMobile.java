@@ -31,6 +31,26 @@ public interface IMobile extends IPawn {
 	public void moveDown();
 	
 	/**
+     * Moves the mobile down and left by handling collision
+     */
+	public void moveDownLeft();
+	
+	/**
+     * Moves the mobile down and right by handling collision
+     */
+	public void moveDownRight();
+	
+	/**
+     * Moves the mobile up and left by handling collision
+     */
+	public void moveUpLeft();
+	
+	/**
+     * Moves the mobile up and right by handling collision
+     */
+	public void moveUpRight();
+	
+	/**
      * Called when the main loop updates
      */
 	public void tick();
