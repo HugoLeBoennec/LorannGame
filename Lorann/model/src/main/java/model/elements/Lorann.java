@@ -70,7 +70,7 @@ public class Lorann extends Object implements ICharacter {
 			this.setX(getX()-1);
 		}
 		else
-			this.direction = 6;
+			this.direction = 7;
 	}
 	
 	@Override
