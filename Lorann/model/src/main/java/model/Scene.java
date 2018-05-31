@@ -38,7 +38,7 @@ public class Scene implements IScene {
         super();
         
         this.object = new Object[20][12];
-        this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
+        this.character = new Lorann(0, 0, this);
     }
 	
 	public IObject getObjectXY(int x, int y) {
@@ -95,18 +95,18 @@ public class Scene implements IScene {
 				// Object insertion :
 				switch (el.getType())
 				{
-					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, this);		frame.addSquare(obj, x, y); break;
-					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, this);		frame.addSquare(obj, x, y); break;
-					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR, this);			frame.addSquare(obj, x, y); break;
-					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH, this);	frame.addSquare(obj, x, y); break;
-					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV, this);	frame.addSquare(obj, x, y); break;
-					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, this);	frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
-					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this);	frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
-					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this);	frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
-					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this);	frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
-					case 'o' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this);		frame.addSquare(obj, x, y); break;
-					case 'd' : this.character.setX(x); this.character.setY(y);			frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
-					default : frame.addSquare(new Vide(x, y, Sprite.SPRITE_VIDE, this), x, y); break;
+					case 'b' : obj = new Bulle(x, y, this);						frame.addSquare(obj, x, y); break;
+					case 'p' : obj = new Sortie(x, y, this);					frame.addSquare(obj, x, y); break;
+					case 'r' : obj = new Mur(x, y, this);						frame.addSquare(obj, x, y); break;
+					case 'h' : obj = new SolHorizontal(x, y, this);				frame.addSquare(obj, x, y); break;
+					case 'v' : obj = new SolVertical(x, y, this);				frame.addSquare(obj, x, y); break;
+					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 'o' : obj = new Bourse(x, y, this);					frame.addSquare(obj, x, y); break;
+					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Vide(x, y, this), x, y); break;
+					default : frame.addSquare(new Vide(x, y, this), x, y); break;
 				}
 				
 				setObjectXY(obj, x, y);
