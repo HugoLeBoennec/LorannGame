@@ -202,12 +202,22 @@ public class Sprite {
 		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
 	}
 	
+	
+	/** Set the visible Frame **/
+	
 	public void AnimSortilege() {
 		
-		//Sprite.prite(4)
+		int frame = 0;
+		frame = getAnimFrame();
 		
+		if(frame <= 3) {
+		this.setAnimFrame(frame+1);
+		}
+		else
+		{
+		this.setAnimFrame(0);
+		}	
 		
 	}
-	
 	
 }
