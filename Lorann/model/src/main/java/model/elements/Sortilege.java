@@ -13,12 +13,16 @@ import model.graphics.Sprite;
  */
 public class Sortilege extends Object implements IMobile {
 	
+	private int direction; 
 	/**
      * Instantiates a new Sortilege.
      */
 	public Sortilege(int x, int y, final Sprite sprite, final Scene scene) {
 		super(x, y, true, sprite, scene);
+		this.direction = this.getScene().getCharacter().getDirection();
 	}
+	
+	
 
 	@Override
 	public void moveRight() {
@@ -42,10 +46,31 @@ public class Sortilege extends Object implements IMobile {
 
 	@Override
 	public void tick() {
-		
-	
-		
-		
+		if (direction == 0) {
+			if (this.getScene().getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
+				direction = 1;
+				this.setX(getX()+1);
+			}
+			else this.setX(getX()-1);
+		}else if (direction == 1) {
+			if (this.getScene().getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
+				direction = 0;
+				this.setX(getX()-1);
+			}
+			else this.setX(getX()+1);
+		}else if (direction == 2) {
+			if (this.getScene().getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
+				direction = 3;
+				this.setY(getY()+1);
+			}
+			else this.setY(getY()-1);
+		}else if (direction == 3) {
+			if (this.getScene().getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
+				direction = 2;
+				this.setY(getY()-1);
+			}
+			else this.setY(getY()+1);
+		}
 	}
 	
 	@Override

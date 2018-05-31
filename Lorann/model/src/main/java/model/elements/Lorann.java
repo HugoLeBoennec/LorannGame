@@ -70,19 +70,7 @@ public class Lorann extends Object implements ICharacter {
 	}
 	
 	@Override
-	public void attaqueUp() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
-	}
-	@Override
-	public void attaqueDown() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
-	}
-	@Override
-	public void attaqueLeft() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
-	}
-	@Override
-	public void attaqueRight() {
+	public void attaque() {
 		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
 	}
 
@@ -94,5 +82,9 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public Point getPosition() {
 		return new Point(this.getX(), this.getY());
+	}
+	
+	public int getDirection() {
+		return direction;
 	}
 }
