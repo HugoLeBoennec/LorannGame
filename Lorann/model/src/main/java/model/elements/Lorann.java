@@ -16,15 +16,18 @@ public class Lorann extends Object implements ICharacter {
 	/** The life state. */
 	private boolean alive;
 	
-	Sortilege sortilege;
+	/** The current direction. */
+	private int direction;
 	
-	int direction = 0;
+	/** The spell. */
+	private Sortilege sortilege;
 	
 	/**
      * Instantiates a new Lorann.
      */
-	public Lorann(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
+	public Lorann(int x, int y, final Scene scene) {
+		super(x, y, true, Sprite.SPRITE_LORANN, scene);
+		this.direction = 0;
 		this.alive = true;
 	}
 	
@@ -34,7 +37,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX()+1,this.getY()).getSolidity() == true) {
 			this.setX(getX()+1);
 		}
-		direction = 0;
+		this.direction = 0;
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX()-1,this.getY()).getSolidity() == true) {
 			this.setX(getX()-1);
 		}
-		direction = 1;
+		this.direction = 1;
 	}
 
 	@Override
@@ -52,7 +55,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
 			this.setY(getY()+1);
 		}
-		direction = 2;
+		this.direction = 2;
 	}
 
 	@Override
@@ -61,7 +64,7 @@ public class Lorann extends Object implements ICharacter {
 		if (scene.getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
 			this.setY(getY()-1);
 		}
-		direction = 3;
+		this.direction = 3;
 	}
 	
 	@Override
@@ -70,20 +73,13 @@ public class Lorann extends Object implements ICharacter {
 	}
 	
 	@Override
-	public void attaqueUp() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
+	public void attaque() {
+		sortilege = new Sortilege(this.getX(), this.getY(), this.getScene());
 	}
+	
 	@Override
-	public void attaqueDown() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
-	}
-	@Override
-	public void attaqueLeft() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
-	}
-	@Override
-	public void attaqueRight() {
-		sortilege = new Sortilege(this.getX(),this.getY(),Sprite.SPRITE_SORTILEGE,this.getScene());
+	public int getDirection() {
+		return this.direction;
 	}
 
 	@Override

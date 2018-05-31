@@ -16,8 +16,8 @@ public class Sortilege extends Object implements IMobile {
 	/**
      * Instantiates a new Sortilege.
      */
-	public Sortilege(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
+	public Sortilege(int x, int y, final Scene scene) {
+		super(x, y, true, Sprite.SPRITE_SORTILEGE, scene);
 	}
 
 	@Override
@@ -38,6 +38,11 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveDown() {
 		this.setY(getY()-1);
+	}
+	
+	@Override
+	public int getDirection() {
+		return this.direction;
 	}
 
 	@Override

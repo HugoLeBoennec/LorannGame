@@ -19,8 +19,8 @@ public class DemonEst extends Object implements IMobile {
 	/**
      * Instantiates a new DemonEst.
      */
-	public DemonEst(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
+	public DemonEst(int x, int y, final Scene scene) {
+		super(x, y, true, Sprite.SPRITE_DEMONE, scene);
 		
 		this.direction = true;
 	}
@@ -51,6 +51,11 @@ public class DemonEst extends Object implements IMobile {
 	public void moveDown() {
 		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
 			this.setY(getY()+1);
+	}
+	
+	@Override
+	public int getDirection() {
+		return this.direction;
 	}
 	
 	@Override

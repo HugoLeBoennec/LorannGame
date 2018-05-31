@@ -204,7 +204,7 @@ public class Sprite {
 	
 	public void AnimSortilege() {
 		
-		Sprite.prite(4)
+		//Sprite.prite(4)
 		
 		
 	}

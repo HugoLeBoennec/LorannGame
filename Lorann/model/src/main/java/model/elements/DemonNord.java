@@ -19,8 +19,8 @@ public class DemonNord extends Object implements IMobile {
 	/**
      * Instantiates a new DemonNord.
      */
-	public DemonNord(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
+	public DemonNord(int x, int y, final Scene scene) {
+		super(x, y, true, Sprite.SPRITE_DEMONN, scene);
 		
 		this.direction = true;
 	}
@@ -51,6 +51,11 @@ public class DemonNord extends Object implements IMobile {
 			this.setY(getY()+1);
 		else
 			this.direction = !this.direction;
+	}
+	
+	@Override
+	public int getDirection() {
+		return this.direction;
 	}
 	
 	@Override

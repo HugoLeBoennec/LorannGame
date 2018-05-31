@@ -31,6 +31,13 @@ public interface IMobile extends IPawn {
 	public void moveDown();
 	
 	/**
+     * Gets the direction
+     * 
+     * @return the direction
+     */
+	public int getDirection();
+	
+	/**
      * Called when the main loop updates
      */
 	public void tick();

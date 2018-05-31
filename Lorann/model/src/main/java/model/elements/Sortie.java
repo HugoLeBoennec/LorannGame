@@ -14,7 +14,7 @@ public class Sortie extends Object {
 	/**
      * Instantiates a new Sortie.
      */
-	public Sortie(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, true, sprite, scene);
+	public Sortie(int x, int y, final Scene scene) {
+		super(x, y, true, Sprite.SPRITE_PORTE, scene);
 	}
 }

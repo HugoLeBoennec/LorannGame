@@ -14,7 +14,7 @@ public class Vide extends Object {
 	/**
      * Instantiates a new Vide.
      */
-	public Vide(int x, int y, final Sprite sprite, final Scene scene) {
-		super(x, y, false, sprite, scene);
+	public Vide(int x, int y, final Scene scene) {
+		super(x, y, false, Sprite.SPRITE_VIDE, scene);
 	}
 }
