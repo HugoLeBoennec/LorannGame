@@ -65,9 +65,9 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveDownLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()+1)) {
 			this.setX(getX()-1);
+			this.setY(getY()+1);
 		}
 		else
 			this.direction = 7;
@@ -75,9 +75,9 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveDownRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()-1);
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()+1)) {
 			this.setX(getX()+1);
+			this.setY(getY()+1);
 		}
 		else
 			this.direction = 6;
@@ -85,9 +85,9 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveUpLeft() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()-1)) {
 			this.setX(getX()-1);
+			this.setY(getY()-1);
 		}
 		else
 			this.direction = 5;
@@ -95,9 +95,9 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveUpRight() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity()) {
-			this.setY(getY()+1);
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()-1)) {
 			this.setX(getX()+1);
+			this.setY(getY()-1);
 		}
 		else
 			this.direction = 4;
