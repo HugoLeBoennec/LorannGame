@@ -17,4 +17,9 @@ public interface ICharacter extends IMobile {
      * Casts a spell
      */
 	public void attaque();
+	
+	/**
+     * Set direction
+     */
+	public int getDirection();
 }
