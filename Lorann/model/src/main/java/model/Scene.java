@@ -52,13 +52,13 @@ public class Scene implements IScene {
     @Override
     public boolean isPenetrable(int x, int y) {
     	final Object obj = this.object[x][y];
-    	    	
-    	if (obj == null) {
-    		System.out.println("Exctre");
+    	
+    	if (obj == null)
     		return false;
-    	}
-    	else
+    	else {
+    		System.out.println(obj.getSolidity());
     		return obj.getSolidity();
+    	}
     }
     
     /**
