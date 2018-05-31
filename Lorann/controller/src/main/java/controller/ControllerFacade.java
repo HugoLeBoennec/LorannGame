@@ -70,6 +70,8 @@ public class ControllerFacade implements IController {
         	}
         	KeyManager.key=0;
         	
+        	character.tick();
+        	
         	this.view.windowUpdate();
         	
         	Thread.sleep(100);

@@ -153,10 +153,12 @@ public class Sprite {
 		if (this.animTimer < this.animVitesse)
 			this.animTimer++;
 		else {
-			if (this.animFrame <= this.image.size())
+			if (this.animFrame < this.image.size()-1)
 				this.animFrame++;
 			else
 				this.animFrame = 0;
+			
+			this.animTimer = 0;
 		}
 	}
 
