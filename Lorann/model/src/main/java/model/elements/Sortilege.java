@@ -26,22 +26,34 @@ public class Sortilege extends Object implements IMobile {
 
 	@Override
 	public void moveRight() {
-		this.setX(getX()+1);
+		if (!this.getScene().getObjectXY(this.getX()+1, this.getY()).getSolidity())
+			this.setX(getX()+1);
+		else
+			this.direction = 1;
 	}
 
 	@Override
 	public void moveLeft() {
-		this.setX(getX()-1);
+		if (!this.getScene().getObjectXY(this.getX()-1, this.getY()).getSolidity())
+			this.setX(getX()-1);
+		else
+			this.direction = 0;
 	}
 
 	@Override
 	public void moveUp() {
-		this.setY(getY()+1);
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
+			this.setY(getY()-1);
+		else
+			this.direction = 3;
 	}
 
 	@Override
 	public void moveDown() {
-		this.setY(getY()-1);
+		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
+			this.setY(getY()+1);
+		else
+			this.direction = 2;
 	}
 
 	@Override
