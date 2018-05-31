@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import model.dao.ElementDAO;
 import model.elements.Object;
 import model.graphics.Sprite;
-import showboard.BoardFrame;
 import model.elements.*;
+import showboard.BoardFrame;
 
 /**
  * <h1>The Class Scene represents the game scene with its elements.</h1>
@@ -34,49 +34,12 @@ public class Scene implements IScene {
      * 
      * @throws SQLException
      */
-    public Scene() throws SQLException {
+    public Scene() {
         super();
         
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, Sprite.SPRITE_LORANN, this);
-        
-        loadLevel(1);
     }
-
-    /**
-     * Load a level from database
-     * 
-     * @throws SQLException
-     */
-	public void loadLevel(final int level) throws SQLException {
-		Object obj = null;
-		Element el;
-		
-		for (int y = 0; y < HEIGHT; y++) {
-			for (int x = 0; x < WIDTH; x++) {
-				
-				el = ElementDAO.getElementByPos(level, x, y);
-				
-				// On insère l'objet en fonction du type :
-				switch (el.getType())
-				{
-					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, this); break;
-					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, this); break;
-					//case 'd' : obj = new Lorann(x, y, Sprite.SPRITE_PORTE, level); break;
-					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR, this); break;
-					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH, this); break;
-					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV, this); break;
-					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, this); break;
-					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this); break;
-					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this); break;
-					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this); break;
-					case 'o' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this); break;
-				}
-				
-				setObjectXY(obj, x, y);
-			}
-		}
-	}
 	
 	public IObject getObjectXY(int x, int y) {
         return (IObject) this.object[x][y];
@@ -118,7 +81,38 @@ public class Scene implements IScene {
     public ICharacter getCharacter() {
         return (ICharacter)this.character;
     }
-
+	
+	@Override
+	public void loadLevel(final int level, final BoardFrame frame) throws SQLException {
+		Object obj = null;
+		Element el;
+		
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
+				
+				el = ElementDAO.getElementByPos(level, x, y);
+				
+				// On insère l'objet en fonction du type :
+				switch (el.getType())
+				{
+					case 'b' : obj = new Bulle(x, y, Sprite.SPRITE_BULLE, this);		frame.addSquare(obj, x, y); break;
+					case 'p' : obj = new Sortie(x, y, Sprite.SPRITE_PORTE, this);		frame.addSquare(obj, x, y); break;
+					case 'd' : /*obj = new Lorann(x, y, Sprite.SPRITE_PORTE, level);*/	frame.addSquare(obj, x, y); break;
+					case 'r' : obj = new Mur(x, y, Sprite.SPRITE_MUR, this);			frame.addSquare(obj, x, y); break;
+					case 'h' : obj = new SolHorizontal(x, y, Sprite.SPRITE_SOLH, this);	frame.addSquare(obj, x, y); break;
+					case 'v' : obj = new SolVertical(x, y, Sprite.SPRITE_SOLV, this);	frame.addSquare(obj, x, y); break;
+					case 'n' : obj = new DemonNord(x, y, Sprite.SPRITE_DEMONN, this);	/*frame.addPawn((IMobile)obj);*/ break;
+					case 'w' : obj = new DemonOuest(x, y, Sprite.SPRITE_DEMONW, this);	/*frame.addPawn((IMobile)obj);*/ break;
+					case 'e' : obj = new DemonEst(x, y, Sprite.SPRITE_DEMONE, this);	/*frame.addPawn((IMobile)obj);*/ break;
+					case 's' : obj = new DemonSud(x, y, Sprite.SPRITE_DEMONS, this);	/*frame.addPawn((IMobile)obj);*/ break;
+					case 'o' : obj = new Bourse(x, y, Sprite.SPRITE_BOURSE, this);		frame.addSquare(obj, x, y); break;
+				}
+				
+				setObjectXY(obj, x, y);
+			}
+		}
+	}
+	
 	@Override
 	public void setupSprites() {
 		try {
@@ -126,17 +120,5 @@ public class Scene implements IScene {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	public void drawMur(int x, int y, BoardFrame frame, IScene scene) {
-		Tile tile = new Tile("bone.png");
-		try {
-			tile.loadImage();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		frame.addSquare(tile, x, y);
 	}
 }

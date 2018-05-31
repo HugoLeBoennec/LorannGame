@@ -26,7 +26,7 @@ public final class ModelFacade implements IModel {
      * @throws IOException 
      * @throws SQLException 
      */
-    public ModelFacade(final IScene scene) throws IOException, SQLException {
+    public ModelFacade(final IScene scene) throws IOException {
         super();
     	
         this.scene = scene;

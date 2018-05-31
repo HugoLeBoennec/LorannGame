@@ -3,14 +3,15 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.sql.SQLException;
 import java.util.Observable;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import controller.KeyManager;
+import showboard.BoardFrame;
 import model.IScene;
-import showboard.*;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -18,7 +19,7 @@ import showboard.*;
  * @author Hugo Le Boënnec hugo.leboennec@cesi.fr
  * @version 1.1
  */
-public class ViewFacade extends Observable implements Runnable, IView {
+public class ViewFacade extends Observable implements IView {
 	
 	/** The width. **/
 	static private int WIDTH = 20;
@@ -40,59 +41,48 @@ public class ViewFacade extends Observable implements Runnable, IView {
      *            the scene
      */
     public ViewFacade(final IScene scene) {
+    	super();
+    	
     	this.keyManager = new KeyManager();
     	this.scene = scene;
+    	
+    	// Sprites loading :
+    	this.scene.setupSprites();
     	
 		// Call separate tread :
     	SwingUtilities.invokeLater(this);
     }
     
-    /**
-     * 
-     * Creates the new window.
-     */
+    @Override
     public void run() {
     	// Create a window named Lorann Game :
-    	BoardFrame window = new BoardFrame("Lorann Game");
+    	final BoardFrame window = new BoardFrame("Lorann Game");
     	
     	// Set the window parameters :
     	window.setDimension(new Dimension(WIDTH, HEIGHT));
-    	window.setDisplayFrame(new Rectangle(0, 0, WIDTH * 32, HEIGHT * 32));
+    	window.setDisplayFrame(new Rectangle(0, 0, WIDTH, HEIGHT));
     	window.setSize(WIDTH * 32, HEIGHT * 32);
-    	//window.setFocusable(true);
-    	//window.setFocusTraversalKeysEnabled(false);
-    	//window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
+    	window.setFocusable(true);
+    	window.setFocusTraversalKeysEnabled(false);
+    	window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);
     	window.setBackground(Color.BLACK);
-    	//window.addKeyListener(keyManager);
+    	window.addKeyListener(keyManager);
     	
-    	// Chargement des sprites :
-    	this.scene.setupSprites();
-    	
-    	for (int y = 0; y < HEIGHT; y++) {
-			for (int x = 0; x < WIDTH; x++) {
-				this.scene.drawMur(x, y, window, this.scene);
-			}
-    	}
-    	
-    	// Add to observer :
-    	this.addObserver(window.getObserver());
-    	
-    	window.setVisible(true);
-    	
-    	//this.windowUpdate();
+    	try {
+			this.displayScene(window);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
     
-    /*public void displayScene(final Scene scene) {
-        for( int y = 0; y < HEIGHT; y++) {
-        	
-        	for( int x = 0; x < WIDTH; x++) {
-        		
-        		//window.addSquare(lel, x, y);
-        		
-        	}
-        	
-        }
-    }*/
+    public void displayScene(final BoardFrame frame) throws SQLException {
+    	this.scene.loadLevel(1, frame);
+    	
+    	// Add to observer :
+    	this.addObserver(frame.getObserver());
+    	
+    	frame.setVisible(true);
+    }
     
     /**
      * Gets the main scene.
@@ -118,7 +108,7 @@ public class ViewFacade extends Observable implements Runnable, IView {
 		this.setChanged();
 		this.notifyObservers();
 	}
-    //cool
+    
     @Override
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);

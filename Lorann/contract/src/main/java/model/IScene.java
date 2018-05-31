@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.SQLException;
+
 import model.elements.*;
 import showboard.BoardFrame;
 
@@ -30,12 +32,14 @@ public interface IScene {
     public ICharacter getCharacter();
     
     /**
+     * Load a level from database
+     * 
+     * @throws SQLException
+     */
+	public void loadLevel(final int level, final BoardFrame frame) throws SQLException;
+    
+    /**
      * Set up the sprites.
      */
     public void setupSprites();
-    
-    /**
-     * Draw mur
-     */
-    public void drawMur(int x, int y, BoardFrame frame, final IScene scene);
 }

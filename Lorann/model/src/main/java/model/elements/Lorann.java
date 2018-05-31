@@ -21,6 +21,7 @@ public class Lorann extends Object implements ICharacter {
      */
 	public Lorann(int x, int y, final Sprite sprite, final Scene scene) {
 		super(x, y, true, sprite, scene);
+		this.alive = true;
 	}
 	
 	@Override

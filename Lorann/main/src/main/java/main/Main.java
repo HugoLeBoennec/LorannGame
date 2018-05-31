@@ -1,7 +1,6 @@
 package main;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import controller.ControllerFacade;
 import model.ModelFacade;
@@ -34,14 +33,17 @@ public abstract class Main {
         	controller = new ControllerFacade(new ViewFacade(scene), new ModelFacade(scene));
             controller.start();
         }
-        catch (final SQLException e)
+        /*catch (final SQLException e)
         {
             e.printStackTrace();
-        }
+        }*/
         catch (final IOException e)
         {
         	e.printStackTrace();
         }
+        catch (InterruptedException e)
+        {
+			e.printStackTrace();
+		}
     }
-
 }

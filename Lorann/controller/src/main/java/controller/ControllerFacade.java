@@ -38,11 +38,9 @@ public class ControllerFacade implements IController {
      *
      * @throws SQLException
      *             the SQL exception
+     * @throws InterruptedException 
      */
-    public void start() throws SQLException {
-    	// Configuration of the view :
-    	//this.view.setKeyListener(this.keyCode);
-    	//addObserver(this.view.getWindow().getObserver());
+    public void start() throws InterruptedException {
     	
     	// Get the main character :
         ICharacter character = this.model.getCharacter();
@@ -50,8 +48,9 @@ public class ControllerFacade implements IController {
         // The main loop, keep running until the character is dead :
         while (character.isAlive()) {
         	
+        	System.out.println("Idiot");
         	// Gestion des entrées utilisateur :
-        	if (KeyManager.key != 0) {
+        	/*if (KeyManager.key != 0) {
         		switch (KeyManager.key) {
         		case 39:
         			character.moveRight();
@@ -70,9 +69,11 @@ public class ControllerFacade implements IController {
         			break;
         		}
         	}
-        	KeyManager.key=0;
+        	KeyManager.key=0;*/
         	
         	this.view.windowUpdate();
+        	
+        	Thread.sleep(100);
         }
     }
 

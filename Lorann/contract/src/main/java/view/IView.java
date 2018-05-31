@@ -6,7 +6,13 @@ package view;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public interface IView {
+public interface IView extends Runnable {
+    
+	/**
+     * 
+     * Creates the new window.
+     */
+    public void run();
     
 	/**
      * Update all the frame.
