@@ -5,6 +5,7 @@ import java.io.IOException;
 import controller.ControllerFacade;
 import model.ModelFacade;
 import model.Scene;
+import model.graphics.Sprite;
 import view.ViewFacade;
 
 /**
@@ -28,19 +29,18 @@ public abstract class Main {
 
         try
         {
+        	// Sprite loading :
+            Sprite.LoadSprite();
+            
         	scene = new Scene();
         	
         	controller = new ControllerFacade(new ViewFacade(scene), new ModelFacade(scene));
             controller.start();
         }
-        /*catch (final SQLException e)
+        catch (IOException e)
         {
-            e.printStackTrace();
-        }*/
-        catch (final IOException e)
-        {
-        	e.printStackTrace();
-        }
+			e.printStackTrace();
+		}
         catch (InterruptedException e)
         {
 			e.printStackTrace();

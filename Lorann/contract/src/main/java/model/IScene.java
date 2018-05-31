@@ -37,9 +37,4 @@ public interface IScene {
      * @throws SQLException
      */
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException;
-    
-    /**
-     * Set up the sprites.
-     */
-    public void setupSprites();
 }

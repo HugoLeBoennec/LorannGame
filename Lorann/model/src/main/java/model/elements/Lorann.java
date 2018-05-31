@@ -50,7 +50,7 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public void moveUp() {
 		if (this.getScene().getObjectXY(this.getX(),this.getY()-1).getSolidity() == true) {
-			this.setY(getY()+1);
+			this.setY(getY()-1);
 		}
 		this.direction = 2;
 	}
@@ -58,14 +58,14 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public void moveDown() {
 		if (this.getScene().getObjectXY(this.getX(),this.getY()+1).getSolidity() == true) {
-			this.setY(getY()-1);
+			this.setY(getY()+1);
 		}
 		this.direction = 3;
 	}
 	
 	@Override
 	public void tick() {
-		
+		this.getSprite().animate();
 	}
 	
 	@Override

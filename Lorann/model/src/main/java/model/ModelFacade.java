@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.dao.ElementDAO;
 import model.elements.ICharacter;
+import model.graphics.Sprite;
 
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
@@ -26,9 +27,8 @@ public final class ModelFacade implements IModel {
      * @throws IOException 
      * @throws SQLException 
      */
-    public ModelFacade(final IScene scene) throws IOException {
+    public ModelFacade(final IScene scene) {
         super();
-    	
         this.scene = scene;
     }
     

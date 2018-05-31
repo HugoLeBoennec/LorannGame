@@ -45,9 +45,6 @@ public class ViewFacade extends Observable implements IView {
     	this.keyManager = new KeyManager();
     	this.scene = scene;
     	
-    	// Sprites loading :
-    	this.scene.setupSprites();
-    	
 		// Call separate tread :
     	SwingUtilities.invokeLater(this);
     }

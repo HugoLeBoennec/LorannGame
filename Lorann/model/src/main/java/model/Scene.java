@@ -1,11 +1,9 @@
 package model;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import model.dao.ElementDAO;
 import model.elements.Object;
-import model.graphics.Sprite;
 import model.elements.*;
 import showboard.BoardFrame;
 
@@ -115,14 +113,5 @@ public class Scene implements IScene {
 		
 		// Main character creation :
 		frame.addPawn(this.character);
-	}
-	
-	@Override
-	public void setupSprites() {
-		try {
-			Sprite.LoadSprite();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
