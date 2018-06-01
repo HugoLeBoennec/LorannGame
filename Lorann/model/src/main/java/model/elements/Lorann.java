@@ -200,6 +200,9 @@ public class Lorann extends Object implements ICharacter {
 		Sprite spr = object.getSprite();
 		
 		switch (object.getType()) {
+			case TYPE_DAEMON	:
+				scene.reloadLevel(true);
+				break;
 			case TYPE_BOURSE	:
 				if (spr.getAnimFrame() == 0)
 					spr.setAnimFrame(1);

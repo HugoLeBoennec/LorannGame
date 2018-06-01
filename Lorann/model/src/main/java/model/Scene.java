@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import model.dao.ElementDAO;
 import model.elements.Object;
