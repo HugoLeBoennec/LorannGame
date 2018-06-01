@@ -17,8 +17,8 @@ public class DemonNord extends Object implements IMobile {
 	/** If the daemon is alive */
 	private boolean alive;
 
-	/** If the daemon moves down. */
-	private boolean isDown;
+	/** The daemon's direction. */
+	private Direction direction;
 	
 	/**
      * Instantiates a new DemonNord.
@@ -34,13 +34,17 @@ public class DemonNord extends Object implements IMobile {
 		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONN, 0), scene);
 		
 		this.alive = true;
-		this.isDown = true;
+		
+		// Choose a random direction :
+		this.direction = Direction.randomDirection();
 	}
 
 	@Override
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
+		else
+			this.direction = Direction.DIR_LEFT;
 		
 		this.testCollision(getX(), getY(), this.getScene());
 	}
@@ -49,6 +53,8 @@ public class DemonNord extends Object implements IMobile {
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
+		else
+			this.direction = Direction.DIR_RIGHT;
 		
 		this.testCollision(getX(), getY(), this.getScene());
 	}
@@ -58,7 +64,7 @@ public class DemonNord extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		else
-			this.isDown = true;
+			this.direction = Direction.DIR_DOWN;
 		
 		this.testCollision(getX(), getY(), this.getScene());
 	}
@@ -68,48 +74,83 @@ public class DemonNord extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		else
-			this.isDown = false;
+			this.direction = Direction.DIR_UP;
 		
 		this.testCollision(getX(), getY(), this.getScene());
 	}
 	
 	@Override
 	public void moveDownLeft() {
-		this.moveLeft();
-		this.moveDown();
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()-1, this.getY()))
+			this.setX(getX()-1);
+		else
+			this.direction = Direction.DIR_UPRIGHT;
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()+1))
+			this.setY(getY()+1);
+		else
+			this.direction = Direction.DIR_UPLEFT;
 	}
 	
 	@Override
 	public void moveDownRight() {
-		this.moveRight();
-		this.moveDown();
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()+1, this.getY()))
+			this.setX(getX()+1);
+		else
+			this.direction = Direction.DIR_DOWNLEFT;
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()+1))
+			this.setY(getY()+1);
+		else
+			this.direction = Direction.DIR_UPRIGHT;
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		this.moveLeft();
-		this.moveUp();
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()-1, this.getY()))
+			this.setX(getX()-1);
+		else
+			this.direction = Direction.DIR_UPRIGHT;
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()-1))
+			this.setY(getY()-1);
+		else
+			this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
 	@Override
 	public void moveUpRight() {
-		this.moveRight();
-		this.moveUp();
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()+1, this.getY()))
+			this.setX(getX()+1);
+		else
+			this.direction = Direction.DIR_UPLEFT;
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()-1))
+			this.setY(getY()-1);
+		else
+			this.direction = Direction.DIR_DOWNRIGHT;
 	}
 	
 	@Override
 	public void tick() {
-		ICharacter character = this.getScene().getCharacter();
-		
-		if (this.isDown)
-			this.moveDownRight();
-		else
-			this.moveUp();
-		
-		if (character.getX() < this.getX())
-			this.moveDownLeft();
-		else if (character.getX() > this.getX())
-			this.moveUpRight();
+		switch (this.direction) {
+			case DIR_LEFT 		: this.moveLeft(); break;
+			case DIR_UPLEFT		: this.moveUpLeft(); break;
+			case DIR_UP			: this.moveUp(); break;
+			case DIR_UPRIGHT	: this.moveUpRight(); break;
+			case DIR_RIGHT		: this.moveRight(); break;
+			case DIR_DOWNRIGHT	: this.moveDownRight(); break;
+			case DIR_DOWN		: this.moveDown(); break;
+			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
+		}
 	}
 	
 	@Override
