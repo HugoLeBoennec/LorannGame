@@ -9,7 +9,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,7 +94,7 @@ class BoardPanel extends JPanel implements Observer {
         super();
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        this.font = new Font(/*Font.TRUETYPE_FONT, new File("font/comic.ttf")*/Font.SANS_SERIF, Font.PLAIN, 12);
+        this.font = new Font("Comic Sans MS", Font.PLAIN, 30);
         final Graphics2D graphics = this.noImage.createGraphics();
         graphics.setColor(Color.darkGray);
         graphics.fillRect(0, 0, 2, 2);
@@ -124,10 +123,9 @@ class BoardPanel extends JPanel implements Observer {
         }
         
         // Draw the score text :
-        System.out.println("Text");
         graphics.setFont(font);
         graphics.setColor(Color.WHITE);
-        graphics.drawString("Test Score : ", 24, 364);
+        graphics.drawString("Test Score : ", 24, 384);
     }
 
     /*
