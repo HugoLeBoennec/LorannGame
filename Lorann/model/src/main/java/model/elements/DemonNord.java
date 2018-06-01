@@ -97,7 +97,7 @@ public class DemonNord extends Object implements IMobile {
 	@Override
 	public void moveDownRight() {
 		final Scene scene = this.getScene();
-		
+				
 		if (!scene.isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		else
@@ -141,6 +141,8 @@ public class DemonNord extends Object implements IMobile {
 	
 	@Override
 	public void tick() {
+		this.testCollision(getX(), getY(), this.getScene());
+		
 		switch (this.direction) {
 			case DIR_LEFT 		: this.moveLeft(); break;
 			case DIR_UPLEFT		: this.moveUpLeft(); break;

@@ -101,6 +101,8 @@ public class DemonOuest extends Object implements IMobile {
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
+		this.testCollision(getX(), getY(), this.getScene());
+		
 		// Vertical moves, follow player :
 		if (character.getY() < this.getY())
 			this.moveUp();

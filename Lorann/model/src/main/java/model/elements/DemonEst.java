@@ -92,6 +92,8 @@ public class DemonEst extends Object implements IMobile {
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
+		this.testCollision(getX(), getY(), this.getScene());
+		
 		// Follow player :
 		if  (character.getX() == getX()) {
 			if (character.getY() > getY())		this.moveDown();

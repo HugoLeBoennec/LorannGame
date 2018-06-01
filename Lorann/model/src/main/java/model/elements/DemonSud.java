@@ -101,6 +101,8 @@ public class DemonSud extends Object implements IMobile {
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
+		this.testCollision(getX(), getY(), this.getScene());
+		
 		// Vertical moves, bounce on walls :
 		if (this.isDown)
 			this.moveDown();
