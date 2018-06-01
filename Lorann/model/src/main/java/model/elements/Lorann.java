@@ -188,8 +188,12 @@ public class Lorann extends Object implements ICharacter {
 	private void testCollision(final int x, final int y, final Scene scene) {
 		Object object = (Object)scene.getObjectXY(x, y);
 		
+		// Test if the object is null :
+		if (object == null)
+			return;
+		
 		switch (object.getType()) {
-			case TYPE_BOURSE : object.setX(-1); object.setY(-1); break;
+			case TYPE_BOURSE : object.getSprite().setAnimFrame(1); break;
 		}
 	}
 }

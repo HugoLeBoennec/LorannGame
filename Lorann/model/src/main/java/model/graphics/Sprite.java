@@ -178,6 +178,9 @@ public class Sprite {
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_u.png")));
 		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_ur.png")));
 		
+		SPRITE_VIDE = new Sprite(0);
+		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
+		
 		SPRITE_SORTILEGE = new Sprite(1);
 		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_1.png")));
 		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_2.png")));
@@ -215,8 +218,6 @@ public class Sprite {
 		
 		SPRITE_BOURSE = new Sprite(0);
 		SPRITE_BOURSE.appendImage(ImageIO.read(new File("sprites/purse.png")));
-		
-		SPRITE_VIDE = new Sprite(0);
-		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
+		SPRITE_BOURSE.appendImage(SPRITE_VIDE.getImage(0));
 	}
 }
