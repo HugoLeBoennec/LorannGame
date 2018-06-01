@@ -69,10 +69,17 @@ public class ViewFacade extends Observable implements IView {
 		this.displayScene();
     }
     
+    @Override
+    public void nextLevel() {
+    	/*Thread.
+    	this.scene.unloadLevel();
+    	this.scene.lo*/
+    }
+    
     public void displayScene() {
     	// Load the first level here :
     	try {
-    		this.scene.loadLevel(1, this.window);
+    		this.scene.loadLevel(this.scene.getCurrentLevel(), this.window);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -105,6 +112,19 @@ public class ViewFacade extends Observable implements IView {
 	public void windowUpdate() {
 		this.setChanged();
 		this.notifyObservers();
+		
+		if (this.scene.isNextLevel()) {
+			this.scene.unloadLevel();
+			
+			this.scene.setCurrentLevel(this.scene.getCurrentLevel()+1);
+			this.scene.setNextLevel(false);
+			
+			try {
+	    		this.scene.loadLevel(this.scene.getCurrentLevel(), this.window);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
     
     @Override

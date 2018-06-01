@@ -37,6 +37,36 @@ public interface IScene {
     public void setObjectXY(final IObject object, final int x, final int y);
     
     /**
+     * Gets the current level.
+     * 
+     * @return the current level
+     */
+    public int getCurrentLevel();
+    
+    /**
+     * Sets the current level.
+     *
+     * @param level
+     *            the level
+     */
+    public void setCurrentLevel(final int level);
+    
+    /**
+     * Gets the next level flag.
+     *
+     * @return the state
+     */
+    public boolean isNextLevel();
+    
+    /**
+     * Sets the next level flag.
+     *
+     * @param next
+     *            the state
+     */
+    public void setNextLevel(final boolean next);
+    
+    /**
      * Test if an object is solid.
      *
      * @param x
@@ -60,4 +90,9 @@ public interface IScene {
      * @throws SQLException
      */
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException;
+	
+	/**
+     * Unload the current level
+     */
+	public void unloadLevel();
 }

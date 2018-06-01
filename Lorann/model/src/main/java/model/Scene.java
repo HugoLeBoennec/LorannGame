@@ -27,15 +27,23 @@ public class Scene implements IScene {
     /** The main character */
     private Lorann character;
     
+    /** The current level */
+    private int currentLevel;
+    
+    /** If the next level must be loaded */
+    private boolean nextLevel;
+    
     /**
      * Instantiates a new Scene.
      * 
      * @throws SQLException
      */
     public Scene() {
-        super();
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, this);
+        
+        this.currentLevel = 1;
+        this.nextLevel = false;
     }
 	
     @Override
@@ -46,6 +54,26 @@ public class Scene implements IScene {
     @Override
     public void setObjectXY(final IObject object, final int x, final int y) {
         this.object[x][y] = (Object) object;
+    }
+    
+    @Override
+    public int getCurrentLevel() {
+    	return this.currentLevel;
+    }
+    
+    @Override
+    public void setCurrentLevel(final int level) {
+    	this.currentLevel = level;
+    }
+    
+    @Override
+    public boolean isNextLevel() {
+    	return this.nextLevel;
+    }
+    
+    @Override
+    public void setNextLevel(final boolean next) {
+    	this.nextLevel = next;
     }
 
     @Override
@@ -107,7 +135,13 @@ public class Scene implements IScene {
 		frame.addPawn(this.character);
 	}
 	
+	@Override
 	public void unloadLevel() {
-		
+		// Deletion of all objects :
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
+				setObjectXY(null, x, y);
+			}
+		}
 	}
 }
