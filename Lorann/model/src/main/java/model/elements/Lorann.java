@@ -155,6 +155,8 @@ public class Lorann extends Object implements ICharacter {
 	public void tick() {
 		this.getSprite().animate();
 		
+		this.testCollision(getX(), getY(), this.getScene());
+		
 		// Update the spell only if cast :
 		if (this.sortilege.isCast())
 			this.sortilege.tick();
