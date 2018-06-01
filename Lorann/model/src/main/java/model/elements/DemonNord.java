@@ -86,7 +86,7 @@ public class DemonNord extends Object implements IMobile {
 		if (!scene.isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		else
-			this.direction = Direction.DIR_UPRIGHT;
+			this.direction = Direction.DIR_DOWNRIGHT;
 		
 		if (this.alive) {
 			if (!scene.isPenetrable(this.getX(), this.getY()+1))
