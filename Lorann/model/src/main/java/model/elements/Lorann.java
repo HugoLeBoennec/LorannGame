@@ -89,7 +89,6 @@ public class Lorann extends Object implements ICharacter {
 			this.setX(getX()-1);
 			this.setY(getY()+1);
 		}
-		else
 			this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
@@ -99,7 +98,6 @@ public class Lorann extends Object implements ICharacter {
 			this.setX(getX()+1);
 			this.setY(getY()+1);
 		}
-		else
 			this.direction = Direction.DIR_DOWNRIGHT;
 	}
 	
@@ -109,7 +107,6 @@ public class Lorann extends Object implements ICharacter {
 			this.setX(getX()-1);
 			this.setY(getY()-1);
 		}
-		else
 			this.direction = Direction.DIR_UPLEFT;
 	}
 	
@@ -119,7 +116,6 @@ public class Lorann extends Object implements ICharacter {
 			this.setX(getX()+1);
 			this.setY(getY()-1);
 		}
-		else
 			this.direction = Direction.DIR_UPRIGHT;
 	}
 	

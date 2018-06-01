@@ -70,6 +70,10 @@ public class ControllerFacade implements IController {
 	        		case KeyEvent.VK_NUMPAD9	: character.moveUpRight(); break;
 	        		
 	        		// Diagonal standard moves :
+	        		case KeyEvent.VK_Z			: character.moveUp(); break;
+	        		case KeyEvent.VK_Q			: character.moveLeft(); break;
+	        		case KeyEvent.VK_S			: character.moveDown(); break;
+	        		case KeyEvent.VK_D			: character.moveRight(); break;
 	        		case KeyEvent.VK_C			: character.moveDownLeft(); break;
 	        		case KeyEvent.VK_W			: character.moveDownRight(); break;
 	        		case KeyEvent.VK_A			: character.moveUpLeft(); break;
