@@ -15,6 +15,7 @@ public class DemonEst extends Object implements IMobile {
 	
 	/** If the daemon moves right. */
 	private boolean isRight;
+	private boolean isLeft;
 	
 	/**
      * Instantiates a new DemonEst.
@@ -30,6 +31,7 @@ public class DemonEst extends Object implements IMobile {
 		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONE, 0), scene);
 		
 		this.isRight = true;
+		this.isLeft = true;
 	}
 	
 	@Override
@@ -46,6 +48,8 @@ public class DemonEst extends Object implements IMobile {
 			this.setX(getX()-1);
 		else
 			this.isRight = true;
+		else 
+			
 	}
 
 	@Override
@@ -99,6 +103,11 @@ public class DemonEst extends Object implements IMobile {
 			this.moveRight();
 		else
 			this.moveLeft();
+		
+		if (this.isLeft)
+		   this.moveLeft();
+		else 
+			 this.moveRight();
 	}
 
 	@Override
