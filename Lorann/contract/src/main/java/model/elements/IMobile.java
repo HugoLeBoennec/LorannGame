@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.IScene;
 import showboard.IPawn;
 
 /**
@@ -54,4 +55,16 @@ public interface IMobile extends IPawn {
      * Called when the main loop updates
      */
 	public void tick();
+	
+	/**
+     * Process the collision tests
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
+     */
+	public void testCollision(final int x, final int y, final IScene scene);
 }

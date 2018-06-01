@@ -2,6 +2,7 @@ package model.elements;
 
 import java.awt.Point;
 
+import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
 import showboard.BoardFrame;
@@ -155,8 +156,6 @@ public class Lorann extends Object implements ICharacter {
 	public void tick() {
 		this.getSprite().animate();
 		
-		this.testCollision(getX(), getY(), this.getScene());
-		
 		// Update the spell only if cast :
 		if (this.sortilege.isCast())
 			this.sortilege.tick();
@@ -182,17 +181,8 @@ public class Lorann extends Object implements ICharacter {
 		return new Point(this.getX(), this.getY());
 	}
 	
-	/**
-     * Process the collision tests
-     * 
-     * @param x
-     *            the X position
-     * @param y
-     *            the Y position
-     * @param scene
-     *            the current scene
-     */
-	private void testCollision(final int x, final int y, final Scene scene) {
+	@Override
+	public void testCollision(final int x, final int y, final IScene scene) {
 		Object object = (Object)scene.getObjectXY(x, y);
 		
 		// Test if the object is null :
@@ -202,9 +192,6 @@ public class Lorann extends Object implements ICharacter {
 		Sprite spr = object.getSprite();
 		
 		switch (object.getType()) {
-			case TYPE_DAEMON	:
-				scene.reloadLevel(true);
-				break;
 			case TYPE_BOURSE	:
 				if (spr.getAnimFrame() == 0)
 					spr.setAnimFrame(1);
