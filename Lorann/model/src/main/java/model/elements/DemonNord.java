@@ -117,7 +117,7 @@ public class DemonNord extends Object implements IMobile {
 		if (object == null)
 			return;
 		
-		if (character.getX() == this.getX() && character.getY() == this.getY())
+		if (character.getX() == x && character.getY() == y)
 			scene.reloadLevel(true);
 		
 		if (object.getType() == Type.TYPE_SORTIE) {

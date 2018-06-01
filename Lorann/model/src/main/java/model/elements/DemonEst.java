@@ -33,7 +33,7 @@ public class DemonEst extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class DemonEst extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class DemonEst extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class DemonEst extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 	}
 	
 	@Override
@@ -112,8 +112,12 @@ public class DemonEst extends Object implements IMobile {
 		if (object == null)
 			return;
 		
-		if (character.getX() == this.getX() && character.getY() == this.getY())
+		System.out.println(x + ", " + y);
+		
+		if (character.getX() == x && character.getY() == y) {
+			System.out.println("Touched");
 			scene.reloadLevel(true);
+		}
 		
 		if (object.getType() == Type.TYPE_SORTIE) {
 			if (object.getSprite().getAnimFrame() == 0) {
