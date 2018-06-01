@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import controller.KeyManager;
 import model.IScene;
 import showboard.BoardFrame;
+import showboard.BoardPanel;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -77,13 +78,6 @@ public class ViewFacade extends Observable implements IView {
 		this.displayScene();
     }
     
-    @Override
-    public void nextLevel() {
-    	/*Thread.
-    	this.scene.unloadLevel();
-    	this.scene.lo*/
-    }
-    
     public void displayScene() {
     	// Load the first level here :
     	try {
@@ -122,10 +116,13 @@ public class ViewFacade extends Observable implements IView {
 		this.notifyObservers();
 		
 		if (this.scene.hasToReloadLevel()) {
+			final BoardPanel panel = this.window.getBoardPanel();
+			
 			this.scene.unloadLevel();
 			this.scene.reloadLevel(false);
 			
-			this.window.getBoardPanel().clear();
+			panel.clear();
+			panel.resetScore();
 			
 			try {
 	    		this.scene.loadLevel(this.scene.getCurrentLevel(), this.window);

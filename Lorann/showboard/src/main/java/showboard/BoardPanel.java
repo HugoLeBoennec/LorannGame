@@ -82,6 +82,9 @@ public class BoardPanel extends JPanel implements Observer {
     /** The height looped. */
     private Boolean             heightLooped     = false;
     
+    /** The total score. */
+    private int					score     		 = 0;
+    
     /** The font. */
     private final Font font;
 
@@ -98,6 +101,24 @@ public class BoardPanel extends JPanel implements Observer {
         final Graphics2D graphics = this.noImage.createGraphics();
         graphics.setColor(Color.darkGray);
         graphics.fillRect(0, 0, 2, 2);
+    }
+    
+    /**
+     * Add to the score.
+     *
+     * @param score
+     *            the amount
+     */
+    public void addScore(final int score) {
+    	this.score += score;
+    }
+    
+    /**
+     * Reset the score to 0.
+     *
+     */
+    public void resetScore() {
+    	this.score = 0;
     }
 
     /**
@@ -125,7 +146,7 @@ public class BoardPanel extends JPanel implements Observer {
         // Draw the score text :
         graphics.setFont(font);
         graphics.setColor(Color.WHITE);
-        graphics.drawString("Test Score : ", 24, 384);
+        graphics.drawString("Test Score : " + this.score, 24, 384);
     }
 
     /*

@@ -13,6 +13,18 @@ import model.elements.ICharacter;
  */
 public interface IModel {
 	
+    /** The total score. */
+    static int score = 0;
+    
+	/**
+     * Gets the total score.
+     *
+     * @return the score
+     */
+	static public int getScore() {
+		return score;
+	}
+	
 	/**
      * Gets the main scene.
      *

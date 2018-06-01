@@ -16,12 +16,6 @@ public interface IView extends Runnable {
      */
     public void run();
     
-    /**
-     * 
-     * Load the next level.
-     */
-    public void nextLevel();
-    
 	/**
      * Update all the frame.
      *
