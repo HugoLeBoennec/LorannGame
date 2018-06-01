@@ -1,8 +1,9 @@
 package model.graphics;
 
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -14,48 +15,48 @@ import javax.imageio.ImageIO;
  */
 public class Sprite {
 
-	/** The sprites of Lorann. */
-	static public Sprite SPRITE_LORANN;
+	/** The images of Lorann. */
+	static public ArrayList<Image> SPRITE_LORANN;
 	
-	/** The sprites of the spell. */
-	static public Sprite SPRITE_SORTILEGE;
+	/** The images of the spell. */
+	static public ArrayList<Image> SPRITE_SORTILEGE;
 	
-	/** The sprite of the energy bubble. */
-	static public Sprite SPRITE_BULLE;
+	/** The images of the energy bubble. */
+	static public ArrayList<Image> SPRITE_BULLE;
 	
-	/** The sprites of the door. */
-	static public Sprite SPRITE_PORTE;
+	/** The images of the door. */
+	static public ArrayList<Image> SPRITE_PORTE;
 	
-	/** The sprite of the wall. */
-	static public Sprite SPRITE_MUR;
+	/** The images of the wall. */
+	static public ArrayList<Image> SPRITE_MUR;
 	
-	/** The sprite of the horizontal floor. */
-	static public Sprite SPRITE_SOLH;
+	/** The images of the horizontal floor. */
+	static public ArrayList<Image> SPRITE_SOLH;
 	
-	/** The sprite of the vertical floor. */
-	static public Sprite SPRITE_SOLV;
+	/** The images of the vertical floor. */
+	static public ArrayList<Image> SPRITE_SOLV;
 	
-	/** The sprite of the north daemon. */
-	static public Sprite SPRITE_DEMONN;
+	/** The images of the north daemon. */
+	static public ArrayList<Image> SPRITE_DEMONN;
 	
-	/** The sprite of the west daemon. */
-	static public Sprite SPRITE_DEMONW;
+	/** The images of the west daemon. */
+	static public ArrayList<Image> SPRITE_DEMONW;
 	
-	/** The sprite of the east daemon. */
-	static public Sprite SPRITE_DEMONE;
+	/** The images of the east daemon. */
+	static public ArrayList<Image> SPRITE_DEMONE;
 	
-	/** The sprite of the south daemon. */
-	static public Sprite SPRITE_DEMONS;
+	/** The images of the south daemon. */
+	static public ArrayList<Image> SPRITE_DEMONS;
 	
-	/** The sprite of the collectable purse. */
-	static public Sprite SPRITE_BOURSE;
+	/** The images of the collectable purse. */
+	static public ArrayList<Image> SPRITE_BOURSE;
 	
-	/** The sprite of the empty tile. */
-	static public Sprite SPRITE_VIDE;
+	/** The images of the empty tile. */
+	static public ArrayList<Image> SPRITE_VIDE;
 	
 	
 	/** The multiple images. */
-	private java.util.ArrayList<Image> image;
+	private ArrayList<Image> image;
 	
 	/** The animation speed. Set it to 0 if no animation. */
 	private int animVitesse;
@@ -72,11 +73,11 @@ public class Sprite {
      * @param animSpeed
      *            the animation speed
      */
-	public Sprite(final int animVitesse) {
+	public Sprite(final ArrayList<Image> imageList, final int animVitesse) {
+		this.image = imageList;
 		this.animVitesse = animVitesse;
 		this.animFrame = 0;
 		this.animTimer = 0;
-		this.image = new java.util.ArrayList<Image>();
 	}
 	
 	/**
@@ -168,56 +169,57 @@ public class Sprite {
      *
      */
 	static public void LoadSprite() throws IOException {
-		SPRITE_LORANN = new Sprite(2);
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_r.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_br.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_b.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_bl.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_l.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_ul.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_u.png")));
-		SPRITE_LORANN.appendImage(ImageIO.read(new File("sprites/lorann_ur.png")));
+		SPRITE_LORANN = new ArrayList<Image>();
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_r.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_br.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_b.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_bl.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_l.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_ul.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_u.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_ur.png")));
 		
-		SPRITE_VIDE = new Sprite(0);
-		SPRITE_VIDE.appendImage(ImageIO.read(new File("sprites/empty.png")));
+		SPRITE_VIDE = new ArrayList<Image>();
+		SPRITE_VIDE.add(ImageIO.read(new File("sprites/empty.png")));
 		
-		SPRITE_SORTILEGE = new Sprite(1);
-		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_1.png")));
-		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_2.png")));
-		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_3.png")));
-		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_4.png")));
-		SPRITE_SORTILEGE.appendImage(ImageIO.read(new File("sprites/fireball_5.png")));
+		SPRITE_SORTILEGE = new ArrayList<Image>();
+		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_1.png")));
+		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_2.png")));
+		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_3.png")));
+		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_4.png")));
+		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_5.png")));
 		
-		SPRITE_BULLE = new Sprite(0);
-		SPRITE_BULLE.appendImage(ImageIO.read(new File("sprites/crystal_ball.png")));
+		SPRITE_BULLE = new ArrayList<Image>();
+		SPRITE_BULLE.add(ImageIO.read(new File("sprites/crystal_ball.png")));
+		SPRITE_BULLE.add(SPRITE_VIDE.get(0));
 		
-		SPRITE_PORTE = new Sprite(0);
-		SPRITE_PORTE.appendImage(ImageIO.read(new File("sprites/gate_closed.png")));
-		SPRITE_PORTE.appendImage(ImageIO.read(new File("sprites/gate_open.png")));
+		SPRITE_PORTE = new ArrayList<Image>();
+		SPRITE_PORTE.add(ImageIO.read(new File("sprites/gate_closed.png")));
+		SPRITE_PORTE.add(ImageIO.read(new File("sprites/gate_open.png")));
 		
-		SPRITE_MUR = new Sprite(0);
-		SPRITE_MUR.appendImage(ImageIO.read(new File("sprites/bone.png")));
+		SPRITE_MUR = new ArrayList<Image>();
+		SPRITE_MUR.add(ImageIO.read(new File("sprites/bone.png")));
 		
-		SPRITE_SOLH = new Sprite(0);
-		SPRITE_SOLH.appendImage(ImageIO.read(new File("sprites/horizontal_bone.png")));
+		SPRITE_SOLH = new ArrayList<Image>();
+		SPRITE_SOLH.add(ImageIO.read(new File("sprites/horizontal_bone.png")));
 		
-		SPRITE_SOLV = new Sprite(0);
-		SPRITE_SOLV.appendImage(ImageIO.read(new File("sprites/vertical_bone.png")));
+		SPRITE_SOLV = new ArrayList<Image>();
+		SPRITE_SOLV.add(ImageIO.read(new File("sprites/vertical_bone.png")));
 		
-		SPRITE_DEMONN = new Sprite(0);
-		SPRITE_DEMONN.appendImage(ImageIO.read(new File("sprites/monster_1.png")));
+		SPRITE_DEMONN = new ArrayList<Image>();
+		SPRITE_DEMONN.add(ImageIO.read(new File("sprites/monster_1.png")));
 		
-		SPRITE_DEMONW = new Sprite(0);
-		SPRITE_DEMONW.appendImage(ImageIO.read(new File("sprites/monster_2.png")));
+		SPRITE_DEMONW = new ArrayList<Image>();
+		SPRITE_DEMONW.add(ImageIO.read(new File("sprites/monster_2.png")));
 		
-		SPRITE_DEMONE = new Sprite(0);
-		SPRITE_DEMONE.appendImage(ImageIO.read(new File("sprites/monster_3.png")));
+		SPRITE_DEMONE = new ArrayList<Image>();
+		SPRITE_DEMONE.add(ImageIO.read(new File("sprites/monster_3.png")));
 		
-		SPRITE_DEMONS = new Sprite(0);
-		SPRITE_DEMONS.appendImage(ImageIO.read(new File("sprites/monster_4.png")));
+		SPRITE_DEMONS = new ArrayList<Image>();
+		SPRITE_DEMONS.add(ImageIO.read(new File("sprites/monster_4.png")));
 		
-		SPRITE_BOURSE = new Sprite(0);
-		SPRITE_BOURSE.appendImage(ImageIO.read(new File("sprites/purse.png")));
-		SPRITE_BOURSE.appendImage(SPRITE_VIDE.getImage(0));
+		SPRITE_BOURSE = new ArrayList<Image>();
+		SPRITE_BOURSE.add(ImageIO.read(new File("sprites/purse.png")));
+		SPRITE_BOURSE.add(SPRITE_VIDE.get(0));
 	}
 }

@@ -27,7 +27,7 @@ public class DemonEst extends Object implements IMobile {
      *            the current scene
      */
 	public DemonEst(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_DAEMON, x, y, false, Sprite.SPRITE_DEMONE, scene);
+		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONE, 0), scene);
 		
 		this.isRight = true;
 	}

@@ -27,7 +27,7 @@ public class DemonSud extends Object implements IMobile {
      *            the current scene
      */
 	public DemonSud(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_DAEMON, x, y, false, Sprite.SPRITE_DEMONS, scene);
+		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONS, 0), scene);
 		
 		this.isDown = true;
 	}

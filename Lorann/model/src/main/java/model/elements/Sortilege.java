@@ -23,7 +23,7 @@ public class Sortilege extends Object implements IMobile {
      * Instantiates a new Sortilege.
      */
 	public Sortilege(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_STATIC, x, y, false, Sprite.SPRITE_SORTILEGE, scene);		
+		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_SORTILEGE, 0), scene);		
 		this.cast = false;
 	}
 	
