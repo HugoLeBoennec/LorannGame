@@ -90,15 +90,16 @@ public class DemonNord extends Object implements IMobile {
 		
 		// Vertical moves, bounce on walls :
 		if (this.isDown)
-			this.moveDown();
+			this.moveDownRight();
 		else
 			this.moveUp();
 		
 		// Horizontal moves, follow player :
 		if (character.getX() < this.getX())
-			this.moveLeft();
-		else if (character.getX() > this.getX())
-			this.moveRight();
+			this.moveDownLeft();
+		else if (character.getX() > this.getX()) {
+			this.moveUpRight();
+		}
 	}
 	
 	@Override
