@@ -38,7 +38,7 @@ public class Lorann extends Object implements ICharacter {
 		
 		this.alive = true;
 		this.direction = Direction.DIR_RIGHT;
-		this.sortilege = new Sortilege(x, y, scene);
+		this.sortilege = new Sortilege(-1, -1, scene);
 	}
 	
 	/**
