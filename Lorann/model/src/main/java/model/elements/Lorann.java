@@ -194,7 +194,19 @@ public class Lorann extends Object implements ICharacter {
 		
 		switch (object.getType()) {
 			case TYPE_BOURSE	: object.getSprite().setAnimFrame(1); break;
-			case TYPE_BULLE		: object.getSprite().setAnimFrame(1); break;
+			case TYPE_BULLE		: 
+				
+				object.getSprite().setAnimFrame(1);
+				
+				for( int i = 0; i < 20; i++) {
+					for(int j = 0; j <12; j++) {
+						if(object.getType() == Type.TYPE_SORTIE) {
+							object.getSprite().setAnimFrame(1); break;
+						}
+					}
+				}
+				
+			
 			case TYPE_SORTIE	:
 			{
 				Sprite sprite = object.getSprite();
@@ -203,6 +215,7 @@ public class Lorann extends Object implements ICharacter {
 					// Tue le joueur
 				}
 				else {
+					
 					
 				}
 					
