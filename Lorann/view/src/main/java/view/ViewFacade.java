@@ -113,11 +113,9 @@ public class ViewFacade extends Observable implements IView {
 		this.setChanged();
 		this.notifyObservers();
 		
-		if (this.scene.isNextLevel()) {
+		if (this.scene.hasToReloadLevel()) {
 			this.scene.unloadLevel();
-			
-			this.scene.setCurrentLevel(this.scene.getCurrentLevel()+1);
-			this.scene.setNextLevel(false);
+			this.scene.reloadLevel(false);
 			
 			try {
 	    		this.scene.loadLevel(this.scene.getCurrentLevel(), this.window);

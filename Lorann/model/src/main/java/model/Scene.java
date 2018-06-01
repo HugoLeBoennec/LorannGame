@@ -91,13 +91,13 @@ public class Scene implements IScene {
     }
     
     @Override
-    public boolean isNextLevel() {
+    public boolean hasToReloadLevel() {
     	return this.nextLevel;
     }
     
     @Override
-    public void setNextLevel(final boolean next) {
-    	this.nextLevel = next;
+    public void reloadLevel(final boolean reload) {
+    	this.nextLevel = reload;
     }
 
     @Override

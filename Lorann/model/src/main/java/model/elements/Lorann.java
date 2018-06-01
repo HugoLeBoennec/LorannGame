@@ -211,11 +211,12 @@ public class Lorann extends Object implements ICharacter {
 				}
 				break;
 			case TYPE_SORTIE	:
-				if (spr.getAnimFrame() == 0) {
-					// Tue le joueur
+				if (spr.getAnimFrame() == 0)
+					scene.reloadLevel(true);
+				else {
+					scene.setCurrentLevel(scene.getCurrentLevel()+1);
+					scene.reloadLevel(true);
 				}
-				else
-					this.getScene().setNextLevel(true);
 					
 				break;
 			default : break;

@@ -52,19 +52,19 @@ public interface IScene {
     public void setCurrentLevel(final int level);
     
     /**
-     * Gets the next level flag.
+     * Gets the reload level flag.
      *
      * @return the state
      */
-    public boolean isNextLevel();
+    public boolean hasToReloadLevel();
     
     /**
-     * Sets the next level flag.
+     * Sets the reload level flag.
      *
-     * @param next
-     *            the state
+     * @param reload
+     * 				the reload state
      */
-    public void setNextLevel(final boolean next);
+    public void reloadLevel(final boolean reload);
     
     /**
      * Test if an object is solid.
