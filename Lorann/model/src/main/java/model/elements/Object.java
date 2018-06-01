@@ -50,7 +50,7 @@ public abstract class Object implements IObject {
     public Object(final Type type, final int x, final int y, final boolean solid, final Sprite sprite, final Scene scene) {
     	this.type = type;
     	this.x = x;
-    	this.x = y;
+    	this.y = y;
     	this.solid = solid;
         this.sprite = sprite;
         this.scene = scene;

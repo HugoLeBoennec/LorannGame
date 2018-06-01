@@ -2,7 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FontFormatException;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -56,7 +58,11 @@ public class ViewFacade extends Observable implements IView {
     @Override
     public void run() {
     	// Create a window named Lorann Game :
-    	this.window = new BoardFrame("Lorann Game");
+    	try {
+			this.window = new BoardFrame("Lorann Game");
+		} catch (FontFormatException | IOException e) {
+			e.printStackTrace();
+		}
     	
     	// Set the window parameters :
     	this.window.setDimension(new Dimension(WIDTH, HEIGHT));

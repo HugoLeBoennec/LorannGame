@@ -1,7 +1,9 @@
 package showboard;
 
 import java.awt.Dimension;
+import java.awt.FontFormatException;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.Observer;
 
 import javax.swing.JFrame;
@@ -43,8 +45,10 @@ public class BoardFrame extends JFrame implements IBoard {
      *            the title of the frame
      * @param decorated
      *            the decorated
+     * @throws IOException 
+     * @throws FontFormatException 
      */
-    public BoardFrame(final String title, final Boolean decorated) {
+    public BoardFrame(final String title, final Boolean decorated) throws FontFormatException, IOException {
         super();
         this.setTitle(title);
         this.setSize(defaultFrameSize, defaultFrameSize);
@@ -62,15 +66,19 @@ public class BoardFrame extends JFrame implements IBoard {
      *
      * @param title
      *            the title
+     * @throws IOException 
+     * @throws FontFormatException 
      */
-    public BoardFrame(final String title) {
+    public BoardFrame(final String title) throws FontFormatException, IOException {
         this(title, false);
     }
 
     /**
      * Instantiates a new board frame.
+     * @throws IOException 
+     * @throws FontFormatException 
      */
-    public BoardFrame() {
+    public BoardFrame() throws FontFormatException, IOException {
         this("", false);
     }
 
@@ -79,8 +87,10 @@ public class BoardFrame extends JFrame implements IBoard {
      *
      * @param decorated
      *            the decorated
+     * @throws IOException 
+     * @throws FontFormatException 
      */
-    public BoardFrame(final Boolean decorated) {
+    public BoardFrame(final Boolean decorated) throws FontFormatException, IOException {
         this("", decorated);
     }
 

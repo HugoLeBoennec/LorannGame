@@ -2,11 +2,15 @@ package showboard;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,14 +82,20 @@ class BoardPanel extends JPanel implements Observer {
 
     /** The height looped. */
     private Boolean             heightLooped     = false;
+    
+    /** The font. */
+    private final Font font;
 
     /**
      * Instantiates a new board panel.
+     * @throws IOException 
+     * @throws FontFormatException 
      */
-    BoardPanel() {
+    BoardPanel() throws FontFormatException, IOException {
         super();
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        this.font = Font.createFont(Font.TRUETYPE_FONT, new File("font/comic.ttf"));
         final Graphics2D graphics = this.noImage.createGraphics();
         graphics.setColor(Color.darkGray);
         graphics.fillRect(0, 0, 2, 2);
@@ -115,6 +125,8 @@ class BoardPanel extends JPanel implements Observer {
         }
         
         // Draw the score text :
+        graphics.setFont(font);
+        graphics.drawString("Test Score : ", 2, 2);
     }
 
     /*

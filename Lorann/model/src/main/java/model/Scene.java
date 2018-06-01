@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.dao.ElementDAO;
 import model.elements.Object;
@@ -111,11 +112,6 @@ public class Scene implements IScene {
     		return obj.getSolidity();
     }
     
-    /**
-     * Gets the main character.
-     *
-     * @return the main character
-     */
 	@Override
     public ICharacter getCharacter() {
         return (ICharacter)this.character;
@@ -142,6 +138,9 @@ public class Scene implements IScene {
 		Object obj;
 		Element el;
 		
+		ArrayList<IMobile> toAdd = new ArrayList<IMobile>();
+		
+		// Initiate the character :
 		this.character.initiate(frame);
 		
 		for (int y = 0; y < HEIGHT; y++) {
@@ -158,10 +157,10 @@ public class Scene implements IScene {
 					case 'r' : obj = new Mur(x, y, this);						frame.addSquare(obj, x, y); break;
 					case 'h' : obj = new SolHorizontal(x, y, this);				frame.addSquare(obj, x, y); break;
 					case 'v' : obj = new SolVertical(x, y, this);				frame.addSquare(obj, x, y); break;
-					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); toAdd.add((IMobile)obj); break;
+					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); toAdd.add((IMobile)obj); break;
+					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); toAdd.add((IMobile)obj); break;
+					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); toAdd.add((IMobile)obj); break;
 					case 'o' : obj = new Bourse(x, y, this);					frame.addSquare(obj, x, y); break;
 					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Vide(x, y, this), x, y); break;
 					default : frame.addSquare(new Vide(x, y, this), x, y); break;
@@ -171,6 +170,10 @@ public class Scene implements IScene {
 			}
 		}
 		
+		// Add the remaining pawns :
+		for (IMobile mobile : toAdd)
+			frame.addPawn(mobile);
+			
 		// Main character creation :
 		frame.addPawn(this.character);
 	}
