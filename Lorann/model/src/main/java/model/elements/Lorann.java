@@ -34,7 +34,7 @@ public class Lorann extends Object implements ICharacter {
      *            the current scene
      */
 	public Lorann(final int x, final int y, final Scene scene) {
-		super(x, y, false, Sprite.SPRITE_LORANN, scene);
+		super(Type.TYPE_STATIC, x, y, false, Sprite.SPRITE_LORANN, scene);
 		
 		this.alive = true;
 		this.direction = Direction.DIR_RIGHT;

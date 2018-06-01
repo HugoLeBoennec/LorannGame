@@ -13,6 +13,9 @@ import model.graphics.Sprite;
  */
 public abstract class Object implements IObject {
 	
+	/** The object type. */
+	private final Type type;
+	
 	/** The X position. */
 	private int x;
 	
@@ -31,6 +34,8 @@ public abstract class Object implements IObject {
 	/**
      * Instantiates a new object.
      *
+     * @param type
+     *            the object type
      * @param x
      *            the X position
      * @param y
@@ -42,13 +47,23 @@ public abstract class Object implements IObject {
      * @param scene
      *            the current scene
      */
-    public Object(final int x, final int y, final boolean solid, final Sprite sprite, final Scene scene) {
+    public Object(final Type type, final int x, final int y, final boolean solid, final Sprite sprite, final Scene scene) {
+    	this.type = type;
     	this.x = x;
     	this.x = y;
     	this.solid = solid;
         this.sprite = sprite;
         this.scene = scene;
     }
+    
+    /**
+     * Gets the object type.
+     *
+     * @return the type
+     */
+	public Type getType() {
+		return this.type;
+	}
 	
 	/**
      * Gets the sprite.
@@ -78,26 +93,32 @@ public abstract class Object implements IObject {
 		return this.scene;
 	}
 	
+	@Override
 	public int getX() {
 		return this.x;
 	}
 	
+	@Override
 	public void setX(final int x) {
 		this.x = x;
 	}
 	
+	@Override
 	public int getY() {
 		return this.y;
 	}
 	
+	@Override
 	public void setY(final int y) {
 		this.y = y;
 	}
 	
+	@Override
 	public boolean getSolidity() {
 		return this.solid;
 	}
 	
+	@Override
 	public void setSolidity(final boolean solid) {
 		this.solid = solid;
 	}

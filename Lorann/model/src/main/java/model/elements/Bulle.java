@@ -22,6 +22,6 @@ public class Bulle extends Object {
      *            the current scene
      */
 	public Bulle(final int x, final int y, final Scene scene) {
-		super(x, y, false, Sprite.SPRITE_BULLE, scene);
+		super(Type.TYPE_BULLE, x, y, false, Sprite.SPRITE_BULLE, scene);
 	}
 }

@@ -27,7 +27,7 @@ public class DemonOuest extends Object implements IMobile {
      *            the current scene
      */
 	public DemonOuest(final int x, final int y, final Scene scene) {
-		super(x, y, false, Sprite.SPRITE_DEMONW, scene);
+		super(Type.TYPE_DAEMON, x, y, false, Sprite.SPRITE_DEMONW, scene);
 		
 		this.isRight = true;
 	}

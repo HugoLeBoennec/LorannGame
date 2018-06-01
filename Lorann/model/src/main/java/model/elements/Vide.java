@@ -22,6 +22,6 @@ public class Vide extends Object {
      *            the current scene
      */
 	public Vide(final int x, final int y, final Scene scene) {
-		super(x, y, false, Sprite.SPRITE_VIDE, scene);
+		super(Type.TYPE_STATIC, x, y, false, Sprite.SPRITE_VIDE, scene);
 	}
 }
