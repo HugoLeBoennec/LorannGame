@@ -167,6 +167,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void tick() {
 		this.getSprite().animate();
+		
 		ICharacter character = this.getScene().getCharacter();
 		
 		switch (this.direction) {
@@ -179,6 +180,7 @@ public class Sortilege extends Object implements IMobile {
 			case DIR_DOWN		: this.moveDown(); break;
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
 		}
+		
 		if ((character.getX() == this.getX()) & (character.getY() == this.getY())) {
 			this.cast = false;
 			this.setX(-1);

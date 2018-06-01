@@ -88,18 +88,15 @@ public class DemonNord extends Object implements IMobile {
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
-		// Vertical moves, bounce on walls :
 		if (this.isDown)
 			this.moveDownRight();
 		else
 			this.moveUp();
 		
-		// Horizontal moves, follow player :
 		if (character.getX() < this.getX())
 			this.moveDownLeft();
-		else if (character.getX() > this.getX()) {
+		else if (character.getX() > this.getX())
 			this.moveUpRight();
-		}
 	}
 	
 	@Override

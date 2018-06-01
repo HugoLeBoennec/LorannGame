@@ -34,19 +34,19 @@ public class DemonSud extends Object implements IMobile {
 	
 	@Override
 	public void moveRight() {
-		if (!this.getScene().getObjectXY(this.getX()+1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 	}
 
 	@Override
 	public void moveLeft() {
-		if (!this.getScene().getObjectXY(this.getX()-1, this.getY()).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 	}
 
 	@Override
 	public void moveUp() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()-1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		else
 			this.isDown = true;
@@ -54,7 +54,7 @@ public class DemonSud extends Object implements IMobile {
 
 	@Override
 	public void moveDown() {
-		if (!this.getScene().getObjectXY(this.getX(), this.getY()+1).getSolidity())
+		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		else
 			this.isDown = false;
