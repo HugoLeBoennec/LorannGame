@@ -20,7 +20,7 @@ public interface IScene {
      *            the X position
      * @param y
      *            the Y position
-     * @return the element at the position
+     * @return the object at the position
      */
     public IObject getObjectXY(final int x, final int y);
     

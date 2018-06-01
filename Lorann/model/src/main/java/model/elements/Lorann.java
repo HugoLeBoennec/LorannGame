@@ -108,7 +108,8 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()+1);
 			this.testCollision(getX(), getY(), scene);
 		}
-			this.direction = Direction.DIR_DOWNLEFT;
+		
+		this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
 	@Override
@@ -120,7 +121,8 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()+1);
 			this.testCollision(getX(), getY(), scene);
 		}
-			this.direction = Direction.DIR_DOWNRIGHT;
+		
+		this.direction = Direction.DIR_DOWNRIGHT;
 	}
 	
 	@Override
@@ -132,7 +134,8 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()-1);
 			this.testCollision(getX(), getY(), scene);
 		}
-			this.direction = Direction.DIR_UPLEFT;
+		
+		this.direction = Direction.DIR_UPLEFT;
 	}
 	
 	@Override
@@ -144,13 +147,15 @@ public class Lorann extends Object implements ICharacter {
 			this.setY(getY()-1);
 			this.testCollision(getX(), getY(), scene);
 		}
-			this.direction = Direction.DIR_UPRIGHT;
+		
+		this.direction = Direction.DIR_UPRIGHT;
 	}
 	
 	@Override
 	public void tick() {
 		this.getSprite().animate();
 		
+		// Update the spell only if cast :
 		if (this.sortilege.isCast())
 			this.sortilege.tick();
 	}
@@ -192,35 +197,28 @@ public class Lorann extends Object implements ICharacter {
 		if (object == null)
 			return;
 		
+		Sprite spr = object.getSprite();
+		
 		switch (object.getType()) {
-			case TYPE_BOURSE	: object.getSprite().setAnimFrame(1); break;
-			case TYPE_BULLE		: 
-				
-				object.getSprite().setAnimFrame(1);
-				
-				for( int i = 0; i < 20; i++) {
-					for(int j = 0; j <12; j++) {
-						if(object.getType() == Type.TYPE_SORTIE) {
-							object.getSprite().setAnimFrame(1); break;
-						}
-					}
+			case TYPE_BOURSE	:
+				if (spr.getAnimFrame() == 0)
+					spr.setAnimFrame(1);
+				break;
+			case TYPE_BULLE		:
+				if (spr.getAnimFrame() == 0) {
+					spr.setAnimFrame(1);
+					this.getScene().getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
 				}
-				
-			
+				break;
 			case TYPE_SORTIE	:
-			{
-				Sprite sprite = object.getSprite();
-				
-				if (sprite.getAnimFrame() == 0) {
+				if (spr.getAnimFrame() == 0) {
 					// Tue le joueur
 				}
-				else {
-					
-					
-				}
+				else
+					this.getScene().setNextLevel(true);
 					
 				break;
-			}
+			default : break;
 		}
 	}
 }

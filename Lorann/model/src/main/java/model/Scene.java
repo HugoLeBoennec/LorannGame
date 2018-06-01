@@ -45,6 +45,30 @@ public class Scene implements IScene {
         this.currentLevel = 1;
         this.nextLevel = false;
     }
+    
+    /**
+     * Gets an object of type.
+     *
+     * @param type
+     *            the type
+     * @return the first object of type
+     */
+	public Object getObjectOfType(final Type type) {
+		Object obj = null;
+		
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
+				obj = this.object[x][y];
+				
+				if (obj != null) {
+					if (obj.getType() == type)
+						return obj;
+				}
+			}
+		}
+		
+		return obj;
+    }
 	
     @Override
 	public IObject getObjectXY(final int x, final int y) {
