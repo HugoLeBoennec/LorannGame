@@ -95,7 +95,7 @@ class BoardPanel extends JPanel implements Observer {
         super();
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        this.font = Font.createFont(Font.TRUETYPE_FONT, new File("font/comic.ttf"));
+        this.font = new Font(/*Font.TRUETYPE_FONT, new File("font/comic.ttf")*/Font.SANS_SERIF, Font.PLAIN, 12);
         final Graphics2D graphics = this.noImage.createGraphics();
         graphics.setColor(Color.darkGray);
         graphics.fillRect(0, 0, 2, 2);
@@ -113,7 +113,6 @@ class BoardPanel extends JPanel implements Observer {
      */
     @Override
     public final void paintComponent(final Graphics graphics) {
-
     	// Draw the objects :
         final Map<String, ArrayList<IPawn>> mapPawn = this.createMapPawn();
 
@@ -125,8 +124,10 @@ class BoardPanel extends JPanel implements Observer {
         }
         
         // Draw the score text :
+        System.out.println("Text");
         graphics.setFont(font);
-        graphics.drawString("Test Score : ", 2, 2);
+        graphics.setColor(Color.WHITE);
+        graphics.drawString("Test Score : ", 24, 364);
     }
 
     /*
