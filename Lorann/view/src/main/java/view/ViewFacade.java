@@ -125,6 +125,8 @@ public class ViewFacade extends Observable implements IView {
 			this.scene.unloadLevel();
 			this.scene.reloadLevel(false);
 			
+			this.window.getBoardPanel().clear();
+			
 			try {
 	    		this.scene.loadLevel(this.scene.getCurrentLevel(), this.window);
 			} catch (SQLException e) {

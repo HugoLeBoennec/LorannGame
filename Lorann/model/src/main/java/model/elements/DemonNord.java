@@ -13,6 +13,9 @@ import model.graphics.Sprite;
  * @version 1.0
  */
 public class DemonNord extends Object implements IMobile {
+	
+	/** If the daemon is alive */
+	private boolean alive;
 
 	/** If the daemon moves down. */
 	private boolean isDown;
@@ -30,6 +33,7 @@ public class DemonNord extends Object implements IMobile {
 	public DemonNord(int x, int y, final Scene scene) {
 		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONN, 0), scene);
 		
+		this.alive = true;
 		this.isDown = true;
 	}
 
@@ -113,22 +117,25 @@ public class DemonNord extends Object implements IMobile {
 		Object object = (Object)scene.getObjectXY(x, y);
 		ICharacter character = scene.getCharacter();
 		
-		// Test if the object is null :
-		if (object == null)
-			return;
-		
 		if (character.getX() == x && character.getY() == y)
 			scene.reloadLevel(true);
 		
-		if (object.getType() == Type.TYPE_SORTIE) {
-			if (object.getSprite().getAnimFrame() == 0) {
-				
+		if (object != null) {
+			if (object.getType() == Type.TYPE_SORTIE) {
+				if (object.getSprite().getAnimFrame() == 0) {
+					this.alive = false;
+					this.setX(-1);
+					this.setY(-1);
+				}
 			}
 		}
 	}
 	
 	@Override
 	public Point getPosition() {
-		return new Point(this.getX(), this.getY());
+		if (this.alive)
+			return new Point(this.getX(), this.getY());
+		else
+			return new Point(-1, -1);
 	}
 }

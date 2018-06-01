@@ -53,7 +53,7 @@ import javax.swing.JPanel;
  * @see Observer
  * @see Observable
  */
-class BoardPanel extends JPanel implements Observer {
+public class BoardPanel extends JPanel implements Observer {
 
     /** The Constant serialVersionUID. */
     private static final long   serialVersionUID = -3618605287900763008L;
@@ -453,4 +453,11 @@ class BoardPanel extends JPanel implements Observer {
         return this.getHeight() / this.getDisplayFrame().height;
     }
 
+    /**
+     * Clear all the pawns.
+     *
+     */
+    public void clear() {
+    	this.pawns.clear();
+    }
 }

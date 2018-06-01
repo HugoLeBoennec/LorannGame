@@ -162,7 +162,7 @@ public class BoardFrame extends JFrame implements IBoard {
      *
      * @return the board panel
      */
-    private BoardPanel getBoardPanel() {
+    public BoardPanel getBoardPanel() {
         return this.boardPanel;
     }
 
