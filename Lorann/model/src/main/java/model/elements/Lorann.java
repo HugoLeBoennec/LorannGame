@@ -193,7 +193,21 @@ public class Lorann extends Object implements ICharacter {
 			return;
 		
 		switch (object.getType()) {
-			case TYPE_BOURSE : object.getSprite().setAnimFrame(1); break;
+			case TYPE_BOURSE	: object.getSprite().setAnimFrame(1); break;
+			case TYPE_BULLE		: object.getSprite().setAnimFrame(1); break;
+			case TYPE_SORTIE	:
+			{
+				Sprite sprite = object.getSprite();
+				
+				if (sprite.getAnimFrame() == 0) {
+					// Tue le joueur
+				}
+				else {
+					
+				}
+					
+				break;
+			}
 		}
 	}
 }

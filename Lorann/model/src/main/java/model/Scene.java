@@ -106,4 +106,8 @@ public class Scene implements IScene {
 		// Main character creation :
 		frame.addPawn(this.character);
 	}
+	
+	public void unloadLevel() {
+		
+	}
 }
