@@ -13,10 +13,6 @@ import model.graphics.Sprite;
  */
 public class DemonEst extends Object implements IMobile {
 	
-	/** If the daemon moves right. */
-	private boolean isRight;
-	private boolean isLeft;
-	
 	/**
      * Instantiates a new DemonEst.
      * 
@@ -29,27 +25,18 @@ public class DemonEst extends Object implements IMobile {
      */
 	public DemonEst(final int x, final int y, final Scene scene) {
 		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONE, 0), scene);
-		
-		this.isRight = true;
-		this.isLeft = true;
 	}
 	
 	@Override
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
-		else
-			this.isRight = false;
 	}
 
 	@Override
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
-		else
-			this.isRight = true;
-		else 
-			
 	}
 
 	@Override
@@ -92,22 +79,19 @@ public class DemonEst extends Object implements IMobile {
 	public void tick() {
 		ICharacter character = this.getScene().getCharacter();
 		
-		// Vertical moves, follow player :
-		if (character.getY() < this.getY())
-			this.moveUp();
-		else if (character.getY() > this.getY())
-			this.moveDown();
-		
-		// Horizontal moves, bounce on walls :
-		if (this.isRight)
-			this.moveRight();
-		else
-			this.moveLeft();
-		
-		if (this.isLeft)
-		   this.moveLeft();
-		else 
-			 this.moveRight();
+		// Follow player :
+		if  (character.getX() == getX()) {
+			if (character.getY() > getY())		this.moveDown();
+			else								this.moveUp();
+		} else if (character.getX() > getX()) {
+			if (character.getY() == getY())		this.moveRight();
+			else if (character.getY() > getY())	this.moveDownRight();
+			else								this.moveUpRight();
+		} else {
+			if (character.getY() == getY())		this.moveLeft();
+			else if (character.getY() > getY())	this.moveDownLeft();
+			else								this.moveUpLeft();
+		}
 	}
 
 	@Override
