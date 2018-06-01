@@ -85,6 +85,11 @@ public interface IScene {
     public ICharacter getCharacter();
     
     /**
+     * Tick all the objects in the scene.
+     */
+    public void tick();
+    
+    /**
      * Load a level from database
      * 
      * @throws SQLException

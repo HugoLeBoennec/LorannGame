@@ -14,6 +14,21 @@ import model.elements.ICharacter;
 public interface IModel {
 	
 	/**
+     * Gets the main scene.
+     *
+     * @return the main scene
+     */
+	public IScene getScene();
+	
+	/**
+     * Sets the main scene.
+     *
+     * @param scene
+     *            the scene
+     */
+	public void setScene(final IScene scene);
+	
+	/**
      * Gets the main character.
      *
      * @return the main character

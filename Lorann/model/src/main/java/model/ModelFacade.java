@@ -30,21 +30,12 @@ public final class ModelFacade implements IModel {
         this.scene = scene;
     }
     
-    /**
-     * Gets the main scene.
-     *
-     * @return the main scene
-     */
+    @Override
 	public IScene getScene() {
 		return this.scene;
 	}
 	
-	/**
-     * Sets the main scene.
-     *
-     * @param scene
-     *            the scene
-     */
+	@Override
 	public void setScene(final IScene scene) {
 		this.scene = scene;
 	}

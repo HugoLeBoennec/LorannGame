@@ -122,6 +122,22 @@ public class Scene implements IScene {
     }
 	
 	@Override
+	public void tick() {
+		Object object;
+		
+		for (int y = 0; y < HEIGHT; y++) {
+			for (int x = 0; x < WIDTH; x++) {
+				object = this.object[x][y];
+				
+				if (object != null) {
+					if (object.getType() == Type.TYPE_DAEMON)
+						((IMobile)object).tick();
+				}
+			}
+		}
+	}
+	
+	@Override
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException {
 		Object obj;
 		Element el;
@@ -142,10 +158,10 @@ public class Scene implements IScene {
 					case 'r' : obj = new Mur(x, y, this);						frame.addSquare(obj, x, y); break;
 					case 'h' : obj = new SolHorizontal(x, y, this);				frame.addSquare(obj, x, y); break;
 					case 'v' : obj = new SolVertical(x, y, this);				frame.addSquare(obj, x, y); break;
-					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
-					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); break;
-					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
-					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
 					case 'o' : obj = new Bourse(x, y, this);					frame.addSquare(obj, x, y); break;
 					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Vide(x, y, this), x, y); break;
 					default : frame.addSquare(new Vide(x, y, this), x, y); break;
@@ -163,9 +179,8 @@ public class Scene implements IScene {
 	public void unloadLevel() {
 		// Deletion of all objects :
 		for (int y = 0; y < HEIGHT; y++) {
-			for (int x = 0; x < WIDTH; x++) {
+			for (int x = 0; x < WIDTH; x++)
 				setObjectXY(null, x, y);
-			}
 		}
 	}
 }
