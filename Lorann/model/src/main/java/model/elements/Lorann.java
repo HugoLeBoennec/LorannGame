@@ -15,9 +15,6 @@ import showboard.BoardFrame;
  */
 public class Lorann extends Object implements ICharacter {
 	
-	/** The life state. */
-	private boolean alive;
-	
 	/** The current direction. */
 	private Direction direction;
 	
@@ -37,7 +34,6 @@ public class Lorann extends Object implements ICharacter {
 	public Lorann(final int x, final int y, final Scene scene) {
 		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_LORANN, 2), scene);
 		
-		this.alive = true;
 		this.direction = Direction.DIR_RIGHT;
 		this.sortilege = new Sortilege(-1, -1, scene);
 	}
@@ -50,6 +46,15 @@ public class Lorann extends Object implements ICharacter {
      */
 	public void initiate(final BoardFrame frame) {
 		frame.addPawn(this.sortilege);
+	}
+	
+	/**
+     * Reset the character.
+     * 
+     */
+	public void reset() {
+		this.direction = Direction.DIR_RIGHT;
+		this.sortilege.reset();
 	}
 	
 	@Override
@@ -159,11 +164,6 @@ public class Lorann extends Object implements ICharacter {
 		// Update the spell only if cast :
 		if (this.sortilege.isCast())
 			this.sortilege.tick();
-	}
-	
-	@Override
-	public boolean isAlive() {
-		return this.alive;
 	}
 	
 	@Override

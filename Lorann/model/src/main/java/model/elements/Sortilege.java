@@ -72,6 +72,16 @@ public class Sortilege extends Object implements IMobile {
 			this.setY(y);
 		}
 	}
+	
+	/**
+     * Reset the spell position.
+     * 
+     */
+	public void reset() {
+		this.cast = false;
+		this.setX(-1);
+		this.setY(-1);
+	}
 
 	@Override
 	public void moveRight() {

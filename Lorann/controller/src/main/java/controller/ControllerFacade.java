@@ -47,8 +47,8 @@ public class ControllerFacade implements IController {
     	// Get the main character :
         ICharacter character = this.model.getCharacter();
         
-        // The main loop, keep running until the character is dead :
-        while (character.isAlive()) {
+        // The main loop, keep running until the window is closed :
+        while (true) {
         	
         	// Management of user inputs :
         	if (KeyManager.key != 0) {

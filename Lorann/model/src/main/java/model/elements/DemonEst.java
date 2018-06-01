@@ -90,6 +90,9 @@ public class DemonEst extends Object implements IMobile {
 	
 	@Override
 	public void tick() {
+		if (!this.alive)
+			return;
+		
 		ICharacter character = this.getScene().getCharacter();
 		
 		this.testCollision(getX(), getY(), this.getScene());
@@ -111,19 +114,29 @@ public class DemonEst extends Object implements IMobile {
 	
 	@Override
 	public void testCollision(final int x, final int y, final IScene scene) {
-		Object object = (Object)scene.getObjectXY(x, y);
 		ICharacter character = scene.getCharacter();
 		
+		Object object = (Object)scene.getObjectXY(x, y);
+		Sortilege sortilege = (Sortilege)character.getSortilege();
+		
+		// Character collision :
 		if (character.getX() == x && character.getY() == y)
 			scene.reloadLevel(true);
 		
+		// Sortilege collision :
+		if (sortilege.getX() == x && sortilege.getY() == y) {
+			this.alive = false;
+			this.setX(-1);
+			this.setY(-1);
+			sortilege.reset();
+		}
+		
+		// Exit collision
 		if (object != null) {
 			if (object.getType() == Type.TYPE_SORTIE) {
-				if (object.getSprite().getAnimFrame() == 0) {
-					this.alive = false;
-					this.setX(-1);
-					this.setY(-1);
-				}
+				this.alive = false;
+				this.setX(-1);
+				this.setY(-1);
 			}
 		}
 	}

@@ -189,6 +189,8 @@ public class Scene implements IScene {
 				setObjectXY(null, x, y);
 		}
 		
+		this.character.reset();
+		
 		this.isLoaded = false;
 	}
 }

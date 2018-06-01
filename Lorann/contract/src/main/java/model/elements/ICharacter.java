@@ -9,13 +9,6 @@ import showboard.BoardFrame;
  * @version 1.0
  */
 public interface ICharacter extends IMobile {
-	
-	/**
-     * Test if the character is alive
-     * 
-     * @return the life state
-     */
-	public boolean isAlive();
 
 	/**
      * Casts a spell
