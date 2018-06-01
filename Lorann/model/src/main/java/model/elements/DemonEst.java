@@ -2,6 +2,7 @@ package model.elements;
 
 import java.awt.Point;
 
+import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -31,24 +32,32 @@ public class DemonEst extends Object implements IMobile {
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
+		
+		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
+		
+		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveUp() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
+		
+		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveDown() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
+		
+		this.testCollision(getX(), getY(), this.getScene());
 	}
 	
 	@Override
@@ -91,6 +100,25 @@ public class DemonEst extends Object implements IMobile {
 			if (character.getY() == getY())		this.moveLeft();
 			else if (character.getY() > getY())	this.moveDownLeft();
 			else								this.moveUpLeft();
+		}
+	}
+	
+	@Override
+	public void testCollision(final int x, final int y, final IScene scene) {
+		Object object = (Object)scene.getObjectXY(x, y);
+		ICharacter character = scene.getCharacter();
+		
+		// Test if the object is null :
+		if (object == null)
+			return;
+		
+		if (character.getX() == this.getX() && character.getY() == this.getY())
+			scene.reloadLevel(true);
+		
+		if (object.getType() == Type.TYPE_SORTIE) {
+			if (object.getSprite().getAnimFrame() == 0) {
+				
+			}
 		}
 	}
 

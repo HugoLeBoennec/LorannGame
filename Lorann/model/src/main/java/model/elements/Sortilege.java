@@ -2,6 +2,7 @@ package model.elements;
 
 import java.awt.Point;
 
+import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
 
@@ -186,6 +187,10 @@ public class Sortilege extends Object implements IMobile {
 			this.setX(-1);
 			this.setY(-1);
 		}
+	}
+	
+	@Override
+	public void testCollision(final int x, final int y, final IScene scene) {
 	}
 	
 	@Override
