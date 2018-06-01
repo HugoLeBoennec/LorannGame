@@ -86,10 +86,7 @@ public class ControllerFacade implements IController {
         		}
         	}
         	
-        	
-        	
         	this.model.getScene().tick();
-        	
         	character.tick();
         	
         	this.view.windowUpdate();
