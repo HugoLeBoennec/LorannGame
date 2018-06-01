@@ -76,25 +76,33 @@ public class DemonSud extends Object implements IMobile {
 	@Override
 	public void moveDownLeft() {
 		this.moveLeft();
-		this.moveDown();
+		
+		if (this.alive)
+			this.moveDown();
 	}
 	
 	@Override
 	public void moveDownRight() {
 		this.moveRight();
-		this.moveDown();
+		
+		if (this.alive)
+			this.moveDown();
 	}
 	
 	@Override
 	public void moveUpLeft() {
 		this.moveLeft();
-		this.moveUp();
+		
+		if (this.alive)
+			this.moveUp();
 	}
 	
 	@Override
 	public void moveUpRight() {
 		this.moveRight();
-		this.moveUp();
+		
+		if (this.alive)
+			this.moveUp();
 	}
 	
 	@Override
@@ -106,11 +114,17 @@ public class DemonSud extends Object implements IMobile {
 		
 		this.testCollision(getX(), getY(), this.getScene());
 		
+		if (!this.alive)
+			return;
+		
 		// Vertical moves, bounce on walls :
 		if (this.isDown)
 			this.moveDown();
 		else
 			this.moveUp();
+		
+		if (!this.alive)
+			return;
 		
 		// Horizontal moves, follow player :
 		if (character.getX() < this.getX())

@@ -88,10 +88,12 @@ public class DemonNord extends Object implements IMobile {
 		else
 			this.direction = Direction.DIR_UPRIGHT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
-		else
-			this.direction = Direction.DIR_UPLEFT;
+		if (this.alive) {
+			if (!scene.isPenetrable(this.getX(), this.getY()+1))
+				this.setY(getY()+1);
+			else
+				this.direction = Direction.DIR_UPLEFT;
+		}
 	}
 	
 	@Override
@@ -103,10 +105,12 @@ public class DemonNord extends Object implements IMobile {
 		else
 			this.direction = Direction.DIR_DOWNLEFT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
-		else
-			this.direction = Direction.DIR_UPRIGHT;
+		if (this.alive) {
+			if (!scene.isPenetrable(this.getX(), this.getY()+1))
+				this.setY(getY()+1);
+			else
+				this.direction = Direction.DIR_UPRIGHT;
+		}
 	}
 	
 	@Override
@@ -118,10 +122,12 @@ public class DemonNord extends Object implements IMobile {
 		else
 			this.direction = Direction.DIR_UPRIGHT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
-		else
-			this.direction = Direction.DIR_DOWNLEFT;
+		if (this.alive) {
+			if (!scene.isPenetrable(this.getX(), this.getY()-1))
+				this.setY(getY()-1);
+			else
+				this.direction = Direction.DIR_DOWNLEFT;
+		}
 	}
 	
 	@Override
@@ -133,10 +139,12 @@ public class DemonNord extends Object implements IMobile {
 		else
 			this.direction = Direction.DIR_UPLEFT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
-		else
-			this.direction = Direction.DIR_DOWNRIGHT;
+		if (this.alive) {
+			if (!scene.isPenetrable(this.getX(), this.getY()-1))
+				this.setY(getY()-1);
+			else
+				this.direction = Direction.DIR_DOWNRIGHT;
+		}
 	}
 	
 	@Override
@@ -145,6 +153,9 @@ public class DemonNord extends Object implements IMobile {
 			return;
 		
 		this.testCollision(getX(), getY(), this.getScene());
+		
+		if (!this.alive)
+			return;
 		
 		switch (this.direction) {
 			case DIR_LEFT 		: this.moveLeft(); break;

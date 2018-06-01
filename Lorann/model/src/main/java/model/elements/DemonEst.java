@@ -67,25 +67,33 @@ public class DemonEst extends Object implements IMobile {
 	@Override
 	public void moveDownLeft() {
 		this.moveLeft();
-		this.moveDown();
+		
+		if (this.alive)
+			this.moveDown();
 	}
 	
 	@Override
 	public void moveDownRight() {
 		this.moveRight();
-		this.moveDown();
+		
+		if (this.alive)
+			this.moveDown();
 	}
 	
 	@Override
 	public void moveUpLeft() {
 		this.moveLeft();
-		this.moveUp();
+		
+		if (this.alive)
+			this.moveUp();
 	}
 	
 	@Override
 	public void moveUpRight() {
 		this.moveRight();
-		this.moveUp();
+		
+		if (this.alive)
+			this.moveUp();
 	}
 	
 	@Override
@@ -96,6 +104,9 @@ public class DemonEst extends Object implements IMobile {
 		ICharacter character = this.getScene().getCharacter();
 		
 		this.testCollision(getX(), getY(), this.getScene());
+		
+		if (!this.alive)
+			return;
 		
 		// Follow player :
 		if  (character.getX() == getX()) {
