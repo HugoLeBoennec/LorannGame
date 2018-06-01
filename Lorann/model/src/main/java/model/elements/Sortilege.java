@@ -49,24 +49,26 @@ public class Sortilege extends Object implements IMobile {
 	public void cast(final int x, final int y, final Direction direction) {
 		if (cast == true) {
 			ICharacter character = this.getScene().getCharacter();
+			
 			if  (character.getX() == getX()) {
 				if (character.getY() > getY()) this.direction = Direction.DIR_DOWN;
 				else this.direction = Direction.DIR_UP;
-			}else if (character.getX() > getX()) {
+			} else if (character.getX() > getX()) {
 				if (character.getY() == getY()) this.direction = Direction.DIR_RIGHT;
 				else if (character.getY() > getY()) this.direction = Direction.DIR_DOWNRIGHT;
 				else this.direction = Direction.DIR_UPRIGHT;
-			}else {
+			} else {
 				if (character.getY() == getY()) this.direction = Direction.DIR_LEFT;
 				else if (character.getY() > getY()) this.direction = Direction.DIR_DOWNLEFT;
 				else this.direction = Direction.DIR_UPLEFT;
 			}
 		}
 		else {
-		this.cast = true;
-		this.direction = direction;
-		this.setX(x);
-		this.setY(y);
+			this.cast = true;
+			this.direction = direction;
+			
+			this.setX(x);
+			this.setY(y);
 		}
 	}
 

@@ -80,7 +80,7 @@ public class ControllerFacade implements IController {
 	        		case KeyEvent.VK_E			: character.moveUpRight(); break;
 	        		
 	        		// Attack button :
-	        		case KeyEvent.VK_SPACE		: character.attaque(this.view.getWindow()); break;
+	        		case KeyEvent.VK_SPACE		: character.attaque(this.view.getWindow()); KeyManager.key = 0; break;
 	        		
 	        		default : break;
         		}
