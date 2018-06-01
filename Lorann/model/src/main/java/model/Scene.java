@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.dao.ElementDAO;
 import model.elements.Object;
@@ -33,6 +34,9 @@ public class Scene implements IScene {
     /** If the next level must be loaded */
     private boolean nextLevel;
     
+    /** If the level is fully loaded */
+    private boolean isLoaded;
+    
     /**
      * Instantiates a new Scene.
      * 
@@ -44,6 +48,7 @@ public class Scene implements IScene {
         
         this.currentLevel = 1;
         this.nextLevel = false;
+        this.isLoaded = false;
     }
     
     /**
@@ -118,6 +123,10 @@ public class Scene implements IScene {
 	
 	@Override
 	public void tick() {
+		// If the level isn't loaded, don't process :
+		if (!this.isLoaded)
+			return;
+		
 		Object object;
 		
 		for (int y = 0; y < HEIGHT; y++) {
@@ -134,7 +143,7 @@ public class Scene implements IScene {
 	
 	@Override
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException {
-		Object obj;
+		IObject obj;
 		Element el;
 		
 		// Initiate the character :
@@ -166,9 +175,11 @@ public class Scene implements IScene {
 				setObjectXY(obj, x, y);
 			}
 		}
-			
+		
 		// Main character creation :
 		frame.addPawn(this.character);
+		
+		this.isLoaded = true;
 	}
 	
 	@Override
@@ -178,5 +189,7 @@ public class Scene implements IScene {
 			for (int x = 0; x < WIDTH; x++)
 				setObjectXY(null, x, y);
 		}
+		
+		this.isLoaded = false;
 	}
 }
