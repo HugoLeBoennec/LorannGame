@@ -47,11 +47,27 @@ public class Sortilege extends Object implements IMobile {
      *            the current scene
      */
 	public void cast(final int x, final int y, final Direction direction) {
+		if (cast == true) {
+			ICharacter character = this.getScene().getCharacter();
+			if  (character.getX() == getX()) {
+				if (character.getY() > getY()) this.direction = Direction.DIR_DOWN;
+				else this.direction = Direction.DIR_UP;
+			}else if (character.getX() > getX()) {
+				if (character.getY() == getY()) this.direction = Direction.DIR_RIGHT;
+				else if (character.getY() > getY()) this.direction = Direction.DIR_DOWNRIGHT;
+				else this.direction = Direction.DIR_UPRIGHT;
+			}else {
+				if (character.getY() == getY()) this.direction = Direction.DIR_LEFT;
+				else if (character.getY() > getY()) this.direction = Direction.DIR_DOWNLEFT;
+				else this.direction = Direction.DIR_UPLEFT;
+			}
+		}
+		else {
 		this.cast = true;
 		this.direction = direction;
-		
 		this.setX(x);
 		this.setY(y);
+		}
 	}
 
 	@Override
@@ -141,6 +157,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void tick() {
 		this.getSprite().animate();
+		ICharacter character = this.getScene().getCharacter();
 		
 		switch (this.direction) {
 			case DIR_LEFT 		: this.moveLeft(); break;
@@ -151,6 +168,11 @@ public class Sortilege extends Object implements IMobile {
 			case DIR_DOWNRIGHT	: this.moveDownRight(); break;
 			case DIR_DOWN		: this.moveDown(); break;
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
+		}
+		if ((character.getX() == this.getX()) & (character.getY() == this.getY())) {
+			this.cast = false;
+			this.setX(-1);
+			this.setY(-1);
 		}
 	}
 	
