@@ -107,12 +107,12 @@ public class Sortilege extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		else
-			this.direction = Direction.DIR_RIGHT;
+			this.direction = Direction.DIR_UPRIGHT;
 		
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		else
-			this.direction = Direction.DIR_UP;
+			this.direction = Direction.DIR_UPLEFT;
 	}
 	
 	@Override
@@ -120,12 +120,12 @@ public class Sortilege extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		else
-			this.direction = Direction.DIR_LEFT;
+			this.direction = Direction.DIR_DOWNLEFT;
 		
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
 			this.setY(getY()+1);
 		else
-			this.direction = Direction.DIR_UP;
+			this.direction = Direction.DIR_UPRIGHT;
 	}
 	
 	@Override
@@ -133,12 +133,12 @@ public class Sortilege extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
 			this.setX(getX()-1);
 		else
-			this.direction = Direction.DIR_RIGHT;
+			this.direction = Direction.DIR_UPRIGHT;
 		
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		else
-			this.direction = Direction.DIR_DOWN;
+			this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
 	@Override
@@ -146,12 +146,12 @@ public class Sortilege extends Object implements IMobile {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
 			this.setX(getX()+1);
 		else
-			this.direction = Direction.DIR_LEFT;
+			this.direction = Direction.DIR_UPLEFT;
 		
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
 			this.setY(getY()-1);
 		else
-			this.direction = Direction.DIR_DOWN;
+			this.direction = Direction.DIR_DOWNRIGHT;
 	}
 
 	@Override
