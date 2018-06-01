@@ -53,68 +53,96 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void moveRight() {
-		if (!this.getScene().isPenetrable(getX()+1, getY())) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(getX()+1, getY())) {
 			this.setX(getX()+1);
+			this.testCollision(getX(), getY(), scene);
 		}
+		
 		this.direction = Direction.DIR_RIGHT;
 	}
 
 	@Override
 	public void moveLeft() {
-		if (!this.getScene().isPenetrable(this.getX()-1, this.getY())) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()-1, this.getY())) {
 			this.setX(getX()-1);
+			this.testCollision(getX(), getY(), scene);
 		}
+		
 		this.direction = Direction.DIR_LEFT;
 	}
 
 	@Override
 	public void moveUp() {
-		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()-1)) {
 			this.setY(getY()-1);
+			this.testCollision(getX(), getY(), scene);
 		}
+		
 		this.direction = Direction.DIR_UP;
 	}
 
 	@Override
 	public void moveDown() {
-		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX(), this.getY()+1)) {
 			this.setY(getY()+1);
+			this.testCollision(getX(), getY(), scene);
 		}
+		
 		this.direction = Direction.DIR_DOWN;
 	}
 	
 	@Override
 	public void moveDownLeft() {
-		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()+1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()-1, this.getY()+1)) {
 			this.setX(getX()-1);
 			this.setY(getY()+1);
+			this.testCollision(getX(), getY(), scene);
 		}
 			this.direction = Direction.DIR_DOWNLEFT;
 	}
 	
 	@Override
 	public void moveDownRight() {
-		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()+1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()+1, this.getY()+1)) {
 			this.setX(getX()+1);
 			this.setY(getY()+1);
+			this.testCollision(getX(), getY(), scene);
 		}
 			this.direction = Direction.DIR_DOWNRIGHT;
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()-1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()-1, this.getY()-1)) {
 			this.setX(getX()-1);
 			this.setY(getY()-1);
+			this.testCollision(getX(), getY(), scene);
 		}
 			this.direction = Direction.DIR_UPLEFT;
 	}
 	
 	@Override
 	public void moveUpRight() {
-		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()-1)) {
+		final Scene scene = this.getScene();
+		
+		if (!scene.isPenetrable(this.getX()+1, this.getY()-1)) {
 			this.setX(getX()+1);
 			this.setY(getY()-1);
+			this.testCollision(getX(), getY(), scene);
 		}
 			this.direction = Direction.DIR_UPRIGHT;
 	}
@@ -145,5 +173,23 @@ public class Lorann extends Object implements ICharacter {
 	@Override
 	public Point getPosition() {
 		return new Point(this.getX(), this.getY());
+	}
+	
+	/**
+     * Process the collision tests
+     * 
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param scene
+     *            the current scene
+     */
+	private void testCollision(final int x, final int y, final Scene scene) {
+		Object object = (Object)scene.getObjectXY(x, y);
+		
+		switch (object.getType()) {
+			case TYPE_BOURSE : object.setX(-1); object.setY(-1); break;
+		}
 	}
 }

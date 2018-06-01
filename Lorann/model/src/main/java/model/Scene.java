@@ -37,19 +37,6 @@ public class Scene implements IScene {
         this.object = new Object[20][12];
         this.character = new Lorann(0, 0, this);
     }
-    
-    /**
-     * Gets the type of an object giving it's position.
-     *
-     * @param x
-     *            the X position
-     * @param y
-     *            the Y position
-     * @return the object type
-     */
-    public Type getObjectTypeXY(final int x, final int y) {
-    	return this.object[x][y].getType();
-    }
 	
     @Override
 	public IObject getObjectXY(final int x, final int y) {
