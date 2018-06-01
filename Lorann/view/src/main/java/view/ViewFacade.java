@@ -72,7 +72,7 @@ public class ViewFacade extends Observable implements IView {
     public void displayScene() {
     	// Load the first level here :
     	try {
-    		this.scene.loadLevel(1, this.window);
+    		this.scene.loadLevel(4, this.window);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

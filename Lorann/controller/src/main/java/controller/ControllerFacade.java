@@ -74,8 +74,8 @@ public class ControllerFacade implements IController {
 	        		case KeyEvent.VK_Q			: character.moveLeft(); break;
 	        		case KeyEvent.VK_S			: character.moveDown(); break;
 	        		case KeyEvent.VK_D			: character.moveRight(); break;
-	        		case KeyEvent.VK_C			: character.moveDownLeft(); break;
-	        		case KeyEvent.VK_W			: character.moveDownRight(); break;
+	        		case KeyEvent.VK_W			: character.moveDownLeft(); break;
+	        		case KeyEvent.VK_C			: character.moveDownRight(); break;
 	        		case KeyEvent.VK_A			: character.moveUpLeft(); break;
 	        		case KeyEvent.VK_E			: character.moveUpRight(); break;
 	        		
