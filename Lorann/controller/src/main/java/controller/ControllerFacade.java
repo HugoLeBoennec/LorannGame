@@ -86,10 +86,8 @@ public class ControllerFacade implements IController {
         		}
         	}
         	
-        	this.model.getScene().tick();
-        	character.tick();
-        	
-        	this.view.windowUpdate();
+        	this.model.getScene().tick();	// Update the whole scene
+        	this.view.windowUpdate();		// Update the window
         	
         	Thread.sleep(60);
         }

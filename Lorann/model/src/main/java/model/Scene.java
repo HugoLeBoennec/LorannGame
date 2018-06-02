@@ -138,6 +138,9 @@ public class Scene implements IScene {
 				}
 			}
 		}
+		
+		// Update the character last :
+		character.tick();
 	}
 	
 	@Override

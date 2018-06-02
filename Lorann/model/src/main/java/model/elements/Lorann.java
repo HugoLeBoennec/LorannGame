@@ -61,9 +61,9 @@ public class Lorann extends Object implements ICharacter {
 	public void moveRight() {
 		final Scene scene = this.getScene();
 		
-		if (!scene.isPenetrable(getX()+1, getY())) {
-			this.setX(getX()+1);
-			this.testCollision(getX(), getY(), scene);
+		if (!scene.isPenetrable(this.getX()+1, this.getY())) {
+			this.setX(this.getX()+1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_RIGHT;
@@ -74,8 +74,8 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY())) {
-			this.setX(getX()-1);
-			this.testCollision(getX(), getY(), scene);
+			this.setX(this.getX()-1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_LEFT;
@@ -86,8 +86,8 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX(), this.getY()-1)) {
-			this.setY(getY()-1);
-			this.testCollision(getX(), getY(), scene);
+			this.setY(this.getY()-1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_UP;
@@ -98,8 +98,8 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX(), this.getY()+1)) {
-			this.setY(getY()+1);
-			this.testCollision(getX(), getY(), scene);
+			this.setY(this.getY()+1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_DOWN;
@@ -110,9 +110,9 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()+1)) {
-			this.setX(getX()-1);
-			this.setY(getY()+1);
-			this.testCollision(getX(), getY(), scene);
+			this.setX(this.getX()-1);
+			this.setY(this.getY()+1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_DOWNLEFT;
@@ -123,9 +123,9 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()+1, this.getY()+1)) {
-			this.setX(getX()+1);
-			this.setY(getY()+1);
-			this.testCollision(getX(), getY(), scene);
+			this.setX(this.getX()+1);
+			this.setY(this.getY()+1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_DOWNRIGHT;
@@ -136,9 +136,9 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()-1)) {
-			this.setX(getX()-1);
-			this.setY(getY()-1);
-			this.testCollision(getX(), getY(), scene);
+			this.setX(this.getX()-1);
+			this.setY(this.getY()-1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_UPLEFT;
@@ -149,9 +149,9 @@ public class Lorann extends Object implements ICharacter {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()+1, this.getY()-1)) {
-			this.setX(getX()+1);
-			this.setY(getY()-1);
-			this.testCollision(getX(), getY(), scene);
+			this.setX(this.getX()+1);
+			this.setY(this.getY()-1);
+			this.testCollision(this.getX(), this.getY(), scene);
 		}
 		
 		this.direction = Direction.DIR_UPRIGHT;
@@ -183,13 +183,13 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void testCollision(final int x, final int y, final IScene scene) {
-		Object object = (Object)scene.getObjectXY(x, y);
+		final Object object = (Object)scene.getObjectXY(x, y);
 		
 		// Test if the object is null :
 		if (object == null)
 			return;
 		
-		Sprite spr = object.getSprite();
+		final Sprite spr = object.getSprite();
 		
 		switch (object.getType()) {
 			case TYPE_BOURSE	:
@@ -199,7 +199,7 @@ public class Lorann extends Object implements ICharacter {
 			case TYPE_BULLE		:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
-					this.getScene().getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
+					((Scene)scene).getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
 				}
 				break;
 			case TYPE_SORTIE	:
