@@ -100,7 +100,7 @@ public class BoardPanel extends JPanel implements Observer {
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         this.font = new Font("Comic Sans MS", Font.PLAIN, 30);
         final Graphics2D graphics = this.noImage.createGraphics();
-        graphics.setColor(Color.darkGray);
+        graphics.setColor(Color.BLACK);
         graphics.fillRect(0, 0, 2, 2);
     }
 

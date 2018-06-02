@@ -81,10 +81,8 @@ public class ControllerFacade implements IController {
         		KeyManager.attacked = true;
         	}
         	
-        	if (!scene.hasToReloadLevel()) {
-	        	scene.tick();				// Update the whole scene
-	        	this.view.windowUpdate();	// Update the window
-        	}
+	        scene.tick();				// Update the whole scene
+	        this.view.windowUpdate();	// Update the window
         	
         	Thread.sleep(60);
         }

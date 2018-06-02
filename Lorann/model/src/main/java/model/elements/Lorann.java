@@ -161,7 +161,8 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void tick() {
-		this.getSprite().animate();
+		if (!this.getScene().hasToReloadLevel())
+			this.getSprite().animate();
 		
 		// Update the spell only if cast :
 		if (this.sortilege.isCast())

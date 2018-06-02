@@ -140,7 +140,7 @@ public class Scene implements IScene {
 		}
 		
 		// Update the character last :
-		character.tick();
+		this.character.tick();
 	}
 	
 	@Override
