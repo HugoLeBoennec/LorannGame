@@ -35,38 +35,32 @@ public class DemonEst extends Object implements IMobile {
 	@Override
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
+			this.setX(this.getX()+1);
 	}
 
 	@Override
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
+			this.setX(this.getX()-1);
 	}
 
 	@Override
 	public void moveUp() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
+			this.setY(this.getY()-1);
 	}
 
 	@Override
 	public void moveDown() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
+			this.setY(this.getY()+1);
 	}
 	
 	@Override
 	public void moveDownLeft() {
 		this.moveLeft();
+		
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 		
 		if (this.alive)
 			this.moveDown();
@@ -76,6 +70,8 @@ public class DemonEst extends Object implements IMobile {
 	public void moveDownRight() {
 		this.moveRight();
 		
+		this.testCollision(this.getX(), this.getY(), this.getScene());
+		
 		if (this.alive)
 			this.moveDown();
 	}
@@ -84,6 +80,8 @@ public class DemonEst extends Object implements IMobile {
 	public void moveUpLeft() {
 		this.moveLeft();
 		
+		this.testCollision(this.getX(), this.getY(), this.getScene());
+		
 		if (this.alive)
 			this.moveUp();
 	}
@@ -91,6 +89,8 @@ public class DemonEst extends Object implements IMobile {
 	@Override
 	public void moveUpRight() {
 		this.moveRight();
+		
+		this.testCollision(this.getX(), this.getY(), this.getScene());
 		
 		if (this.alive)
 			this.moveUp();
@@ -101,34 +101,37 @@ public class DemonEst extends Object implements IMobile {
 		if (!this.alive)
 			return;
 		
-		ICharacter character = this.getScene().getCharacter();
+		final Scene scene = this.getScene();
+		final ICharacter character = scene.getCharacter();
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		this.testCollision(this.getX(), this.getY(), scene);
 		
 		if (!this.alive)
 			return;
 		
 		// Follow player :
-		if  (character.getX() == getX()) {
-			if (character.getY() > getY())		this.moveDown();
-			else								this.moveUp();
-		} else if (character.getX() > getX()) {
-			if (character.getY() == getY())		this.moveRight();
-			else if (character.getY() > getY())	this.moveDownRight();
-			else								this.moveUpRight();
+		if  (character.getX() == this.getX()) {
+			if (character.getY() > this.getY())			this.moveDown();
+			else										this.moveUp();
+		} else if (character.getX() > this.getX()) {
+			if (character.getY() == this.getY())		this.moveRight();
+			else if (character.getY() > this.getY())	this.moveDownRight();
+			else										this.moveUpRight();
 		} else {
-			if (character.getY() == getY())		this.moveLeft();
-			else if (character.getY() > getY())	this.moveDownLeft();
-			else								this.moveUpLeft();
+			if (character.getY() == this.getY())		this.moveLeft();
+			else if (character.getY() > this.getY())	this.moveDownLeft();
+			else										this.moveUpLeft();
 		}
+		
+		this.testCollision(this.getX(), this.getY(), scene);
 	}
 	
 	@Override
 	public void testCollision(final int x, final int y, final IScene scene) {
-		ICharacter character = scene.getCharacter();
+		final ICharacter character = scene.getCharacter();
 		
-		Object object = (Object)scene.getObjectXY(x, y);
-		Sortilege sortilege = (Sortilege)character.getSortilege();
+		final Object object = (Object)scene.getObjectXY(x, y);
+		final Sortilege sortilege = (Sortilege)character.getSortilege();
 		
 		// Character collision :
 		if (character.getX() == x && character.getY() == y)

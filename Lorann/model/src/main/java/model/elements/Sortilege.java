@@ -50,7 +50,7 @@ public class Sortilege extends Object implements IMobile {
 	public void cast(final int x, final int y, final Direction direction) {
 		if (this.cast) {
 			// Make the spell moves towards character :
-			ICharacter character = this.getScene().getCharacter();
+			final ICharacter character = this.getScene().getCharacter();
 			
 			if  (character.getX() == getX()) {
 				if (character.getY() > getY())		this.direction = Direction.DIR_DOWN;
@@ -86,7 +86,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_LEFT;
 	}
@@ -94,7 +94,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_RIGHT;
 	}
@@ -102,7 +102,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveUp() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
+			this.setY(this.getY()-1);
 		else
 			this.direction = Direction.DIR_DOWN;
 	}
@@ -110,7 +110,7 @@ public class Sortilege extends Object implements IMobile {
 	@Override
 	public void moveDown() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
+			this.setY(this.getY()+1);
 		else
 			this.direction = Direction.DIR_UP;
 	}
@@ -120,14 +120,18 @@ public class Sortilege extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_DOWNRIGHT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
-		else
-			this.direction = Direction.DIR_UPLEFT;
+		this.testCollision(this.getX(), this.getY(), scene);
+		
+		if (this.cast) {
+			if (!scene.isPenetrable(this.getX(), this.getY()+1))
+				this.setY(this.getY()+1);
+			else
+				this.direction = Direction.DIR_UPLEFT;
+		}
 	}
 	
 	@Override
@@ -135,14 +139,18 @@ public class Sortilege extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_DOWNLEFT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
-		else
-			this.direction = Direction.DIR_UPRIGHT;
+		this.testCollision(this.getX(), this.getY(), scene);
+		
+		if (this.cast) {
+			if (!scene.isPenetrable(this.getX(), this.getY()+1))
+				this.setY(this.getY()+1);
+			else
+				this.direction = Direction.DIR_UPRIGHT;
+		}
 	}
 	
 	@Override
@@ -150,14 +158,18 @@ public class Sortilege extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_UPRIGHT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
-		else
-			this.direction = Direction.DIR_DOWNLEFT;
+		this.testCollision(getX(), getY(), scene);
+		
+		if (this.cast) {
+			if (!scene.isPenetrable(this.getX(), this.getY()-1))
+				this.setY(this.getY()-1);
+			else
+				this.direction = Direction.DIR_DOWNLEFT;
+		}
 	}
 	
 	@Override
@@ -165,21 +177,25 @@ public class Sortilege extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_UPLEFT;
 		
-		if (!scene.isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
-		else
-			this.direction = Direction.DIR_DOWNRIGHT;
+		this.testCollision(this.getX(), this.getY(), scene);
+		
+		if (this.cast) {
+			if (!scene.isPenetrable(this.getX(), this.getY()-1))
+				this.setY(this.getY()-1);
+			else
+				this.direction = Direction.DIR_DOWNRIGHT;
+		}
 	}
 
 	@Override
 	public void tick() {
-		this.getSprite().animate();
+		final Scene scene = this.getScene();
 		
-		ICharacter character = this.getScene().getCharacter();
+		this.getSprite().animate();
 		
 		switch (this.direction) {
 			case DIR_LEFT 		: this.moveLeft(); break;
@@ -192,17 +208,22 @@ public class Sortilege extends Object implements IMobile {
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
 		}
 		
+		this.testCollision(this.getX(),this. getY(), scene);
+	}
+	
+	@Override
+	public void testCollision(final int x, final int y, final IScene scene) {
+		final Object object = (Object)scene.getObjectXY(x, y);
+		final ICharacter character = scene.getCharacter();
+		
+		// Character collision :
 		if ((character.getX() == this.getX()) & (character.getY() == this.getY())) {
 			this.cast = false;
 			this.setX(-1);
 			this.setY(-1);
 		}
-	}
-	
-	@Override
-	public void testCollision(final int x, final int y, final IScene scene) {
-		Object object = (Object)scene.getObjectXY(x, y);
 		
+		// Exit collision
 		if (object != null) {
 			if (object.getType() == Type.TYPE_SORTIE) {
 				this.cast = false;

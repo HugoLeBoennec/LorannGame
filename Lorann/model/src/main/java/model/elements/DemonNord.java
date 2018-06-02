@@ -42,41 +42,33 @@ public class DemonNord extends Object implements IMobile {
 	@Override
 	public void moveRight() {
 		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_LEFT;
-		
-		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveLeft() {
 		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_RIGHT;
-		
-		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveUp() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()-1))
-			this.setY(getY()-1);
+			this.setY(this.getY()-1);
 		else
 			this.direction = Direction.DIR_DOWN;
-		
-		this.testCollision(getX(), getY(), this.getScene());
 	}
 
 	@Override
 	public void moveDown() {
 		if (!this.getScene().isPenetrable(this.getX(), this.getY()+1))
-			this.setY(getY()+1);
+			this.setY(this.getY()+1);
 		else
 			this.direction = Direction.DIR_UP;
-		
-		this.testCollision(getX(), getY(), this.getScene());
 	}
 	
 	@Override
@@ -84,13 +76,15 @@ public class DemonNord extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_DOWNRIGHT;
 		
+		this.testCollision(this.getX(), this.getY(), scene);
+		
 		if (this.alive) {
 			if (!scene.isPenetrable(this.getX(), this.getY()+1))
-				this.setY(getY()+1);
+				this.setY(this.getY()+1);
 			else
 				this.direction = Direction.DIR_UPLEFT;
 		}
@@ -101,13 +95,15 @@ public class DemonNord extends Object implements IMobile {
 		final Scene scene = this.getScene();
 				
 		if (!scene.isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_DOWNLEFT;
 		
+		this.testCollision(this.getX(), this.getY(), scene);
+		
 		if (this.alive) {
 			if (!scene.isPenetrable(this.getX(), this.getY()+1))
-				this.setY(getY()+1);
+				this.setY(this.getY()+1);
 			else
 				this.direction = Direction.DIR_UPRIGHT;
 		}
@@ -118,13 +114,15 @@ public class DemonNord extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()-1, this.getY()))
-			this.setX(getX()-1);
+			this.setX(this.getX()-1);
 		else
 			this.direction = Direction.DIR_UPRIGHT;
 		
+		this.testCollision(this.getX(), this.getY(), scene);
+		
 		if (this.alive) {
 			if (!scene.isPenetrable(this.getX(), this.getY()-1))
-				this.setY(getY()-1);
+				this.setY(this.getY()-1);
 			else
 				this.direction = Direction.DIR_DOWNLEFT;
 		}
@@ -135,13 +133,15 @@ public class DemonNord extends Object implements IMobile {
 		final Scene scene = this.getScene();
 		
 		if (!scene.isPenetrable(this.getX()+1, this.getY()))
-			this.setX(getX()+1);
+			this.setX(this.getX()+1);
 		else
 			this.direction = Direction.DIR_UPLEFT;
 		
+		this.testCollision(this.getX(), this.getY(), scene);
+		
 		if (this.alive) {
 			if (!scene.isPenetrable(this.getX(), this.getY()-1))
-				this.setY(getY()-1);
+				this.setY(this.getY()-1);
 			else
 				this.direction = Direction.DIR_DOWNRIGHT;
 		}
@@ -152,7 +152,9 @@ public class DemonNord extends Object implements IMobile {
 		if (!this.alive)
 			return;
 		
-		this.testCollision(getX(), getY(), this.getScene());
+		final Scene scene = this.getScene();
+		
+		this.testCollision(this.getX(), this.getY(), scene);
 		
 		if (!this.alive)
 			return;
@@ -167,14 +169,16 @@ public class DemonNord extends Object implements IMobile {
 			case DIR_DOWN		: this.moveDown(); break;
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
 		}
+		
+		this.testCollision(this.getX(), this.getY(), scene);
 	}
 	
 	@Override
 	public void testCollision(final int x, final int y, final IScene scene) {
-		ICharacter character = scene.getCharacter();
+		final ICharacter character = scene.getCharacter();
 		
-		Object object = (Object)scene.getObjectXY(x, y);
-		Sortilege sortilege = (Sortilege)character.getSortilege();
+		final Object object = (Object)scene.getObjectXY(x, y);
+		final Sortilege sortilege = (Sortilege)character.getSortilege();
 		
 		// Character collision :
 		if (character.getX() == x && character.getY() == y)
