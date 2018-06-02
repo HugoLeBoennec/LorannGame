@@ -201,6 +201,15 @@ public class Sortilege extends Object implements IMobile {
 	
 	@Override
 	public void testCollision(final int x, final int y, final IScene scene) {
+		Object object = (Object)scene.getObjectXY(x, y);
+		
+		if (object != null) {
+			if (object.getType() == Type.TYPE_SORTIE) {
+				this.cast = false;
+				this.setX(-1);
+				this.setY(-1);
+			}
+		}
 	}
 	
 	@Override
