@@ -129,8 +129,7 @@ public class DemonSud extends Object implements IMobile {
 			
 			Sfx.SFX_DEATH.setFramePosition(0);
 			Sfx.SFX_DEATH.start();
-			Sfx.SFX_DEATH.setFramePosition(0);
-			Sfx.SFX_DEATH.start();
+			
 			scene.reloadLevel(true);
 		}
 		
