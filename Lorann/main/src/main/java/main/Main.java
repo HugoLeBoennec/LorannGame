@@ -2,9 +2,13 @@ package main;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import controller.ControllerFacade;
 import model.ModelFacade;
 import model.Scene;
+import model.audio.Sfx;
 import model.graphics.Sprite;
 import view.ViewFacade;
 
@@ -29,8 +33,8 @@ public abstract class Main {
 
         try
         {
-        	// Sprite loading :
-            Sprite.LoadSprite();
+        	Sprite.LoadSprite();	// Sprite loading
+            Sfx.LoadSfx();			// Sound effect loading
             
         	scene = new Scene();
         	
@@ -43,6 +47,14 @@ public abstract class Main {
 		}
         catch (InterruptedException e)
         {
+			e.printStackTrace();
+		}
+        catch (UnsupportedAudioFileException e)
+		{
+			e.printStackTrace();
+		}
+        catch (LineUnavailableException e)
+		{
 			e.printStackTrace();
 		}
     }

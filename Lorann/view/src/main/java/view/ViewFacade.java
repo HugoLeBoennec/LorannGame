@@ -3,10 +3,15 @@ package view;
 import java.awt.Dimension;
 import java.awt.FontFormatException;
 import java.awt.Rectangle;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -37,6 +42,9 @@ public class ViewFacade extends Observable implements IView {
     
     /** The main scene. */
     private IScene scene;
+    
+    /** The played music. */
+    private Clip music;
 	
 	/**
      * 
@@ -44,12 +52,19 @@ public class ViewFacade extends Observable implements IView {
      * 
      * @param scene
      *            the scene
+	 * @throws IOException 
+	 * @throws UnsupportedAudioFileException 
+	 * @throws LineUnavailableException 
      */
-    public ViewFacade(final IScene scene) {
+    public ViewFacade(final IScene scene) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
     	super();
     	
     	this.keyManager = new KeyManager();
     	this.scene = scene;
+    	
+    	// Load the musics :
+    	this.music = AudioSystem.getClip();
+    	this.music.open(AudioSystem.getAudioInputStream(new File("sound/music.wav")));
     	
 		// Call separate tread :
     	SwingUtilities.invokeLater(this);
@@ -87,6 +102,9 @@ public class ViewFacade extends Observable implements IView {
     	this.addObserver(this.window.getObserver());
     	
     	this.window.setVisible(true);
+    	
+    	// Start the music :
+        this.music.loop(Clip.LOOP_CONTINUOUSLY);
     }
     
     /**

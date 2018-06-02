@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import model.IScene;
 import model.Scene;
+import model.audio.Sfx;
 import model.graphics.Sprite;
 import showboard.BoardPanel;
 
@@ -187,6 +188,10 @@ public class DemonNord extends Object implements IMobile {
 		// Character collision :
 		if (character.getX() == x && character.getY() == y) {
 			((Object)character).getSprite().setAnimFrame(8);
+			
+			Sfx.SFX_DEATH.setFramePosition(0);
+			Sfx.SFX_DEATH.start();
+			
 			scene.reloadLevel(true);
 		}
 		

@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import model.IScene;
 import model.Scene;
+import model.audio.Sfx;
 import model.graphics.Sprite;
 import showboard.BoardFrame;
 import showboard.BoardPanel;
@@ -169,6 +170,9 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void attaque() {
+		Sfx.SFX_SORTILEGE.setFramePosition(0);
+		Sfx.SFX_SORTILEGE.start();
+		
 		this.sortilege.cast(this.getX(), this.getY(), this.direction);
 	}
 	
@@ -193,26 +197,39 @@ public class Lorann extends Object implements ICharacter {
 		final Sprite spr = object.getSprite();
 		
 		switch (object.getType()) {
+			// Collision with the purse :
 			case TYPE_BOURSE	:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
+					
+					Sfx.SFX_PURSE.setFramePosition(0);
+					Sfx.SFX_PURSE.start();
 					
 					BoardPanel.score++;
 				}
 				
 				break;
+			// Collision with the bubble :
 			case TYPE_BULLE		:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
 					((Scene)scene).getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
 					
+					Sfx.SFX_BUBBLE.setFramePosition(0);
+					Sfx.SFX_BUBBLE.start();
+					
 					BoardPanel.score += 5;
 				}
 				
 				break;
+			// Collision with the purse :
 			case TYPE_SORTIE	:
 				if (spr.getAnimFrame() == 0) {
 					this.getSprite().setAnimFrame(8);
+					
+					Sfx.SFX_DEATH.setFramePosition(0);
+					Sfx.SFX_DEATH.start();
+					
 					scene.reloadLevel(true);
 				}
 				else {
