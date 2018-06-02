@@ -22,6 +22,6 @@ public class SolHorizontal extends Object {
      *            the current scene
      */
 	public SolHorizontal(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_STATIC, x, y, true, new Sprite(Sprite.SPRITE_SOLH, 0), scene);
+		super(Type.TYPE_STATIC, x, y, true, new Sprite(Sprite.SPRITE_SOLH, 0, 1), scene);
 	}
 }

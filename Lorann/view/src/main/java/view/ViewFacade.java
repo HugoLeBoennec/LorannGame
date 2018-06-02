@@ -119,6 +119,7 @@ public class ViewFacade extends Observable implements IView {
 			this.scene.unloadLevel();
 			this.scene.reloadLevel(false);
 			
+			panel.savePawn();
 			panel.clear();
 			
 			try {

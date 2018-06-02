@@ -61,6 +61,9 @@ public class Sprite {
 	/** The animation speed. Set it to 0 if no animation. */
 	private int animVitesse;
 	
+	/** The animation number of images. */
+	private int animNumber;
+	
 	/** The animation current frame. */
 	private int animFrame;
 	
@@ -73,9 +76,10 @@ public class Sprite {
      * @param animSpeed
      *            the animation speed
      */
-	public Sprite(final ArrayList<Image> imageList, final int animVitesse) {
+	public Sprite(final ArrayList<Image> imageList, final int animVitesse, final int animNumber) {
 		this.image = imageList;
 		this.animVitesse = animVitesse;
+		this.animNumber = animNumber-1;
 		this.animFrame = 0;
 		this.animTimer = 0;
 	}
@@ -132,6 +136,24 @@ public class Sprite {
 	}
 	
 	/**
+	 * Gets the number of images
+	 * 
+	 * @return the number of images
+	 */
+	public int getAnimNumber() {
+		return this.animNumber;
+	}
+
+	/**
+	 * Sets the number of images
+	 * 
+	 * @param animNumber number of images
+	 */
+	public void setAnimNumber(final int animNumber) {
+		this.animNumber = animNumber-1;
+	}
+	
+	/**
 	 * Gets the animation frame
 	 * 
 	 * @return the animation frame
@@ -154,7 +176,7 @@ public class Sprite {
 		if (this.animTimer < this.animVitesse)
 			this.animTimer++;
 		else {
-			if (this.animFrame < this.image.size()-1)
+			if (this.animFrame < this.animNumber)
 				this.animFrame++;
 			else
 				this.animFrame = 0;
@@ -178,6 +200,7 @@ public class Sprite {
 		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_ul.png")));
 		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_u.png")));
 		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_ur.png")));
+		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_d.png")));
 		
 		SPRITE_VIDE = new ArrayList<Image>();
 		SPRITE_VIDE.add(ImageIO.read(new File("sprites/empty.png")));

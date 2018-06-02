@@ -33,7 +33,7 @@ public class Lorann extends Object implements ICharacter {
      *            the current scene
      */
 	public Lorann(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_LORANN, 2), scene);
+		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_LORANN, 2, 8), scene);
 		
 		this.direction = Direction.DIR_RIGHT;
 		this.sortilege = new Sortilege(-1, -1, scene);
@@ -211,8 +211,10 @@ public class Lorann extends Object implements ICharacter {
 				
 				break;
 			case TYPE_SORTIE	:
-				if (spr.getAnimFrame() == 0)
+				if (spr.getAnimFrame() == 0) {
+					this.getSprite().setAnimFrame(8);
 					scene.reloadLevel(true);
+				}
 				else {
 					scene.setCurrentLevel(scene.getCurrentLevel()+1);
 					scene.reloadLevel(true);

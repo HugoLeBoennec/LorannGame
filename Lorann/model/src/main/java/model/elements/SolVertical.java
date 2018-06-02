@@ -22,6 +22,6 @@ public class SolVertical extends Object {
      *            the current scene
      */
 	public SolVertical(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_STATIC, x, y, true, new Sprite(Sprite.SPRITE_SOLV, 0), scene);
+		super(Type.TYPE_STATIC, x, y, true, new Sprite(Sprite.SPRITE_SOLV, 0, 1), scene);
 	}
 }

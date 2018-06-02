@@ -22,6 +22,6 @@ public class Sortie extends Object {
      *            the current scene
      */
 	public Sortie(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_SORTIE, x, y, false, new Sprite(Sprite.SPRITE_PORTE, 0), scene);
+		super(Type.TYPE_SORTIE, x, y, false, new Sprite(Sprite.SPRITE_PORTE, 0, 2), scene);
 	}
 }

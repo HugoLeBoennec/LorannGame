@@ -32,7 +32,7 @@ public class DemonOuest extends Object implements IMobile {
      *            the current scene
      */
 	public DemonOuest(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONW, 0), scene);
+		super(Type.TYPE_DAEMON, x, y, false, new Sprite(Sprite.SPRITE_DEMONW, 0, 1), scene);
 		
 		this.alive = true;
 		this.isRight = true;
@@ -123,8 +123,10 @@ public class DemonOuest extends Object implements IMobile {
 		final Sortilege sortilege = (Sortilege)character.getSortilege();
 		
 		// Character collision :
-		if (character.getX() == x && character.getY() == y)
+		if (character.getX() == x && character.getY() == y) {
+			((Object)character).getSprite().setAnimFrame(8);
 			scene.reloadLevel(true);
+		}
 		
 		// Sortilege collision :
 		if (sortilege.getX() == x && sortilege.getY() == y) {

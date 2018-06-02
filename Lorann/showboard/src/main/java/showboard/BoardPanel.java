@@ -7,6 +7,7 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -456,6 +457,21 @@ public class BoardPanel extends JPanel implements Observer {
         return this.getHeight() / this.getDisplayFrame().height;
     }
 
+    /**
+     * Save temporary pawns as squares.
+     *
+     */
+    public void savePawn() {
+    	Point pt;
+    	
+    	for (IPawn p : this.pawns) {
+    		pt = p.getPosition();
+    		
+    		if (pt.x >= 0 && pt.x < 20 && pt.y >= 0 && pt.y < 12)
+    			this.addSquare(p, pt.x, pt.y);
+    	}
+    }
+    
     /**
      * Clear all the pawns.
      *

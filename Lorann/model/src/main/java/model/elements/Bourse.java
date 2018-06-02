@@ -22,6 +22,6 @@ public class Bourse extends Object {
      *            the current scene
      */
 	public Bourse(final int x, final int y, final Scene scene) {
-		super(Type.TYPE_BOURSE, x, y, false, new Sprite(Sprite.SPRITE_BOURSE, 0), scene);
+		super(Type.TYPE_BOURSE, x, y, false, new Sprite(Sprite.SPRITE_BOURSE, 0, 2), scene);
 	}
 }
