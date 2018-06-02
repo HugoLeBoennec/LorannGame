@@ -170,9 +170,6 @@ public class Lorann extends Object implements ICharacter {
 	
 	@Override
 	public void attaque() {
-		Sfx.SFX_SORTILEGE.setFramePosition(0);
-		Sfx.SFX_SORTILEGE.start();
-		
 		this.sortilege.cast(this.getX(), this.getY(), this.direction);
 	}
 	

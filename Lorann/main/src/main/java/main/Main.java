@@ -41,20 +41,16 @@ public abstract class Main {
         	controller = new ControllerFacade(new ViewFacade(scene), new ModelFacade(scene));
             controller.start();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
 			e.printStackTrace();
 		}
-        catch (InterruptedException e)
-        {
+        catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-        catch (UnsupportedAudioFileException e)
-		{
+        catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		}
-        catch (LineUnavailableException e)
-		{
+        catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}
     }

@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import model.IScene;
 import model.Scene;
+import model.audio.Sfx;
 import model.graphics.Sprite;
 
 /**
@@ -70,6 +71,9 @@ public class Sortilege extends Object implements IMobile {
 			
 			this.setX(x);
 			this.setY(y);
+			
+			Sfx.SFX_SORTILEGE.setFramePosition(0);
+			Sfx.SFX_SORTILEGE.start();
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import view.IView;
 import model.IModel;
+import model.IScene;
 import model.elements.ICharacter;
 
 
@@ -44,7 +45,8 @@ public class ControllerFacade implements IController {
     public void start() throws InterruptedException {
     	
     	// Get the main character :
-        ICharacter character = this.model.getCharacter();
+        final ICharacter character = this.model.getCharacter();
+        final IScene scene = this.model.getScene();
         
         // The main loop, keep running until the window is closed :
         while (true) {
@@ -79,8 +81,10 @@ public class ControllerFacade implements IController {
         		KeyManager.attacked = true;
         	}
         	
-        	this.model.getScene().tick();	// Update the whole scene
-        	this.view.windowUpdate();		// Update the window
+        	if (!scene.hasToReloadLevel()) {
+	        	scene.tick();				// Update the whole scene
+	        	this.view.windowUpdate();	// Update the window
+        	}
         	
         	Thread.sleep(60);
         }
