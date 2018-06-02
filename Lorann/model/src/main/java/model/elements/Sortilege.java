@@ -162,7 +162,7 @@ public class Sortilege extends Object implements IMobile {
 		else
 			this.direction = Direction.DIR_UPRIGHT;
 		
-		this.testCollision(getX(), getY(), scene);
+		this.testCollision(this.getX(), this.getY(), scene);
 		
 		if (this.cast) {
 			if (!scene.isPenetrable(this.getX(), this.getY()-1))
@@ -208,7 +208,8 @@ public class Sortilege extends Object implements IMobile {
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
 		}
 		
-		this.testCollision(this.getX(),this. getY(), scene);
+		if (this.cast)
+			this.testCollision(this.getX(), this.getY(), scene);
 	}
 	
 	@Override
@@ -217,19 +218,13 @@ public class Sortilege extends Object implements IMobile {
 		final ICharacter character = scene.getCharacter();
 		
 		// Character collision :
-		if ((character.getX() == this.getX()) & (character.getY() == this.getY())) {
-			this.cast = false;
-			this.setX(-1);
-			this.setY(-1);
-		}
+		if ((character.getX() == this.getX()) & (character.getY() == this.getY()))
+			this.reset();
 		
 		// Exit collision
 		if (object != null) {
-			if (object.getType() == Type.TYPE_SORTIE) {
-				this.cast = false;
-				this.setX(-1);
-				this.setY(-1);
-			}
+			if (object.getType() == Type.TYPE_SORTIE)
+				this.reset();
 		}
 	}
 	

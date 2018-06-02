@@ -6,6 +6,7 @@ import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
 import showboard.BoardFrame;
+import showboard.BoardPanel;
 
 /**
  * <h1>The Class Lorann represents the controllable character.</h1>
@@ -167,7 +168,7 @@ public class Lorann extends Object implements ICharacter {
 	}
 	
 	@Override
-	public void attaque(final BoardFrame frame) {
+	public void attaque() {
 		this.sortilege.cast(this.getX(), this.getY(), this.direction);
 	}
 	
@@ -193,14 +194,21 @@ public class Lorann extends Object implements ICharacter {
 		
 		switch (object.getType()) {
 			case TYPE_BOURSE	:
-				if (spr.getAnimFrame() == 0)
+				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
+					
+					BoardPanel.score++;
+				}
+				
 				break;
 			case TYPE_BULLE		:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
 					((Scene)scene).getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
+					
+					BoardPanel.score += 5;
 				}
+				
 				break;
 			case TYPE_SORTIE	:
 				if (spr.getAnimFrame() == 0)

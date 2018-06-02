@@ -5,6 +5,7 @@ import java.awt.Point;
 import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
+import showboard.BoardPanel;
 
 /**
  * <h1>The Class DemonNord represents a collectable item.</h1>
@@ -170,6 +171,9 @@ public class DemonNord extends Object implements IMobile {
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
 		}
 		
+		if (!this.alive)
+			return;
+		
 		this.testCollision(this.getX(), this.getY(), scene);
 	}
 	
@@ -189,7 +193,10 @@ public class DemonNord extends Object implements IMobile {
 			this.alive = false;
 			this.setX(-1);
 			this.setY(-1);
+			
 			sortilege.reset();
+			
+			BoardPanel.score += 10;
 		}
 		
 		// Exit collision
@@ -198,6 +205,8 @@ public class DemonNord extends Object implements IMobile {
 				this.alive = false;
 				this.setX(-1);
 				this.setY(-1);
+				
+				BoardPanel.score += 5;
 			}
 		}
 	}

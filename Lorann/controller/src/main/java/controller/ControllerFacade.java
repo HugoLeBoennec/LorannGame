@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 import view.IView;
@@ -50,40 +49,34 @@ public class ControllerFacade implements IController {
         // The main loop, keep running until the window is closed :
         while (true) {
         	
-        	// Management of user inputs :
-        	if (KeyManager.key != 0) {
-        		switch (KeyManager.key) {
-        			// Basic arrows :
-        			case KeyEvent.VK_LEFT		: character.moveLeft(); break;
-	        		case KeyEvent.VK_RIGHT		: character.moveRight(); break;
-	        		case KeyEvent.VK_UP			: character.moveUp(); break;
-	        		case KeyEvent.VK_DOWN		: character.moveDown(); break;
-	        		
-	        		// Numpad :
-	        		case KeyEvent.VK_NUMPAD4	: character.moveLeft(); break;
-	        		case KeyEvent.VK_NUMPAD6	: character.moveRight(); break;
-	        		case KeyEvent.VK_NUMPAD8	: character.moveUp(); break;
-	        		case KeyEvent.VK_NUMPAD2	: character.moveDown(); break;
-	        		case KeyEvent.VK_NUMPAD1	: character.moveDownLeft(); break;
-	        		case KeyEvent.VK_NUMPAD3	: character.moveDownRight(); break;
-	        		case KeyEvent.VK_NUMPAD7	: character.moveUpLeft(); break;
-	        		case KeyEvent.VK_NUMPAD9	: character.moveUpRight(); break;
-	        		
-	        		// Diagonal standard moves :
-	        		case KeyEvent.VK_Z			: character.moveUp(); break;
-	        		case KeyEvent.VK_Q			: character.moveLeft(); break;
-	        		case KeyEvent.VK_S			: character.moveDown(); break;
-	        		case KeyEvent.VK_D			: character.moveRight(); break;
-	        		case KeyEvent.VK_W			: character.moveDownLeft(); break;
-	        		case KeyEvent.VK_C			: character.moveDownRight(); break;
-	        		case KeyEvent.VK_A			: character.moveUpLeft(); break;
-	        		case KeyEvent.VK_E			: character.moveUpRight(); break;
-	        		
-	        		// Attack button :
-	        		case KeyEvent.VK_SPACE		: character.attaque(this.view.getWindow()); KeyManager.key = 0; break;
-	        		
-	        		default : break;
-        		}
+        	// Horizontal movements :
+        	if (KeyManager.left && !KeyManager.right)
+        		character.moveLeft();
+        	else if (KeyManager.right && !KeyManager.left)
+        		character.moveRight();
+        	
+        	// Vertical movements :
+        	if (KeyManager.up && !KeyManager.down)
+        		character.moveUp();
+        	else if (KeyManager.down && !KeyManager.up)
+        		character.moveDown();
+        	
+        	// Diagonal up-left movements :
+        	if (KeyManager.upleft && !KeyManager.downright)
+        		character.moveUpLeft();
+        	else if (KeyManager.downright && !KeyManager.upleft)
+        		character.moveDownRight();
+        	
+        	// Diagonal up-right movements :
+        	if (KeyManager.upright && !KeyManager.downleft)
+        		character.moveUpRight();
+        	else if (KeyManager.downleft && !KeyManager.upright)
+        		character.moveDownLeft();
+        	
+        	// Attack movement :
+        	if (KeyManager.attack && !KeyManager.attacked) {
+        		character.attaque();
+        		KeyManager.attacked = true;
         	}
         	
         	this.model.getScene().tick();	// Update the whole scene

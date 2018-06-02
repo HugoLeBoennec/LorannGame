@@ -5,6 +5,7 @@ import java.awt.Point;
 import model.IScene;
 import model.Scene;
 import model.graphics.Sprite;
+import showboard.BoardPanel;
 
 /**
  * <h1>The Class DemonEst represents a collectable item.</h1>
@@ -123,6 +124,9 @@ public class DemonEst extends Object implements IMobile {
 			else										this.moveUpLeft();
 		}
 		
+		if (!this.alive)
+			return;
+		
 		this.testCollision(this.getX(), this.getY(), scene);
 	}
 	
@@ -142,7 +146,10 @@ public class DemonEst extends Object implements IMobile {
 			this.alive = false;
 			this.setX(-1);
 			this.setY(-1);
+			
 			sortilege.reset();
+			
+			BoardPanel.score += 10;
 		}
 		
 		// Exit collision
@@ -151,6 +158,8 @@ public class DemonEst extends Object implements IMobile {
 				this.alive = false;
 				this.setX(-1);
 				this.setY(-1);
+				
+				BoardPanel.score += 5;
 			}
 		}
 	}
