@@ -82,7 +82,7 @@ public class ViewFacade extends Observable implements IView {
     	// Set the window parameters :
     	this.window.setDimension(new Dimension(WIDTH, HEIGHT));
     	this.window.setDisplayFrame(new Rectangle(0, 0, WIDTH, HEIGHT + 2));
-    	this.window.setSize(WIDTH * 32, HEIGHT * 32 + 64);
+    	this.window.setSize(WIDTH * 32 - 14, HEIGHT * 32 + 64);
     	this.window.setFocusable(true);
     	this.window.setFocusTraversalKeysEnabled(false);
     	this.window.setDefaultCloseOperation(BoardFrame.EXIT_ON_CLOSE);

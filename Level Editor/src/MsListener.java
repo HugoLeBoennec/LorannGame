@@ -8,10 +8,10 @@ public class MsListener implements MouseListener, MouseMotionListener
 	static public int mouseX = 0;
 	static public int mouseY = 0;
 	
-	// Position du clic :
+	// Position de la séléction :
 	static public int clickX = -32;
 	static public int clickY = -32;
-
+	
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
@@ -19,7 +19,7 @@ public class MsListener implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mousePressed(MouseEvent e)
-	{
+	{	
 		final Element el;
 		final int currentX = Math.round((e.getX() - 19) / 32.0f) * 32;
 		final int currentY = Math.round((e.getY() - 70) / 32.0f) * 32;
