@@ -18,6 +18,8 @@ public class DemonEst extends Object implements IMobile {
 	
 	/** If the daemon is alive */
 	private boolean alive;
+	private int speed = 0;
+	private int speedD = 2;
 	
 	/**
      * Instantiates a new DemonEst.
@@ -60,42 +62,46 @@ public class DemonEst extends Object implements IMobile {
 	
 	@Override
 	public void moveDownLeft() {
-		this.moveLeft();
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
-		
-		if (this.alive)
-			this.moveDown();
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()+1)) {
+			this.setY(this.getY()+1);
+			this.setX(this.getX()-1);
+		}else {
+			moveLeft();
+			moveDown();
+		}
 	}
 	
 	@Override
 	public void moveDownRight() {
-		this.moveRight();
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
-		
-		if (this.alive)
-			this.moveDown();
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()+1)) {
+			this.setY(this.getY()+1);
+			this.setX(this.getX()+1);
+		} else {
+			moveRight();
+			moveDown();
+		}
 	}
 	
 	@Override
 	public void moveUpLeft() {
-		this.moveLeft();
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
-		
-		if (this.alive)
-			this.moveUp();
+		if (!this.getScene().isPenetrable(this.getX()-1, this.getY()-1)) {
+			this.setY(this.getY()-1);
+			this.setX(this.getX()-1);
+		}else {
+			moveUp();
+			moveLeft();
+		}
 	}
 	
 	@Override
 	public void moveUpRight() {
-		this.moveRight();
-		
-		this.testCollision(this.getX(), this.getY(), this.getScene());
-		
-		if (this.alive)
-			this.moveUp();
+		if (!this.getScene().isPenetrable(this.getX()+1, this.getY()-1)) {
+			this.setY(this.getY()-1);
+			this.setX(this.getX()+1);
+		}else {
+			moveUp();
+			moveRight();
+		}
 	}
 	
 	@Override
@@ -110,7 +116,7 @@ public class DemonEst extends Object implements IMobile {
 		
 		if (!this.alive)
 			return;
-		
+		if (speed == 0) {
 		// Follow player :
 		if  (character.getX() == this.getX()) {
 			if (character.getY() > this.getY())			this.moveDown();
@@ -124,7 +130,9 @@ public class DemonEst extends Object implements IMobile {
 			else if (character.getY() > this.getY())	this.moveDownLeft();
 			else										this.moveUpLeft();
 		}
-		
+		}
+		speed++;
+		if (speed > speedD-1) speed = 0;
 		if (!this.alive)
 			return;
 		
