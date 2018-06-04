@@ -210,7 +210,6 @@ public class Sprite {
 		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_2.png")));
 		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_3.png")));
 		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_4.png")));
-		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_5.png")));
 		
 		SPRITE_BULLE = new ArrayList<Image>();
 		SPRITE_BULLE.add(ImageIO.read(new File("sprites/crystal_ball.png")));
