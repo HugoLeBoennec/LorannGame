@@ -155,12 +155,20 @@ public class DemonNord extends Object implements IMobile {
 			return;
 		
 		final Scene scene = this.getScene();
-		
+		final ICharacter character = scene.getCharacter();
 		this.testCollision(this.getX(), this.getY(), scene);
 		
 		if (!this.alive)
 			return;
-		
+		this.direction = Direction.randomDirection();
+		if (character.getY() == this.getY()) {
+			if (character.getX() < this.getX()) this.moveLeft();
+			else this.moveRight();
+		}
+		else if (character.getX() == this.getX()){
+			if (character.getY() < this.getY()) this.moveUp();
+			else this.moveDown();
+		}else {
 		switch (this.direction) {
 			case DIR_LEFT 		: this.moveLeft(); break;
 			case DIR_UPLEFT		: this.moveUpLeft(); break;
@@ -170,7 +178,7 @@ public class DemonNord extends Object implements IMobile {
 			case DIR_DOWNRIGHT	: this.moveDownRight(); break;
 			case DIR_DOWN		: this.moveDown(); break;
 			case DIR_DOWNLEFT	: this.moveDownLeft(); break;
-		}
+		}}
 		
 		if (!this.alive)
 			return;
