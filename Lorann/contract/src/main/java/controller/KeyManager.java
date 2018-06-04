@@ -51,10 +51,10 @@ public class KeyManager implements KeyListener {
 	    	case KeyEvent.VK_NUMPAD5	: attack = true;	break;
 	    		
 	    	// Keys :
-	    	case KeyEvent.VK_Z			: left = true;		break;
-	    	case KeyEvent.VK_Q			: right = true; 	break;
-	    	case KeyEvent.VK_S			: up = true;		break;
-	    	case KeyEvent.VK_D			: down = true;		break;
+	    	case KeyEvent.VK_Z			: up = true;		break;
+	    	case KeyEvent.VK_Q			: left = true; 		break;
+	    	case KeyEvent.VK_S			: down = true;		break;
+	    	case KeyEvent.VK_D			: right = true;		break;
 	    	case KeyEvent.VK_W			: downleft = true;	break;
 	    	case KeyEvent.VK_C			: downright = true; break;
 	    	case KeyEvent.VK_A			: upleft = true;	break;
@@ -98,14 +98,14 @@ public class KeyManager implements KeyListener {
 	    	case KeyEvent.VK_NUMPAD5	: attack = false;					break;
 	    		
 	    	// Keys :
-	    	case KeyEvent.VK_Z			: left = false;						break;
-	    	case KeyEvent.VK_Q			: right = false; 					break;
-	    	case KeyEvent.VK_S			: up = false;						break;
-	    	case KeyEvent.VK_D			: down = false;						break;
-	    	case KeyEvent.VK_W			: downleft = false;					break;
-	    	case KeyEvent.VK_C			: downright = false;				break;
-	    	case KeyEvent.VK_A			: upleft = false;					break;
-	    	case KeyEvent.VK_E			: upright = false;					break;
+	    	case KeyEvent.VK_Z			: up = false;				break;
+	    	case KeyEvent.VK_Q			: left = false; 			break;
+	    	case KeyEvent.VK_S			: down = false;				break;
+	    	case KeyEvent.VK_D			: right = false;			break;
+	    	case KeyEvent.VK_W			: downleft = false;			break;
+	    	case KeyEvent.VK_C			: downright = false;		break;
+	    	case KeyEvent.VK_A			: upleft = false;			break;
+	    	case KeyEvent.VK_E			: upright = false;			break;
 	    		
 	    	// Standard attack button :
 	    	case KeyEvent.VK_SPACE		: attack = false; attacked = false;	break;
