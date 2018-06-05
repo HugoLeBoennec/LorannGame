@@ -180,7 +180,6 @@ public class Scene implements IScene {
 					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Empty(x, y, this), x, y); break;
 					default : frame.addSquare(new Empty(x, y, this), x, y); break;
 				}
-				
 				now += System.currentTimeMillis()-debut;
 				debut = System.currentTimeMillis();
 				if (re == 2) {
