@@ -91,6 +91,9 @@ public class ViewFacade extends Observable implements IView {
 		this.displayScene();
     }
     
+    /**
+     * Display the scene on the frame.
+     */
     public void displayScene() {
     	// Load the first level here :
     	try {

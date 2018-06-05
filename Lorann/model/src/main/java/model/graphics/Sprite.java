@@ -59,7 +59,7 @@ public class Sprite {
 	private ArrayList<Image> image;
 	
 	/** The animation speed. Set it to 0 if no animation. */
-	private int animVitesse;
+	private int animSpeed;
 	
 	/** The animation number of images. */
 	private int animNumber;
@@ -73,12 +73,16 @@ public class Sprite {
 	/**
      * Instantiates a new Sprite.
      *
+     * @param imageList
+     *            the list associated
      * @param animSpeed
      *            the animation speed
+     * @param animNumber
+     *            the number of images
      */
-	public Sprite(final ArrayList<Image> imageList, final int animVitesse, final int animNumber) {
+	public Sprite(final ArrayList<Image> imageList, final int animSpeed, final int animNumber) {
 		this.image = imageList;
-		this.animVitesse = animVitesse;
+		this.animSpeed = animSpeed;
 		this.animNumber = animNumber-1;
 		this.animFrame = 0;
 		this.animTimer = 0;
@@ -122,17 +126,17 @@ public class Sprite {
 	 * 
 	 * @return the animation speed
 	 */
-	public int getAnimVitesse() {
-		return this.animVitesse;
+	public int getAnimSpeed() {
+		return this.animSpeed;
 	}
 
 	/**
 	 * Sets the animation speed
 	 * 
-	 * @param animVitesse the animation speed to set
+	 * @param animSpeed the animation speed to set
 	 */
-	public void setAnimVitesse(final int animVitesse) {
-		this.animVitesse = animVitesse;
+	public void setAnimVitesse(final int animSpeed) {
+		this.animSpeed = animSpeed;
 	}
 	
 	/**
@@ -173,7 +177,7 @@ public class Sprite {
 	
 	/** Process the animation **/
 	public void animate() {
-		if (this.animTimer < this.animVitesse)
+		if (this.animTimer < this.animSpeed)
 			this.animTimer++;
 		else {
 			if (this.animFrame < this.animNumber)
