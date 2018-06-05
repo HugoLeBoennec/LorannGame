@@ -129,7 +129,7 @@ public class BoardPanel extends JPanel implements Observer {
         // Draw the score text :
         graphics.setFont(font);
         graphics.setColor(Color.WHITE);
-        graphics.drawString("Test Score : " + score, 24, 384);
+        graphics.drawString("Score : " + score, 24, 384);
     }
 
     /*
