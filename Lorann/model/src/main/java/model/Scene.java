@@ -6,6 +6,7 @@ import model.dao.ElementDAO;
 import model.elements.Object;
 import model.elements.*;
 import showboard.BoardFrame;
+import showboard.BoardPanel;
 
 /**
  * <h1>The Class Scene represents the game scene with its elements.</h1>
@@ -15,6 +16,13 @@ import showboard.BoardFrame;
  */
 public class Scene implements IScene {
 	
+	private int Loading = 0;
+	private int Loading2 = -1;
+	private int timeLoading = 0;
+	private double now = 0;
+	private int re = 0;
+	private double fin = 0;
+	double debut = System.currentTimeMillis();
 	 /** The width. */
     static private int	WIDTH = 20;
 
@@ -173,10 +181,26 @@ public class Scene implements IScene {
 					default : frame.addSquare(new Empty(x, y, this), x, y); break;
 				}
 				
+				now += System.currentTimeMillis()-debut;
+				debut = System.currentTimeMillis();
+				if (re == 2) {
+				fin = now/3;
+				re = 0;
+				now = 0;
+				for (int a = 0; a < 20; a++) System.out.println("");
+				System.out.println("Chargment : " + (((100*Loading)/240)+1) + "%");
+				System.out.println("temps restant : " + (fin/1000)*(240-Loading) + "s");
+				}
+				re++;
+				Loading2 = Loading;
+				Loading ++;
 				setObjectXY(obj, x, y);
 			}
 		}
-		
+		for (int a = 0; a < 20; a++) System.out.println("");
+		System.out.println("Chargment : Terminer");
+		Loading = 0;
+		Loading2 = 0;
 		// Main character creation :
 		frame.addPawn(this.character);
 		

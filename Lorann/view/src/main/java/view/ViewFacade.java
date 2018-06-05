@@ -153,7 +153,7 @@ public class ViewFacade extends Observable implements IView {
 			}
 		}
 	}
-    
+
     @Override
 	public BoardFrame getWindow() {
 		return this.window;

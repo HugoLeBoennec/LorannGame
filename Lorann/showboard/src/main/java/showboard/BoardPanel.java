@@ -61,6 +61,7 @@ public class BoardPanel extends JPanel implements Observer {
     
     /** The total score. */
     static public int			score     		 = 0;
+ 
 
     /** The squares represents the square of the board. */
     private ISquare[][]         squares;
