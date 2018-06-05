@@ -51,10 +51,13 @@ public class ViewFacade extends Observable implements IView {
      * Instantiates a new view facade.
      * 
      * @param scene
-     *            the scene
-	 * @throws IOException 
-	 * @throws UnsupportedAudioFileException 
-	 * @throws LineUnavailableException 
+     *        		the scene
+	 * @throws IOException
+	 * 				the input output exception
+	 * @throws UnsupportedAudioFileException
+	 * 				the audio is unsupported
+	 * @throws LineUnavailableException
+	 * 				the line is unavailable
      */
     public ViewFacade(final IScene scene) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
     	super();

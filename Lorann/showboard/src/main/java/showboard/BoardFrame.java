@@ -45,8 +45,10 @@ public class BoardFrame extends JFrame implements IBoard {
      *            the title of the frame
      * @param decorated
      *            the decorated
-     * @throws IOException 
-     * @throws FontFormatException 
+     * @throws IOException
+     * 				the input output exception
+     * @throws FontFormatException
+     * 				the font format is not supported
      */
     public BoardFrame(final String title, final Boolean decorated) throws FontFormatException, IOException {
         super();
@@ -66,8 +68,10 @@ public class BoardFrame extends JFrame implements IBoard {
      *
      * @param title
      *            the title
-     * @throws IOException 
-     * @throws FontFormatException 
+     * @throws IOException
+     * 				the input output exception
+     * @throws FontFormatException
+     * 				the font format is not supported
      */
     public BoardFrame(final String title) throws FontFormatException, IOException {
         this(title, false);
@@ -75,8 +79,11 @@ public class BoardFrame extends JFrame implements IBoard {
 
     /**
      * Instantiates a new board frame.
-     * @throws IOException 
-     * @throws FontFormatException 
+     * 
+	 * @throws IOException
+     * 				the input output exception
+     * @throws FontFormatException
+     * 				the font format is not supported
      */
     public BoardFrame() throws FontFormatException, IOException {
         this("", false);
@@ -86,9 +93,11 @@ public class BoardFrame extends JFrame implements IBoard {
      * Instantiates a new board frame.
      *
      * @param decorated
-     *            the decorated
-     * @throws IOException 
-     * @throws FontFormatException 
+     *            	the decorated
+     * @throws IOException
+     * 				the input output exception
+     * @throws FontFormatException
+     * 				the font format is not supported
      */
     public BoardFrame(final Boolean decorated) throws FontFormatException, IOException {
         this("", decorated);

@@ -22,8 +22,6 @@ public final class ModelFacade implements IModel {
      * 
      * @param scene
      *            the scene
-     * @throws IOException 
-     * @throws SQLException 
      */
     public ModelFacade(final IScene scene) {
         this.scene = scene;

@@ -97,6 +97,7 @@ public interface IScene {
      * @param frame
      * 				the frame to draw into
      * @throws SQLException
+     * 				the SQL request fails
      */
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException;
 	

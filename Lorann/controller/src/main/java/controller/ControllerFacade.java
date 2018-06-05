@@ -1,7 +1,5 @@
 package controller;
 
-import java.sql.SQLException;
-
 import view.IView;
 import model.IModel;
 import model.IScene;
@@ -38,9 +36,8 @@ public class ControllerFacade implements IController {
     /**
      * Start.
      *
-     * @throws SQLException
-     *             the SQL exception
-     * @throws InterruptedException 
+     * @throws InterruptedException
+     * 				the thread interruption
      */
     public void start() throws InterruptedException {
     	

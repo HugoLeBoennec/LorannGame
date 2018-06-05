@@ -39,7 +39,6 @@ public class Scene implements IScene {
     /**
      * Instantiates a new Scene.
      * 
-     * @throws SQLException
      */
     public Scene() {
         this.object = new Object[20][12];

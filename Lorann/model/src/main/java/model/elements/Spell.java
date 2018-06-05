@@ -28,7 +28,7 @@ public class Spell extends Object implements IMobile {
      * 			the X position
      * @param y
      * 			the Y position
-     * @scene
+     * @param scene
      * 			the scene
      */
 	public Spell(final int x, final int y, final Scene scene) {

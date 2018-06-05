@@ -191,7 +191,9 @@ public class Sprite {
 
 	/**
      * Load all the sprites
+     * 
 	 * @throws IOException
+	 * 				the input output exception
      *
      */
 	static public void LoadSprite() throws IOException {

@@ -39,7 +39,7 @@ public class BDDTest {
 		try
 		{
 			this.element = ElementDAO.getElementByPos(1, 1, 2);
-			assertEquals(this.element.getType(), 'm');
+			assertEquals(this.element.getType(), 'a');
 		}
 		catch (SQLException e)
 		{
@@ -52,7 +52,7 @@ public class BDDTest {
 		try
 		{
 			this.elements = ElementDAO.getAllElements(1);
-			assertEquals(this.elements.get(0).getType(), 'm');
+			assertEquals(this.elements.get(0).getType(), 'r');
 		}
 		catch (SQLException e)
 		{

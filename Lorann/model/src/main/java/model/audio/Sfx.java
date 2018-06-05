@@ -30,10 +30,13 @@ public class Sfx {
 	
 	/**
      * Load all the sound effects
+     * 
 	 * @throws IOException
-	 * @throws UnsupportedAudioFileException 
-	 * @throws LineUnavailableException 
-     *
+	 * 				the input output exception
+	 * @throws UnsupportedAudioFileException
+	 * 				the audio is unsupported
+	 * @throws LineUnavailableException
+	 * 				the line is unavailable
      */
 	static public void LoadSfx() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
 		SFX_PURSE = AudioSystem.getClip();
