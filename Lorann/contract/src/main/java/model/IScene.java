@@ -92,6 +92,10 @@ public interface IScene {
     /**
      * Load a level from database
      * 
+     * @param level
+     * 				the level number
+     * @param frame
+     * 				the frame to draw into
      * @throws SQLException
      */
 	public void loadLevel(final int level, final BoardFrame frame) throws SQLException;

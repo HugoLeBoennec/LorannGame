@@ -23,6 +23,13 @@ public class Spell extends Object implements IMobile {
 	
 	/**
      * Instantiates a new Sortilege.
+     * 
+     * @param x
+     * 			the X position
+     * @param y
+     * 			the Y position
+     * @scene
+     * 			the scene
      */
 	public Spell(final int x, final int y, final Scene scene) {
 		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_SPELL, 0, 4), scene);		
@@ -45,8 +52,8 @@ public class Spell extends Object implements IMobile {
      *            the X position
      * @param y
      *            the Y position
-     * @param scene
-     *            the current scene
+     * @param direction
+     *            the direction of the cast
      */
 	public void cast(final int x, final int y, final Direction direction) {
 		if (this.cast) {

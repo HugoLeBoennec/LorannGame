@@ -117,8 +117,8 @@ public class Sprite {
      * @param image
      *            the image
 	 */
-	public Image setImage(final int number, final Image image) {
-		return this.image.set(number, image);
+	public void setImage(final int number, final Image image) {
+		this.image.set(number, image);
 	}
 
 	/**

@@ -50,6 +50,8 @@ public interface IModel {
 	/**
      * Gets the Element by position.
      *
+     * @param level
+     *            the level number
      * @param x
      *            the X position
      * @param y
@@ -62,7 +64,9 @@ public interface IModel {
 
     /**
      * Gets the all Elements.
-     *
+     * 
+     * @param level
+     *            the level number
      * @return the all Elements
      * @throws SQLException
      *             the SQL exception
