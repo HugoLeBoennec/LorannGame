@@ -188,7 +188,7 @@ public class Scene implements IScene {
 				now = 0;
 				for (int a = 0; a < 20; a++) System.out.println("");
 				System.out.println("Chargment : " + (((100*Loading)/240)+1) + "%");
-				System.out.println("temps restant : " + (fin/1000)*(240-Loading) + "s");
+				System.out.println("temps restant : " + Math.round((fin/1000)*(240-Loading)) + "s");
 				}
 				re++;
 				Loading2 = Loading;
