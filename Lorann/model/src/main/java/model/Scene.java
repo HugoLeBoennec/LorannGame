@@ -15,7 +15,7 @@ import showboard.BoardPanel;
  * @version 1.0
  */
 public class Scene implements IScene {
-	
+	//time
 	private int Loading = 0;
 	private int Loading2 = -1;
 	private int timeLoading = 0;
