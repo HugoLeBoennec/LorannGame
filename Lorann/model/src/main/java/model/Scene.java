@@ -160,18 +160,18 @@ public class Scene implements IScene {
 				// Object insertion :
 				switch (el.getType())
 				{
-					case 'b' : obj = new Bulle(x, y, this);						frame.addSquare(obj, x, y); break;
-					case 'p' : obj = new Sortie(x, y, this);					frame.addSquare(obj, x, y); break;
-					case 'r' : obj = new Mur(x, y, this);						frame.addSquare(obj, x, y); break;
-					case 'h' : obj = new SolHorizontal(x, y, this);				frame.addSquare(obj, x, y); break;
-					case 'v' : obj = new SolVertical(x, y, this);				frame.addSquare(obj, x, y); break;
-					case 'n' : obj = new DemonNord(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 'w' : obj = new DemonOuest(x, y, this);				frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 'e' : obj = new DemonEst(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 's' : obj = new DemonSud(x, y, this);					frame.addSquare(new Vide(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
-					case 'o' : obj = new Bourse(x, y, this);					frame.addSquare(obj, x, y); break;
-					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Vide(x, y, this), x, y); break;
-					default : frame.addSquare(new Vide(x, y, this), x, y); break;
+					case 'b' : obj = new Key(x, y, this);						frame.addSquare(obj, x, y); break;
+					case 'p' : obj = new Exit(x, y, this);					frame.addSquare(obj, x, y); break;
+					case 'r' : obj = new Wall(x, y, this);						frame.addSquare(obj, x, y); break;
+					case 'h' : obj = new BoneHorizontal(x, y, this);				frame.addSquare(obj, x, y); break;
+					case 'v' : obj = new BoneVertical(x, y, this);				frame.addSquare(obj, x, y); break;
+					case 'n' : obj = new DaemonNorth(x, y, this);					frame.addSquare(new Empty(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'w' : obj = new DaemonWest(x, y, this);				frame.addSquare(new Empty(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'e' : obj = new DaemonEast(x, y, this);					frame.addSquare(new Empty(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 's' : obj = new DaemonSouth(x, y, this);					frame.addSquare(new Empty(x, y, this), x, y); frame.addPawn((IMobile)obj); break;
+					case 'o' : obj = new Coin(x, y, this);					frame.addSquare(obj, x, y); break;
+					case 'd' : this.character.setX(x); this.character.setY(y);	frame.addSquare(new Empty(x, y, this), x, y); break;
+					default : frame.addSquare(new Empty(x, y, this), x, y); break;
 				}
 				
 				setObjectXY(obj, x, y);

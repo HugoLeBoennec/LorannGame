@@ -11,11 +11,11 @@ public interface ICharacter extends IMobile {
 	/**
      * Casts a spell
      */
-	public void attaque();
+	public void attack();
 	
 	/**
      * Gets the cast spell
      * @return the spell if cast
      */
-	public IObject getSortilege();
+	public IObject getSpell();
 }

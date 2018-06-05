@@ -19,40 +19,40 @@ public class Sprite {
 	static public ArrayList<Image> SPRITE_LORANN;
 	
 	/** The images of the spell. */
-	static public ArrayList<Image> SPRITE_SORTILEGE;
+	static public ArrayList<Image> SPRITE_SPELL;
 	
-	/** The images of the energy bubble. */
-	static public ArrayList<Image> SPRITE_BULLE;
+	/** The images of the key. */
+	static public ArrayList<Image> SPRITE_KEY;
 	
 	/** The images of the door. */
-	static public ArrayList<Image> SPRITE_PORTE;
+	static public ArrayList<Image> SPRITE_DOOR;
 	
 	/** The images of the wall. */
-	static public ArrayList<Image> SPRITE_MUR;
+	static public ArrayList<Image> SPRITE_WALL;
 	
 	/** The images of the horizontal floor. */
-	static public ArrayList<Image> SPRITE_SOLH;
+	static public ArrayList<Image> SPRITE_BONEH;
 	
 	/** The images of the vertical floor. */
-	static public ArrayList<Image> SPRITE_SOLV;
+	static public ArrayList<Image> SPRITE_BONEV;
 	
 	/** The images of the north daemon. */
-	static public ArrayList<Image> SPRITE_DEMONN;
+	static public ArrayList<Image> SPRITE_DAEMONN;
 	
 	/** The images of the west daemon. */
-	static public ArrayList<Image> SPRITE_DEMONW;
+	static public ArrayList<Image> SPRITE_DAEMONW;
 	
 	/** The images of the east daemon. */
-	static public ArrayList<Image> SPRITE_DEMONE;
+	static public ArrayList<Image> SPRITE_DAEMONE;
 	
 	/** The images of the south daemon. */
-	static public ArrayList<Image> SPRITE_DEMONS;
+	static public ArrayList<Image> SPRITE_DAEMONS;
 	
 	/** The images of the collectable purse. */
-	static public ArrayList<Image> SPRITE_BOURSE;
+	static public ArrayList<Image> SPRITE_COIN;
 	
 	/** The images of the empty tile. */
-	static public ArrayList<Image> SPRITE_VIDE;
+	static public ArrayList<Image> SPRITE_EMPTY;
 	
 	
 	/** The multiple images. */
@@ -202,46 +202,46 @@ public class Sprite {
 		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_ur.png")));
 		SPRITE_LORANN.add(ImageIO.read(new File("sprites/lorann_d.png")));
 		
-		SPRITE_VIDE = new ArrayList<Image>();
-		SPRITE_VIDE.add(ImageIO.read(new File("sprites/empty.png")));
+		SPRITE_EMPTY = new ArrayList<Image>();
+		SPRITE_EMPTY.add(ImageIO.read(new File("sprites/empty.png")));
 		
-		SPRITE_SORTILEGE = new ArrayList<Image>();
-		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_1.png")));
-		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_2.png")));
-		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_3.png")));
-		SPRITE_SORTILEGE.add(ImageIO.read(new File("sprites/fireball_4.png")));
+		SPRITE_SPELL = new ArrayList<Image>();
+		SPRITE_SPELL.add(ImageIO.read(new File("sprites/fireball_1.png")));
+		SPRITE_SPELL.add(ImageIO.read(new File("sprites/fireball_2.png")));
+		SPRITE_SPELL.add(ImageIO.read(new File("sprites/fireball_3.png")));
+		SPRITE_SPELL.add(ImageIO.read(new File("sprites/fireball_4.png")));
 		
-		SPRITE_BULLE = new ArrayList<Image>();
-		SPRITE_BULLE.add(ImageIO.read(new File("sprites/crystal_ball.png")));
-		SPRITE_BULLE.add(SPRITE_VIDE.get(0));
+		SPRITE_KEY = new ArrayList<Image>();
+		SPRITE_KEY.add(ImageIO.read(new File("sprites/crystal_ball.png")));
+		SPRITE_KEY.add(SPRITE_EMPTY.get(0));
 		
-		SPRITE_PORTE = new ArrayList<Image>();
-		SPRITE_PORTE.add(ImageIO.read(new File("sprites/gate_closed.png")));
-		SPRITE_PORTE.add(ImageIO.read(new File("sprites/gate_open.png")));
+		SPRITE_DOOR = new ArrayList<Image>();
+		SPRITE_DOOR.add(ImageIO.read(new File("sprites/gate_closed.png")));
+		SPRITE_DOOR.add(ImageIO.read(new File("sprites/gate_open.png")));
 		
-		SPRITE_MUR = new ArrayList<Image>();
-		SPRITE_MUR.add(ImageIO.read(new File("sprites/bone.png")));
+		SPRITE_WALL = new ArrayList<Image>();
+		SPRITE_WALL.add(ImageIO.read(new File("sprites/bone.png")));
 		
-		SPRITE_SOLH = new ArrayList<Image>();
-		SPRITE_SOLH.add(ImageIO.read(new File("sprites/horizontal_bone.png")));
+		SPRITE_BONEH = new ArrayList<Image>();
+		SPRITE_BONEH.add(ImageIO.read(new File("sprites/horizontal_bone.png")));
 		
-		SPRITE_SOLV = new ArrayList<Image>();
-		SPRITE_SOLV.add(ImageIO.read(new File("sprites/vertical_bone.png")));
+		SPRITE_BONEV = new ArrayList<Image>();
+		SPRITE_BONEV.add(ImageIO.read(new File("sprites/vertical_bone.png")));
 		
-		SPRITE_DEMONN = new ArrayList<Image>();
-		SPRITE_DEMONN.add(ImageIO.read(new File("sprites/monster_1.png")));
+		SPRITE_DAEMONN = new ArrayList<Image>();
+		SPRITE_DAEMONN.add(ImageIO.read(new File("sprites/monster_1.png")));
 		
-		SPRITE_DEMONW = new ArrayList<Image>();
-		SPRITE_DEMONW.add(ImageIO.read(new File("sprites/monster_2.png")));
+		SPRITE_DAEMONW = new ArrayList<Image>();
+		SPRITE_DAEMONW.add(ImageIO.read(new File("sprites/monster_2.png")));
 		
-		SPRITE_DEMONE = new ArrayList<Image>();
-		SPRITE_DEMONE.add(ImageIO.read(new File("sprites/monster_3.png")));
+		SPRITE_DAEMONE = new ArrayList<Image>();
+		SPRITE_DAEMONE.add(ImageIO.read(new File("sprites/monster_3.png")));
 		
-		SPRITE_DEMONS = new ArrayList<Image>();
-		SPRITE_DEMONS.add(ImageIO.read(new File("sprites/monster_4.png")));
+		SPRITE_DAEMONS = new ArrayList<Image>();
+		SPRITE_DAEMONS.add(ImageIO.read(new File("sprites/monster_4.png")));
 		
-		SPRITE_BOURSE = new ArrayList<Image>();
-		SPRITE_BOURSE.add(ImageIO.read(new File("sprites/purse.png")));
-		SPRITE_BOURSE.add(SPRITE_VIDE.get(0));
+		SPRITE_COIN = new ArrayList<Image>();
+		SPRITE_COIN.add(ImageIO.read(new File("sprites/purse.png")));
+		SPRITE_COIN.add(SPRITE_EMPTY.get(0));
 	}
 }

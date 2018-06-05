@@ -8,8 +8,8 @@ package model.elements;
  */
 public enum Type {
 	TYPE_DAEMON,
-	TYPE_BULLE,
-	TYPE_BOURSE,
-	TYPE_SORTIE,
+	TYPE_KEY,
+	TYPE_COIN,
+	TYPE_EXIT,
 	TYPE_STATIC
 }

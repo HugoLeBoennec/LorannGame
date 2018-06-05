@@ -77,7 +77,7 @@ public class ControllerFacade implements IController {
         	
         	// Attack movement :
         	if (KeyManager.attack && !KeyManager.attacked) {
-        		character.attaque();
+        		character.attack();
         		KeyManager.attacked = true;
         	}
         	

@@ -21,7 +21,7 @@ public class Lorann extends Object implements ICharacter {
 	private Direction direction;
 	
 	/** The cast spell. */
-	private Sortilege sortilege;
+	private Spell spell;
 	
 	/**
      * Instantiates a new Lorann.
@@ -37,7 +37,7 @@ public class Lorann extends Object implements ICharacter {
 		super(Type.TYPE_STATIC, x, y, false, new Sprite(Sprite.SPRITE_LORANN, 2, 8), scene);
 		
 		this.direction = Direction.DIR_RIGHT;
-		this.sortilege = new Sortilege(-1, -1, scene);
+		this.spell = new Spell(-1, -1, scene);
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class Lorann extends Object implements ICharacter {
      *            the drawing frame
      */
 	public void initiate(final BoardFrame frame) {
-		frame.addPawn(this.sortilege);
+		frame.addPawn(this.spell);
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class Lorann extends Object implements ICharacter {
      */
 	public void reset() {
 		this.direction = Direction.DIR_RIGHT;
-		this.sortilege.reset();
+		this.spell.reset();
 	}
 	
 	@Override
@@ -165,18 +165,18 @@ public class Lorann extends Object implements ICharacter {
 			this.getSprite().animate();
 		
 		// Update the spell only if cast :
-		if (this.sortilege.isCast())
-			this.sortilege.tick();
+		if (this.spell.isCast())
+			this.spell.tick();
 	}
 	
 	@Override
-	public void attaque() {
-		this.sortilege.cast(this.getX(), this.getY(), this.direction);
+	public void attack() {
+		this.spell.cast(this.getX(), this.getY(), this.direction);
 	}
 	
 	@Override
-	public IObject getSortilege() {
-		return this.sortilege;
+	public IObject getSpell() {
+		return this.spell;
 	}
 	
 	@Override
@@ -196,7 +196,7 @@ public class Lorann extends Object implements ICharacter {
 		
 		switch (object.getType()) {
 			// Collision with the purse :
-			case TYPE_BOURSE	:
+			case TYPE_COIN		:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
 					
@@ -208,10 +208,10 @@ public class Lorann extends Object implements ICharacter {
 				
 				break;
 			// Collision with the bubble :
-			case TYPE_BULLE		:
+			case TYPE_KEY		:
 				if (spr.getAnimFrame() == 0) {
 					spr.setAnimFrame(1);
-					((Scene)scene).getObjectOfType(Type.TYPE_SORTIE).getSprite().setAnimFrame(1);
+					((Scene)scene).getObjectOfType(Type.TYPE_EXIT).getSprite().setAnimFrame(1);
 					
 					Sfx.SFX_BUBBLE.setFramePosition(0);
 					Sfx.SFX_BUBBLE.start();
@@ -221,7 +221,7 @@ public class Lorann extends Object implements ICharacter {
 				
 				break;
 			// Collision with the purse :
-			case TYPE_SORTIE	:
+			case TYPE_EXIT		:
 				if (spr.getAnimFrame() == 0) {
 					this.getSprite().setAnimFrame(8);
 					
