@@ -1,6 +1,9 @@
 controller
 main
 model
+model.audio
 model.dao
+model.elements
+model.graphics
 showboard
 view

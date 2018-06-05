@@ -1,14 +1,20 @@
 package model.elements;
 
+import java.awt.Image;
+
+import model.Scene;
 import model.graphics.Sprite;
 
 /**
- * <h1>The Class Object represents a placeable object.</h1>
+ * <h1>The Interface Object implements placeable object.</h1>
  *
  * @author Matthieu CARTERON matthieu.carteron@viacesi.fr
  * @version 1.0
  */
-public class Object {
+public abstract class Object implements IObject {
+	
+	/** The object type. */
+	private final Type type;
 	
 	/** The X position. */
 	private int x;
@@ -21,71 +27,107 @@ public class Object {
 	
 	/** The sprite. */
 	private Sprite sprite;
+<<<<<<< HEAD
+=======
+	
+	/** The scene. */
+	private Scene scene;
+>>>>>>> Save-Branch
 	
 	/**
-     * Instantiates a new Object.
+     * Instantiates a new object.
+     *
+     * @param type
+     *            the object type
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param solid
+     *            the solidity
+     * @param sprite
+     *            the sprite
+     * @param scene
+     *            the current scene
+     */
+    public Object(final Type type, final int x, final int y, final boolean solid, final Sprite sprite, final Scene scene) {
+    	this.type = type;
+    	this.x = x;
+    	this.y = y;
+    	this.solid = solid;
+        this.sprite = sprite;
+        this.scene = scene;
+    }
+    
+    /**
+     * Gets the object type.
+     *
+     * @return the type
+     */
+	public Type getType() {
+		return this.type;
+	}
+	
+	/**
+     * Gets the sprite.
+     *
+     * @return the sprite
+     */
+	public Sprite getSprite() {
+		return this.sprite;
+	}
+	
+	/**
+     * Sets the sprite.
      *
      * @param sprite
      *            the sprite
      */
-	public Object(Sprite sprite) {
+	public void setSprite(final Sprite sprite) {
 		this.sprite = sprite;
 	}
 	
 	/**
-     * Gets the X position.
+     * Gets the scene.
      *
-     * @return the X position
+     * @return the scene
      */
-	public int getX() {
-		return x;
+	public Scene getScene() {
+		return this.scene;
 	}
 	
-	/**
-     * Sets the X position.
-     *
-     * @param x
-     *            the X position
-     */
-	public void setX(int x) {
+	@Override
+	public int getX() {
+		return this.x;
+	}
+	
+	@Override
+	public void setX(final int x) {
 		this.x = x;
 	}
 	
-	/**
-     * Gets the Y position.
-     *
-     * @return the Y position
-     */
+	@Override
 	public int getY() {
-		return y;
+		return this.y;
 	}
 	
-	/**
-     * Sets the Y position.
-     *
-     * @param y
-     *            the Y position
-     */
-	public void setY(int y) {
+	@Override
+	public void setY(final int y) {
 		this.y = y;
 	}
 	
-	/**
-     * Gets the solidity.
-     *
-     * @return the solidity
-     */
-	public boolean getSolid() {
-		return solid;
+	@Override
+	public boolean getSolidity() {
+		return this.solid;
 	}
 	
-	/**
-     * Sets the solidity.
-     *
-     * @param solid
-     *            the solidity
-     */
-	public void setSolid(boolean solid) {
+	@Override
+	public void setSolidity(final boolean solid) {
 		this.solid = solid;
+	}
+	
+	@Override
+	public Image getImage() {
+		return this.sprite.getImage(this.sprite.getAnimFrame());
 	}
 }

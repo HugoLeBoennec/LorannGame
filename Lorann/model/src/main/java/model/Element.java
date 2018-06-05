@@ -18,12 +18,14 @@ public class Element {
     private char type;
 
     /**
-     * Instantiates a new example.
+     * Instantiates a new element.
      *
-     * @param id
-     *            the id
-     * @param name
-     *            the name
+     * @param x
+     *            the X position
+     * @param y
+     *            the Y position
+     * @param type
+     *            the type
      */
     public Element(final int x, final int y, final char type) {
         this.x = x;
@@ -37,7 +39,7 @@ public class Element {
      * @param type
      *            the type
      */
-	public void setType(char type) {
+	public void setType(final char type) {
 		this.type = type;
 	}
 

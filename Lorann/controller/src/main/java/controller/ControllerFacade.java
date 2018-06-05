@@ -1,11 +1,18 @@
 package controller;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.util.List;
 
 import model.Element;
 import model.IModel;
+=======
+>>>>>>> Save-Branch
 import view.IView;
+import model.IModel;
+import model.IScene;
+import model.elements.ICharacter;
+
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller component.</h1>
@@ -16,12 +23,16 @@ import view.IView;
 public class ControllerFacade implements IController {
 
     /** The view. */
-    private final IView  view;
+    private IView  view;
 
     /** The model. */
+<<<<<<< HEAD
     private final IModel model;
     
     private Lorann Lorran;
+=======
+    private IModel model;
+>>>>>>> Save-Branch
 
     /**
      * Instantiates a new controller facade.
@@ -32,7 +43,6 @@ public class ControllerFacade implements IController {
      *            the model
      */
     public ControllerFacade(final IView view, final IModel model) {
-        super();
         this.view = view;
         this.model = model;
     }
@@ -40,9 +50,10 @@ public class ControllerFacade implements IController {
     /**
      * Start.
      *
-     * @throws SQLException
-     *             the SQL exception
+     * @throws InterruptedException
+     * 				the thread interruption
      */
+<<<<<<< HEAD
     public void start() throws SQLException {
         this.getView().displayMessage(this.getModel().getElementByPos(1, 1).toString());
 
@@ -74,6 +85,52 @@ public class ControllerFacade implements IController {
         		}
         	}
         }     
+=======
+    public void start() throws InterruptedException {
+    	
+    	// Get the main character :
+        final ICharacter character = this.model.getCharacter();
+        final IScene scene = this.model.getScene();
+        
+        // The main loop, keep running until the window is closed :
+        while (true) {
+        	
+        	// Horizontal movements :
+        	if (KeyManager.left && !KeyManager.right)
+        		character.moveLeft();
+        	else if (KeyManager.right && !KeyManager.left)
+        		character.moveRight();
+        	
+        	// Vertical movements :
+        	if (KeyManager.up && !KeyManager.down)
+        		character.moveUp();
+        	else if (KeyManager.down && !KeyManager.up)
+        		character.moveDown();
+        	
+        	// Diagonal up-left movements :
+        	if (KeyManager.upleft && !KeyManager.downright)
+        		character.moveUpLeft();
+        	else if (KeyManager.downright && !KeyManager.upleft)
+        		character.moveDownRight();
+        	
+        	// Diagonal up-right movements :
+        	if (KeyManager.upright && !KeyManager.downleft)
+        		character.moveUpRight();
+        	else if (KeyManager.downleft && !KeyManager.upright)
+        		character.moveDownLeft();
+        	
+        	// Attack movement :
+        	if (KeyManager.attack && !KeyManager.attacked) {
+        		character.attack();
+        		KeyManager.attacked = true;
+        	}
+        	
+	        scene.tick();				// Update the whole scene
+	        this.view.windowUpdate();	// Update the window
+        	
+        	Thread.sleep(60);
+        }
+>>>>>>> Save-Branch
     }
 
     /**

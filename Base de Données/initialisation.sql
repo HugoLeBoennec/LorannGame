@@ -15,51 +15,40 @@ DELIMITER $$
 --
 -- Procédures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `findAllElements` (IN `ctable` CHAR(255))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `findAllElements` (IN `level` INT)  NO SQL
 SELECT x, y, `type`
-FROM ctable$$
+FROM levels$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `findElementByPos` (IN `ctable` CHAR(255), IN `x` INT, IN `y` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `findElementByPos` (IN `level` INT, IN `x` INT, IN `y` INT)  NO SQL
 SELECT x, y, `type`
-FROM ctable
-WHERE ctable.x = x
-AND ctable.y = y$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `findElementByType` (IN `ctable` CHAR(255), IN `type` CHAR(1))  NO SQL
-SELECT x, y, `type`
-FROM ctable
-WHERE ctable.`type` = type$$
+FROM levels
+WHERE levels.x = x
+AND levels.y = y$$
 
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `level_0`
+-- Structure de la table `levels`
 --
 
-CREATE TABLE `level_0` (
+CREATE TABLE `levels` (
   `x` int(8) NOT NULL,
   `y` int(8) NOT NULL,
+  `level` int(8) NOT NULL,
   `type` char(1) NOT NULL
 ) ENGINE=InnoDB;
-
---
--- Contenu de la table `level_0`
---
-
-INSERT INTO `level_0` (`x`, `y`, `type`) VALUES
-(0, 0, ' ');
 
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `level_0`
+-- Index pour la table `levels`
 --
-ALTER TABLE `level_0`
-  ADD PRIMARY KEY (`x`, `y`);
+ALTER TABLE `levels`
+  ADD PRIMARY KEY (`x`, `y`, `level`);
   
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
